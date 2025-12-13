@@ -143,7 +143,7 @@ const QuickConnectCard: React.FC = () => {
       <div className="flex items-center gap-4 mb-3">
         <div className="relative">
           <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-[#25D366] border-2 border-white rounded-full z-10 animate-pulse rtl:right-auto rtl:left-0"></span>
-          <img src="https://picsum.photos/60/60?random=99" className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md" alt="Patient Support Agent" />
+          <img src="/favicon.png" className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md p-1 bg-white" alt="Patient Support Agent" />
         </div>
         <div className="text-start">
           <p className="text-sm font-bold text-gray-900">{t.hero.agent_name}</p>
