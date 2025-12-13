@@ -23,8 +23,8 @@ const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, 
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-6" dir={dir}>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -32,13 +32,13 @@ const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, 
           className="absolute inset-0 bg-medical-primary/90 backdrop-blur-md transition-opacity"
         />
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           className="relative bg-white w-full max-w-6xl h-full md:h-auto md:max-h-[90vh] md:rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row"
         >
-          <button 
+          <button
             onClick={onClose}
             className="absolute top-4 right-4 z-50 p-2 bg-black/10 backdrop-blur rounded-full text-white md:hidden rtl:right-auto rtl:left-4"
           >
@@ -47,20 +47,20 @@ const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, 
 
           <div className="w-full md:w-2/5 h-64 md:h-auto relative bg-medical-primary shrink-0">
             <div className="absolute inset-0 bg-gradient-to-t from-medical-primary/90 via-transparent to-transparent z-10 md:hidden"></div>
-            <img 
-              src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png" 
-              alt="Dr. Ramdoun" 
+            <img
+              src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+              alt="Dr. Ramdoun"
               className="w-full h-full object-cover object-top"
             />
-            
+
             <div className="absolute bottom-6 left-6 z-20 text-white md:hidden pr-6 rtl:left-auto rtl:right-6 rtl:pr-0 rtl:pl-6 text-start">
-               <h3 className="font-heading font-bold text-2xl leading-tight">{t.profile.name}</h3>
-               <p className="opacity-90 text-sm mt-1">{t.profile.modal.intro.split(' ').slice(0, 5).join(' ')}...</p>
+              <h3 className="font-heading font-bold text-2xl leading-tight">{t.profile.name}</h3>
+              <p className="opacity-90 text-sm mt-1">{t.profile.modal.intro.replace(/<[^>]*>?/gm, '').split(' ').slice(0, 8).join(' ')}...</p>
             </div>
           </div>
 
           <div className="w-full md:w-3/5 overflow-y-auto modal-scroll bg-white relative flex flex-col h-full">
-            <button 
+            <button
               onClick={onClose}
               className="hidden md:flex absolute top-6 right-6 z-20 p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-gray-900 transition-colors rtl:right-auto rtl:left-6"
             >
@@ -68,33 +68,34 @@ const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, 
             </button>
 
             <div className="p-6 md:p-12 space-y-10 text-start">
-              
+
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-medical-secondary/10 text-medical-secondary rounded-full text-xs font-bold uppercase tracking-wider">
                   <Award size={14} />
                   <span>{t.profile.modal.badge}</span>
                 </div>
-                
+
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-medical-primary leading-[1.2]">
                   {t.profile.modal.title}
                 </h2>
 
-                <p className="text-lg md:text-xl font-medium text-slate-700 leading-relaxed border-l-4 border-medical-secondary pl-4 rtl:border-l-0 rtl:border-r-4 rtl:pl-0 rtl:pr-4">
-                  {t.profile.modal.intro}
-                </p>
+                <p
+                  className="text-lg md:text-xl font-medium text-slate-700 leading-relaxed border-l-4 border-medical-secondary pl-4 rtl:border-l-0 rtl:border-r-4 rtl:pl-0 rtl:pr-4"
+                  dangerouslySetInnerHTML={{ __html: t.profile.modal.intro }}
+                />
 
                 <div className="text-gray-600 leading-relaxed space-y-4 text-base md:text-lg">
-                  <p>{t.profile.modal.p1}</p>
-                  <p>{t.profile.modal.p2}</p>
+                  <p dangerouslySetInnerHTML={{ __html: t.profile.modal.p1 }} />
+                  <p dangerouslySetInnerHTML={{ __html: t.profile.modal.p2 }} />
                 </div>
 
                 <div className="grid gap-3 pt-2">
-                   {t.profile.modal.bullets.map((item, i) => (
-                     <div key={i} className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                        <CheckCircle className="text-medical-secondary w-5 h-5 shrink-0 mt-0.5" />
-                        <span className="font-semibold text-medical-primary text-sm md:text-base">{item}</span>
-                     </div>
-                   ))}
+                  {t.profile.modal.bullets.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                      <CheckCircle className="text-medical-secondary w-5 h-5 shrink-0 mt-0.5" />
+                      <span className="font-semibold text-medical-primary text-sm md:text-base">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -123,28 +124,28 @@ const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, 
                 </div>
 
                 <div className="space-y-3">
-                   <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-                     <Users size={24} />
-                   </div>
-                   <h4 className="text-xl font-bold text-medical-primary">{t.profile.modal.team_title}</h4>
-                   <p className="text-sm text-gray-600 leading-relaxed">
-                     {t.profile.modal.team_desc}
-                   </p>
+                  <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
+                    <Users size={24} />
+                  </div>
+                  <h4 className="text-xl font-bold text-medical-primary">{t.profile.modal.team_title}</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {t.profile.modal.team_desc}
+                  </p>
                 </div>
               </div>
 
               <div className="pt-4 pb-8">
-                 <div className="mt-8 text-center">
-                    <p className="font-bold text-medical-primary mb-4">{t.profile.modal.footer_quote}</p>
-                    <Button 
-                      fullWidth 
-                      size="lg" 
-                      onClick={() => window.open('https://wa.me/905539362222', '_blank')}
-                      className="shadow-xl shadow-teal-500/20"
-                    >
-                      {t.profile.modal.btn_start}
-                    </Button>
-                 </div>
+                <div className="mt-8 text-center">
+                  <p className="font-bold text-medical-primary mb-4">{t.profile.modal.footer_quote}</p>
+                  <Button
+                    fullWidth
+                    size="lg"
+                    onClick={() => window.open('https://wa.me/905539362222', '_blank')}
+                    className="shadow-xl shadow-teal-500/20"
+                  >
+                    {t.profile.modal.btn_start}
+                  </Button>
+                </div>
               </div>
 
             </div>
@@ -165,14 +166,14 @@ export const DoctorProfile: React.FC = () => {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-20 rtl:right-auto rtl:left-0 rtl:-translate-x-20 rtl:-skew-x-12"></div>
 
         <div className="relative z-10 grid md:grid-cols-3 gap-12 lg:gap-16 items-center">
-          
+
           <div className="md:col-span-2 text-white text-center md:text-start">
             <h3 className="text-medical-secondary font-bold text-xl mb-3">{t.profile.eyebrow}</h3>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8">{t.profile.name}</h2>
-            
+
             <div className="space-y-6 text-gray-300 text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
-              <p>{t.profile.bio_short_1}</p>
-              <p>{t.profile.bio_short_2}</p>
+              <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_1 }} />
+              <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_2 }} />
             </div>
 
             <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
@@ -191,9 +192,9 @@ export const DoctorProfile: React.FC = () => {
             </div>
 
             <div className="mt-10">
-              <Button 
-                variant="white" 
-                size="lg" 
+              <Button
+                variant="white"
+                size="lg"
                 className="text-lg"
                 onClick={() => setIsModalOpen(true)}
               >
@@ -205,9 +206,9 @@ export const DoctorProfile: React.FC = () => {
           <div className="md:col-span-1">
             <div className="relative">
               <div className="absolute inset-0 bg-medical-secondary rounded-2xl rotate-3"></div>
-              <img 
-                src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png" 
-                alt="Dr. Abdulalim Ramdoun" 
+              <img
+                src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+                alt="Dr. Abdulalim Ramdoun"
                 className="relative rounded-2xl w-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
