@@ -259,17 +259,17 @@ export const Hero: React.FC = () => {
             className="order-2 relative"
           >
             {/* Reduced height on mobile for better visibility of content below */}
-            <div className="relative w-full max-w-sm md:max-w-full mx-auto h-[350px] md:h-[650px]">
+            <div className="relative w-full max-w-sm md:max-w-full mx-auto">
 
               {/* Main Image with Modern Mask */}
-              <div className="group relative w-full h-full rounded-[40px] overflow-hidden shadow-2xl border-[6px] border-white transition-transform duration-700 hover:scale-[1.005] bg-gray-100">
+              <div className="group relative w-full rounded-[40px] overflow-hidden shadow-2xl border-[6px] border-white bg-gray-100">
                 <img
                   src="/dr-ramdoun-final.webp"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop";
                   }}
                   alt="Dr. Ramdoun - Leading Physiotherapy Specialist in Turkey"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-auto object-contain"
                   width="600"
                   height="800"
                 />
