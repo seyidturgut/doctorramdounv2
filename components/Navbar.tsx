@@ -84,9 +84,9 @@ export const Navbar: React.FC = () => {
           onClick={() => setDropdownOpen(!dropdownOpen)}
           className={`
             flex items-center gap-1.5 pl-1.5 pr-2.5 py-1.5 rounded-full border transition-all duration-300 backdrop-blur-sm
-            ${isOpen
-              ? 'bg-gray-50/80 border-gray-200 text-gray-700'
-              : (scrolled ? 'bg-white/10 border-white/20 text-white hover:bg-white/20' : 'bg-white/90 border-transparent hover:bg-white text-gray-800 shadow-sm')
+            ${scrolled
+              ? 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+              : (isOpen ? 'bg-gray-50/80 border-gray-200 text-gray-700' : 'bg-white/90 border-transparent hover:bg-white text-gray-800 shadow-sm')
             }
           `}
         >
@@ -136,7 +136,7 @@ export const Navbar: React.FC = () => {
         ${scrolled
           ? 'top-4 md:top-6 max-w-[90%] md:max-w-[1200px] rounded-2xl md:rounded-full bg-[#15B8A6]/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(20,184,166,0.15)] border border-white/20 ring-1 ring-white/20 h-[64px] md:h-[72px]'
           : 'top-0 max-w-full h-[88px] bg-transparent border-none'}
-        ${isOpen ? '!bg-white !top-0 !max-w-full !rounded-none !border-none' : ''}
+        ${isOpen ? '!bg-white !top-0 !max-w-full !rounded-none !h-[88px] !border-none' : ''}
       `}
       dir={dir}
     >
@@ -151,7 +151,7 @@ export const Navbar: React.FC = () => {
             <img
               src="/doctorramdoun-logo.svg"
               alt="Dr. Ramdoun"
-              className={`w-auto object-contain transition-all duration-300 ${scrolled && !isOpen ? 'h-7 md:h-9 brightness-0 invert' : 'h-8 md:h-11'}`}
+              className={`w-auto object-contain transition-all duration-300 ${scrolled ? 'h-7 md:h-9 brightness-0 invert' : 'h-8 md:h-11'}`}
             />
           </div>
 
@@ -215,7 +215,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[90] bg-white pt-[90px] transition-all duration-300 transform
+        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden pt-[90px] transition-all duration-300 
         ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}
       >
         <div className="flex flex-col h-full">
