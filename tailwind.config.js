@@ -19,8 +19,9 @@ export default {
                 heading: ['Manrope', 'sans-serif'],
             },
             boxShadow: {
-                'soft': '0 4px 20px -2px rgba(10, 34, 57, 0.08)',
-                'hover': '0 10px 25px -3px rgba(10, 34, 57, 0.12)',
+                'soft': '0 10px 40px -10px rgba(0,0,0,0.05)', // Ambient float
+                'hover': '0 20px 40px -5px rgba(10, 34, 57, 0.1)', // High lift
+                'glow': '0 0 20px rgba(20, 184, 166, 0.3)', // Subtle teal glow
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-out',
