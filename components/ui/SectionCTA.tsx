@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from './ui/Button';
-import { useLanguage } from '../contexts/LanguageContext';
+import { Button } from './Button';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { Phone } from 'lucide-react';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
