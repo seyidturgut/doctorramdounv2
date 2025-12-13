@@ -78,7 +78,7 @@ const HeroCTAs: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center md:items-start space-y-5 w-full max-w-lg mx-auto md:mx-0 relative z-10">
-      <div className="flex flex-col w-full gap-3 sm:gap-4 sm:flex-row px-2 md:px-0">
+      <div className="flex flex-row w-full gap-3 sm:gap-4 px-2 md:px-0">
         <Button
           size="lg"
           fullWidth

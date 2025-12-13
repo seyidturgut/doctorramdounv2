@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'en' | 'tr' | 'ar';
+type Language = 'en' | 'ar';
 
 // --- Translations ---
 const translations = {
@@ -31,14 +31,14 @@ const translations = {
       description: "Expert guidance in neurological and orthopedic rehabilitation, with facilitation of Deep Brain Stimulation (DBS) for Parkinson’s disease, smart spinal cord stimulation, baclofen pump therapy, psychological support, and general medical consultations.",
       tagline: "Personalized care. Advanced solutions. Compassionate guidance.",
       cta_whatsapp: "Chat on WhatsApp",
-      cta_assess: "Start Free Assessment",
+      cta_assess: "Start Quick Assessment",
       badges: {
         support: "24/7 Medical Support",
         language: "English & Arabic Speaking",
         accredited: "JCI Accredited Partners"
       },
       fast_response: "Fast response",
-      consultation: "Free Online Consultation",
+      consultation: "Online Consultation",
       agent_name: "Patient Coordinator",
       agent_status: "Online Now",
       agent_msg: "Hi! I can help with treatment prices and travel plans to Turkey."
@@ -106,14 +106,14 @@ const translations = {
       title: "Your Journey to Recovery",
       description: "We handle every detail of your medical trip, so you can focus entirely on getting better. Here is how it works.",
       steps: [
-        { title: "Free Consultation", desc: "Contact us via WhatsApp. Share your medical reports and get a preliminary assessment from Dr. Ramdoun within 24 hours." },
+        { title: "Initial Consultation", desc: "Contact us via WhatsApp. Share your medical reports and get a preliminary assessment from Dr. Ramdoun within 24 hours." },
         { title: "Personalized Plan", desc: "We design your treatment plan, arrange your VIP airport transfer, and book your 5-star hotel accommodation." },
         { title: "Treatment in Türkiye", desc: "Arrive in Istanbul. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility." },
         { title: "Recovery & Follow-up", desc: "After a successful procedure, return home safely. We provide lifetime follow-up support to monitor your progress." }
       ],
       cta_title: "Ready to start?",
-      cta_desc: "The first step is completely free. Send us a message to discuss your condition.",
-      cta_btn: "Start Free Consultation"
+      cta_desc: "The first step is complimentary. Send us a message to discuss your condition.",
+      cta_btn: "Start Consultation"
     },
     profile: {
       eyebrow: "Meet Your Specialist",
@@ -172,176 +172,6 @@ const translations = {
       btn_sub: "Subscribe",
       rights: "Dr. Ramdoun. All rights reserved.",
       made_with: "Made with"
-    }
-  },
-  tr: {
-    seo: {
-      title: "Dr. Ramdoun | Türkiye'de Uzman Fizyoterapi ve Rehabilitasyon",
-      description: "İstanbul'da Dr. Ramdoun ile uzman tıbbi rehabilitasyon. Uluslararası hastalar için felç, nöro ve ortopedik fizik tedavi hizmetleri."
-    },
-    nav: {
-      about: "Hakkımızda",
-      services: "Hizmetler",
-      process: "Süreç",
-      stories: "Hikayeler",
-      faq: "SSS",
-      contact: "İletişim",
-      whatsapp: "WhatsApp",
-      ready: "Tedaviye başlamaya hazır mısınız?",
-      chat: "WhatsApp ile Sohbet"
-    },
-    hero: {
-      eyebrow: {
-        patients: "Uluslararası Hastalar",
-        clinic: "En İyi Klinik"
-      },
-      title_start: "Türkiye'de",
-      title_highlight: "Dünya Standartlarında",
-      title_end: "Fizyoterapi",
-      description: "Parkinson hastalığı için Derin Beyin Stimülasyonu (DBS), akıllı omurilik stimülasyonu, baklofen pompası tedavisi, psikolojik destek ve genel tıbbi konsültasyonlar dahil olmak üzere nörolojik ve ortopedik rehabilitasyonda uzman rehberlik.",
-      tagline: "Kişiselleştirilmiş bakım. İleri çözümler. Şefkatli rehberlik.",
-      cta_whatsapp: "WhatsApp'ta Sohbet",
-      cta_assess: "Ücretsiz Değerlendirme",
-      badges: {
-        support: "7/24 Tıbbi Destek",
-        language: "Türkçe, İngilizce & Arapça",
-        accredited: "JCI Akredite Ortaklar"
-      },
-      fast_response: "Hızlı yanıt",
-      consultation: "Ücretsiz Online Danışma",
-      agent_name: "Hasta Koordinatörü",
-      agent_status: "Çevrimiçi",
-      agent_msg: "Merhaba! Tedavi fiyatları ve seyahat planları konusunda yardımcı olabilirim."
-    },
-    services: {
-      heading: "Uzman Tedaviler",
-      subheading: "İhtiyaçlarınıza özel olarak hazırlanmış rehabilitasyon programları.",
-      items: [
-        {
-          title: 'Nörolojik Rehab',
-          subtitle: 'Felç & Omurilik İyileşmesi',
-          benefits: ['Robotik Destekli Terapi', 'Motor Fonksiyon İyileşmesi'],
-          note: 'Uzman Ekip',
-        },
-        {
-          title: 'Ortopedik Rehab',
-          subtitle: 'Ameliyat Sonrası & Spor Yaralanması',
-          benefits: ['Eklem Mobilizasyonu', 'Performans Dönüşü'],
-          note: 'Kişiye Özel',
-        },
-        {
-          title: 'Manuel Terapi',
-          subtitle: 'Omurga Bakımı & Ağrı Tedavisi',
-          benefits: ['Miyofasyal Gevşetme', 'Kronik Ağrı Yönetimi'],
-          note: 'Hızlı Rahatlama',
-        },
-      ],
-      chat_btn: "Sohbet Başlat"
-    },
-    assessment: {
-      badge: "Yapay Zeka Destekli",
-      trigger_title: "Tedavinizden emin değil misiniz?",
-      trigger_desc: "4 hızlı soruyu yanıtlayın. Daha hızlı bir teşhis için Dr. Ramdoun ile paylaşmak üzere ön profilinizi oluşturun.",
-      btn_start: "Değerlendirmeyi Başlat",
-      btn_back: "Ana Sayfaya Dön",
-      step: "Soru",
-      done: "Tamamlandı",
-      questions: [
-        {
-          question: "Temel şikayetiniz nedir?",
-          options: ["Felç / Nörolojik Sorun", "Ortopedik / Eklem Ağrısı", "Omurilik Yaralanması", "Ameliyat Sonrası İyileşme", "Spor Yaralanması"]
-        },
-        {
-          question: "Belirtilerin süresi?",
-          options: ["1 aydan az", "1 - 6 ay", "6 ay - 1 yıl", "1 yıldan fazla"]
-        },
-        {
-          question: "Mevcut hareketlilik seviyesi?",
-          options: ["Tam Bağımsız", "Destek Gerekiyor (Baston/Yürüteç)", "Tekerlekli Sandalye", "Yatağa Bağımlı"]
-        },
-        {
-          question: "Ana tedavi hedefi?",
-          options: ["Ağrı Giderme", "Yeniden Yürüme", "Günlük Bağımsızlık", "Ameliyattan Kaçınma"]
-        }
-      ],
-      result_title: "Profil Hazır!",
-      result_desc: "Cevaplarınızı aşağıda inceleyin. Hızlı bir ön teşhis için bu özeti ekibimize gönderin.",
-      summary_title: "Değerlendirme Özeti",
-      btn_send: "WhatsApp ile Gönder",
-      btn_retake: "Tekrar Başla",
-      quote_badge: "Uzman Görüşü",
-      quote: "Doğru teşhis, tam iyileşmeye giden ilk adımdır."
-    },
-    process: {
-      title: "İyileşme Yolculuğunuz",
-      description: "Siz sadece iyileşmeye odaklanın diye seyahatinizin her detayını biz hallediyoruz. İşte süreç böyle işliyor.",
-      steps: [
-        { title: "Ücretsiz Danışma", desc: "WhatsApp üzerinden bize ulaşın. Raporlarınızı paylaşın ve 24 saat içinde Dr. Ramdoun'dan ön değerlendirme alın." },
-        { title: "Kişisel Plan", desc: "Tedavi planınızı tasarlıyor, VIP havaalanı transferinizi ayarlıyor ve 5 yıldızlı otel rezervasyonunuzu yapıyoruz." },
-        { title: "Türkiye'de Tedavi", desc: "İstanbul'a varış. Koordinatörümüz sizi karşılar. Tedaviniz JCI akredite tesisimizde gerçekleştirilir." },
-        { title: "İyileşme & Takip", desc: "Başarılı bir işlemden sonra evinize güvenle dönün. İlerlemenizi izlemek için ömür boyu takip desteği sağlıyoruz." }
-      ],
-      cta_title: "Başlamaya hazır mısınız?",
-      cta_desc: "İlk adım tamamen ücretsizdir. Durumunuzu görüşmek için bize mesaj gönderin.",
-      cta_btn: "Ücretsiz Danışma Başlat"
-    },
-    profile: {
-      eyebrow: "Uzmanınızla Tanışın",
-      name: "Dr. Abdulalim Ramdoun",
-      bio_short_1: "Dahiliye alanında 10 yılı aşkın deneyimi ve önleyici kardiyoloji ile rehabilitasyon konusundaki uzmanlığıyla Dr. Ramdoun, hayatını hasta sonuçlarını iyileştirmeye adamıştır.",
-      bio_short_2: "Uluslararası hastanelerde misafir danışman olarak görev yapmakta ve şefkati en son tıbbi teknolojiyle harmanlama vizyonuyla liderlik etmektedir.",
-      stats: { exp: "Yıl Deneyim", proc: "İşlem", awards: "Ödül" },
-      btn_bio: "Biyografiyi Oku",
-      modal: {
-        badge: "10+ Yıllık Deneyim",
-        title: "Uzman Bakım. Güvenilir Rehberlik. Küresel Erişim.",
-        intro: "Türkiye'de nörolojik yaralanmaların tedavisi ve fizyoterapi rehabilitasyonu konusunda 10 yılı aşkın deneyime sahip genel pratisyen.",
-        p1: "Doctor Ramdoun'da, sağlığınız için kendini adamış deneyimli ve şefkatli tıp uzmanlarından oluşan küresel bir ağı bir araya getiriyoruz. İster ikinci bir görüş, ister teşhis incelemesi veya ileri tedavi seçenekleri konusunda rehberlik arıyor olun, ekibimiz her adımda sizi desteklemek için burada.",
-        p2: "Genel konsültasyonlardan çeşitli alanlardaki uzman tıbbi tavsiyelere kadar geniş bir hizmet yelpazesi sunuyoruz; her hastanın en son küresel standartlara dayalı kişiselleştirilmiş bir bakım planı almasını sağlıyoruz.",
-        bullets: ["Uluslararası sertifikalı tıbbi uzmanlar", "Doğru, zamanında ve gizli değerlendirmeler", "Kişiselleştirilmiş, hasta odaklı yaklaşım"],
-        mission_title: "Misyonumuz",
-        mission_desc: "Misyonumuz, güvenilir ikinci görüşler, uzman tedavi önerileri ve kişiselleştirilmiş bakım planları sağlayarak bireylerin bilinçli tıbbi kararlar almasını sağlamaktır.",
-        team_title: "Ekibimiz",
-        team_desc: "Ekibimiz, önde gelen uluslararası tıp merkezlerine bağlı deneyimli hekimler, danışmanlar ve sağlık profesyonellerinden oluşmaktadır.",
-        footer_quote: "Sağlığınız en iyisini hak ediyor.",
-        btn_start: "Yolculuğa Başla"
-      }
-    },
-    faq: {
-      badge: "Destek Merkezi",
-      title: "Sıkça Sorulan Sorular",
-      desc: "Aradığınız cevabı bulamadınız mı? Ekibimizle doğrudan sohbet edin.",
-      ask_btn: "WhatsApp'tan Sor",
-      items: [
-        { q: "Havaalanı karşılama ve konaklama sağlıyor musunuz?", a: "Evet, kesinlikle. VIP Uluslararası Hasta paketimiz lüks havaalanı transferlerini ve 5 yıldızlı anlaşmalı otellerde indirimli konaklamayı içerir." },
-        { q: "Vardıktan ne kadar sonra tedaviye başlayabilirim?", a: "Genellikle, vardığınız gün veya ertesi sabah Dr. Ramdoun ile ilk görüşmenizi yaparsınız." },
-        { q: "Uluslararası sigorta kabul ediyor musunuz?", a: "Birçok uluslararası sigorta sağlayıcısı ile çalışıyoruz. Lütfen poliçe detaylarınızı koordinatörlerimizle paylaşın." },
-        { q: "Dil engeli var mı?", a: "Hayır. Ekibimiz akıcı İngilizce, Arapça ve Türkçe konuşmaktadır. Ayrıca kişisel tercümanlar da sağlıyoruz." },
-        { q: "Eve döndükten sonra takibe ihtiyacım olursa?", a: "Ömür boyu dijital takip sağlıyoruz. İlerlemenizi izlemek için Dr. Ramdoun ile görüntülü görüşmeler planlayabilirsiniz." }
-      ]
-    },
-    contact: {
-      title: "Bana Ulaşın",
-      desc: "Tedaviniz veya seyahatiniz hakkında birçok sorunuz olabileceğini anlıyorum. Ekibim ve ben bunları WhatsApp veya arama yoluyla anında yanıtlamaya hazırız.",
-      email: "E-posta",
-      hours_title: "Online Danışma Saatleri",
-      hours_val: "Pzt - Cmt: 08:00 - 20:00",
-      hours_note: "Acil Durumlar için 7/24 WhatsApp Desteği",
-      instant_title: "Anında Bağlantı",
-      instant_desc: "Formları atlayın. Hasta koordinatörümle hemen konuşun.",
-      btn_wa: "WhatsApp Sohbet",
-      wa_note: "Ortalama yanıt: 5 dk",
-      btn_call: "Hemen Ara",
-      footer_note: "Uluslararası hasta koordinatörlerimiz İngilizce, Arapça ve Türkçe konuşmaktadır. Seyahat planlarınıza yardımcı olmaya hazırız."
-    },
-    footer: {
-      desc: "Daha İyi Sağlığa Doğru Birlikte. Güvenliğiniz, konforunuz ve sürdürülebilir iyileşmeniz odaklı dünya standartlarında tıbbi bakım sağlamaya kararlıyım.",
-      menu: "Menü",
-      connect: "İletişimde Kalın",
-      subscribe_desc: "Sağlık ipuçlarını ve güncellemeleri doğrudan Dr. Ramdoun'dan almak için abone olun.",
-      btn_sub: "Abone Ol",
-      rights: "Dr. Ramdoun. Tüm hakları saklıdır.",
-      made_with: "Sağlık için"
     }
   },
   ar: {
