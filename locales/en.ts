@@ -150,21 +150,28 @@ export const en = {
     stories: {
         title: "Patient Stories",
         subtitle: "Hear from those who trusted us.",
+        verified_customer: "Verified Patient",
         items: [
             {
                 name: "Sarah Jenkins",
                 location: "London, UK",
-                text: "The level of care I received was outstanding. From the airport pickup to the post-op follow-up, Dr. Ramdoun's team made me feel safe."
+                text: "The level of care I received was outstanding. From the airport pickup to the post-op follow-up, Dr. Ramdoun's team made me feel safe.",
+                treatment: "Orthopedic Rehab",
+                outcome: "Full mobility restored in 3 weeks"
             },
             {
                 name: "Michael Chen",
                 location: "Singapore",
-                text: "World-class facilities and a doctor who actually listens. The international patient center handled all my insurance paperwork seamlessly."
+                text: "World-class facilities and a doctor who actually listens. The international patient center handled all my insurance paperwork seamlessly.",
+                treatment: "Neurological Care",
+                outcome: "Successful post-stroke recovery"
             },
             {
                 name: "Ahmed Al-Fayed",
                 location: "Dubai, UAE",
-                text: "Professionalism at its finest. The clinic is spotless, modern, and the staff treats you like family. Highly recommended."
+                text: "Professionalism at its finest. The clinic is spotless, modern, and the staff treats you like family. Highly recommended.",
+                treatment: "Spinal Therapy",
+                outcome: "Pain-free after 6 months"
             }
         ]
     },
