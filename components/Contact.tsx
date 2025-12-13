@@ -2,6 +2,7 @@ import React from 'react';
 import { SectionWrapper } from './ui/SectionWrapper';
 import { Button } from './ui/Button';
 import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Authentic WhatsApp Icon
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -11,6 +12,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export const Contact: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <SectionWrapper id="contact" bg="light">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -20,16 +23,16 @@ export const Contact: React.FC = () => {
           <div className="absolute top-0 right-0 w-80 h-80 bg-medical-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
 
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-8">Contact Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-8">{t.contact.title}</h2>
             <p className="text-gray-300 text-lg md:text-xl mb-10 md:mb-14 leading-relaxed">
-              I understand you may have many questions about your treatment or travel. My team and I are ready to answer them via WhatsApp or call instantly.
+              {t.contact.desc}
             </p>
 
             <div className="space-y-10">
               <div className="flex items-start space-x-5">
                 <Mail className="w-8 h-8 text-medical-secondary mt-1 shrink-0" />
                 <div>
-                  <h3 className="font-bold text-xl md:text-2xl mb-1">Email</h3>
+                  <h3 className="font-bold text-xl md:text-2xl mb-1">{t.contact.email}</h3>
                   <p className="text-gray-300 text-base md:text-lg">contact@doctorramdoun.com</p>
                 </div>
               </div>
@@ -37,9 +40,9 @@ export const Contact: React.FC = () => {
               <div className="flex items-start space-x-5">
                 <Clock className="w-8 h-8 text-medical-secondary mt-1 shrink-0" />
                 <div>
-                  <h3 className="font-bold text-xl md:text-2xl mb-1">Online Consultation Hours</h3>
-                  <p className="text-gray-300 text-base md:text-lg">Mon - Sat: 8:00 AM - 8:00 PM</p>
-                  <p className="text-gray-400 text-sm mt-1">24/7 WhatsApp Support for Emergencies</p>
+                  <h3 className="font-bold text-xl md:text-2xl mb-1">{t.contact.hours_title}</h3>
+                  <p className="text-gray-300 text-base md:text-lg">{t.contact.hours_val}</p>
+                  <p className="text-gray-400 text-sm mt-1">{t.contact.hours_note}</p>
                 </div>
               </div>
             </div>
@@ -48,8 +51,8 @@ export const Contact: React.FC = () => {
 
         {/* Direct Actions (Right) - Replacing Form */}
         <div className="p-10 md:p-16 flex flex-col justify-center">
-          <h2 className="text-3xl font-bold font-heading text-medical-primary mb-3">Instant Connection</h2>
-          <p className="text-lg text-gray-600 mb-10">Skip the forms. Talk to my patient coordinator right now.</p>
+          <h2 className="text-3xl font-bold font-heading text-medical-primary mb-3">{t.contact.instant_title}</h2>
+          <p className="text-lg text-gray-600 mb-10">{t.contact.instant_desc}</p>
 
           <div className="space-y-5">
             {/* WhatsApp - Primary */}
@@ -62,8 +65,8 @@ export const Contact: React.FC = () => {
                   <WhatsAppIcon className="w-8 h-8 text-white" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-bold text-xl md:text-2xl leading-tight">Chat on WhatsApp</h4>
-                  <p className="text-green-100 text-base">Average response: 5 mins</p>
+                  <h4 className="font-bold text-xl md:text-2xl leading-tight">{t.contact.btn_wa}</h4>
+                  <p className="text-green-100 text-base">{t.contact.wa_note}</p>
                 </div>
               </div>
               <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
@@ -79,7 +82,7 @@ export const Contact: React.FC = () => {
                   <Phone size={28} />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-bold text-xl md:text-2xl leading-tight">Call Directly</h4>
+                  <h4 className="font-bold text-xl md:text-2xl leading-tight">{t.contact.btn_call}</h4>
                   <p className="text-gray-500 text-base">+90 553 936 22 22</p>
                 </div>
               </div>
@@ -89,7 +92,7 @@ export const Contact: React.FC = () => {
 
           <div className="mt-10 p-5 bg-blue-50 rounded-xl border border-blue-100 text-base text-blue-800 flex gap-3 items-start">
             <Clock className="w-6 h-6 shrink-0 mt-0.5" />
-            <p>Our international patient coordinators speak English, Arabic, and Turkish. We are ready to assist with your travel plans.</p>
+            <p>{t.contact.footer_note}</p>
           </div>
         </div>
       </div>
