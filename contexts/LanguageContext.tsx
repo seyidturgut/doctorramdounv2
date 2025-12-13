@@ -27,12 +27,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     // Handle Direction
     const direction = language === 'ar' ? 'rtl' : 'ltr';
     setDir(direction);
-    document.documentElement.dir = direction;
-    document.documentElement.lang = language;
-
-    // Handle Title SEO dynamically
-    document.title = translations[language].seo.title;
-
+    // Note: document.dir and document.lang are now managed by SEOManager in App.tsx
   }, [language]);
 
   return (

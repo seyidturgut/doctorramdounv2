@@ -29,7 +29,16 @@ const SEOManager = () => {
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', t.seo.description);
 
-    // 3. Open Graph (OG)
+    // 3. Meta Keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', t.seo.keywords);
+
+    // 4. Open Graph (OG)
     const updateMeta = (property: string, content: string) => {
       let element = document.querySelector(`meta[property="${property}"]`);
       if (!element) {
@@ -46,7 +55,7 @@ const SEOManager = () => {
     if (language === 'ar') updateMeta('og:locale:alternate', 'en_US');
     else updateMeta('og:locale:alternate', 'ar_TR');
 
-    // 4. Canonical & Hreflang
+    // 5. Canonical & Hreflang
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');
@@ -55,7 +64,7 @@ const SEOManager = () => {
     }
     linkCanonical.setAttribute('href', 'https://doctorramdoun.com');
 
-    // 5. HTML Lang Attribute
+    // 6. HTML Lang Attribute
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
 

@@ -1,7 +1,8 @@
 export const en = {
     seo: {
         title: "Dr. Ramdoun | Expert Physiotherapy & Rehabilitation Center",
-        description: "Expert medical rehabilitation by Dr. Ramdoun. Specialized stroke, neuro & orthopedic physical therapy for international patients."
+        description: "Expert medical rehabilitation by Dr. Ramdoun. Specialized stroke, neuro & orthopedic physical therapy for international patients.",
+        keywords: "Dr. Ramdoun, Physiotherapy Turkey, Neuro Rehabilitation, Stroke Recovery, Orthopedic Rehab, Physical Therapy Istanbul, Medical Tourism Turkey, Deep Brain Stimulation Support"
     },
     nav: {
         about: "About",
