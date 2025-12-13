@@ -13,7 +13,7 @@ import {
 const steps = [
   {
     id: 1,
-    title: "Free Consultation",
+    title: "Online Consultation",
     description: "Contact us via WhatsApp. Share your medical reports and get a preliminary assessment from Dr. Ramdoun within 24 hours.",
     icon: <MessageCircle className="w-8 h-8 md:w-10 md:h-10" />,
     color: "bg-blue-100 text-blue-600"
@@ -136,7 +136,7 @@ export const WhyChooseUs: React.FC = () => {
             className="text-lg px-10 py-4 shadow-xl shadow-teal-500/20"
             onClick={() => window.open('https://wa.me/905539362222', '_blank')}
           >
-            Start Free Consultation
+            Start Online Consultation
           </Button>
         </motion.div>
       </div>
