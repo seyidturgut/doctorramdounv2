@@ -27,8 +27,8 @@ const steps = [
   },
   {
     id: 3,
-    title: "Treatment in Türkiye",
-    description: "Arrive in Istanbul. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility.",
+    title: "Your Treatment",
+    description: "Arrive at our clinic. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility.",
     icon: <Stethoscope className="w-8 h-8 md:w-10 md:h-10" />,
     color: "bg-teal-100 text-teal-600"
   },

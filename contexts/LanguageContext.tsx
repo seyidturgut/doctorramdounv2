@@ -6,8 +6,8 @@ type Language = 'en' | 'ar';
 const translations = {
   en: {
     seo: {
-      title: "Dr. Ramdoun | Expert Physiotherapy & Rehabilitation in Turkey",
-      description: "Expert medical rehabilitation in Istanbul by Dr. Ramdoun. Specialized stroke, neuro & orthopedic physical therapy for international patients."
+      title: "Dr. Ramdoun | Expert Physiotherapy & Rehabilitation Center",
+      description: "Expert medical rehabilitation by Dr. Ramdoun. Specialized stroke, neuro & orthopedic physical therapy for international patients."
     },
     nav: {
       about: "About",
@@ -41,7 +41,7 @@ const translations = {
       consultation: "Online Consultation",
       agent_name: "Patient Coordinator",
       agent_status: "Online Now",
-      agent_msg: "Hi! I can help with treatment prices and travel plans to Turkey."
+      agent_msg: "Hi! I can help with treatment prices and travel plans."
     },
     services: {
       heading: "Specialized Therapy",
@@ -130,9 +130,9 @@ const translations = {
       title: "Your Journey to Recovery",
       description: "We handle every detail of your medical trip, so you can focus entirely on getting better. Here is how it works.",
       steps: [
-        { title: "Initial Consultation", desc: "Contact us via WhatsApp. Share your medical reports and get a preliminary assessment from Dr. Ramdoun within 24 hours." },
+        { title: "Online Consultation", desc: "Contact us via WhatsApp. Share your medical reports and get a preliminary assessment from Dr. Ramdoun within 24 hours." },
         { title: "Personalized Plan", desc: "We design your treatment plan, arrange your VIP airport transfer, and book your 5-star hotel accommodation." },
-        { title: "Treatment in Türkiye", desc: "Arrive in Istanbul. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility." },
+        { title: "Your Treatment", desc: "Arrive at our clinic. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility." },
         { title: "Recovery & Follow-up", desc: "After a successful procedure, return home safely. We provide lifetime follow-up support to monitor your progress." }
       ],
       cta_title: "Ready to start?",
@@ -149,7 +149,7 @@ const translations = {
       modal: {
         badge: "10+ Years Experience",
         title: "Expert Care. Trusted Guidance. Global Reach.",
-        intro: "General practitioner with over 10 years of experience in treating neurological injuries and providing physiotherapy rehabilitation in Türkiye.",
+        intro: "General practitioner with over 10 years of experience in treating neurological injuries and providing physiotherapy rehabilitation.",
         p1: "At Doctor Ramdoun, we bring together a global network of experienced and compassionate medical professionals dedicated to your well-being. Whether you’re seeking a second opinion, a diagnosis review, or guidance on advanced treatment options, our team is here to support you every step of the way.",
         p2: "We offer a wide range of services — from general consultations to specialized medical advice across various fields — ensuring that every patient receives a tailored care plan based on the latest global standards.",
         bullets: ["Internationally certified medical experts", "Accurate, timely, and confidential evaluations", "Personalized, patient-centered approach"],
@@ -200,8 +200,8 @@ const translations = {
   },
   ar: {
     seo: {
-      title: "د. رمدون | العلاج الطبيعي وإعادة التأهيل المتخصص في تركيا",
-      description: "إعادة تأهيل طبي خبير في إسطنبول مع د. رمدون. علاج طبيعي متخصص للجلطات، الأعصاب والعظام للمرضى الدوليين."
+      title: "د. رمدون | العلاج الطبيعي وإعادة التأهيل المتخصص",
+      description: "إعادة تأهيل طبي خبير مع د. رمدون. علاج طبيعي متخصص للجلطات، الأعصاب والعظام للمرضى الدوليين."
     },
     nav: {
       about: "من نحن",
@@ -221,7 +221,7 @@ const translations = {
       },
       title_start: "مستوى عالمي في",
       title_highlight: "العلاج الطبيعي",
-      title_end: "وإعادة التأهيل في تركيا",
+      title_end: "وإعادة التأهيل",
       description: "توجيه خبير في إعادة التأهيل العصبي والعظمي، مع تسهيل التحفيز العميق للدماغ (DBS) لمرض باركنسون، وتحفيز الحبل الشوكي الذكي، وعلاج مضخة باكلوفين، والدعم النفسي، والاستشارات الطبية العامة.",
       tagline: "رعاية شخصية. حلول متقدمة. توجيه رحيم.",
       cta_whatsapp: "دردشة عبر واتساب",
@@ -232,10 +232,10 @@ const translations = {
         accredited: "شركاء معتمدون من JCI"
       },
       fast_response: "رد سريع",
-      consultation: "استشارة مجانية عبر الإنترنت",
+      consultation: "استشارة عبر الإنترنت",
       agent_name: "منسق المرضى",
       agent_status: "متصل الآن",
-      agent_msg: "مرحبا! يمكنني المساعدة في أسعار العلاج وخطط السفر إلى تركيا."
+      agent_msg: "مرحبا! يمكنني المساعدة في أسعار العلاج وخطط السفر."
     },
     services: {
       heading: "العلاجات المتخصصة",
@@ -300,14 +300,14 @@ const translations = {
       title: "رحلتك للشفاء",
       description: "نتولى كل تفاصيل رحلتك الطبية، لتركز بالكامل على التحسن. هكذا تتم العملية.",
       steps: [
-        { title: "استشارة مجانية", desc: "تواصل معنا عبر واتساب. شارك تقاريرك الطبية واحصل على تقييم أولي من د. رمدون خلال 24 ساعة." },
+        { title: "استشارة عبر الإنترنت", desc: "تواصل معنا عبر واتساب. شارك تقاريرك الطبية واحصل على تقييم أولي من د. رمدون خلال 24 ساعة." },
         { title: "خطة مخصصة", desc: "نصمم خطة علاجك، ونرتب نقلك من المطار بسيارة VIP، ونحجز إقامتك في فندق 5 نجوم." },
-        { title: "العلاج في تركيا", desc: "الوصول إلى إسطنبول. يستقبلك منسقنا. يتم إجراء علاجك في منشأتنا المعتمدة من JCI." },
+        { title: "بداية العلاج", desc: "الوصول إلى العيادة. يستقبلك منسقنا. يتم إجراء علاجك في منشأتنا المعتمدة من JCI." },
         { title: "التعافي والمتابعة", desc: "بعد إجراء ناجح، تعود للمنزل بأمان. نوفر دعماً للمتابعة مدى الحياة لمراقبة تقدمك." }
       ],
       cta_title: "مستعد للبدء؟",
-      cta_desc: "الخطوة الأولى مجانية تماماً. أرسل لنا رسالة لمناقشة حالتك.",
-      cta_btn: "ابدأ استشارة مجانية"
+      cta_desc: "الخطوة الأولى عبر الإنترنت. أرسل لنا رسالة لمناقشة حالتك.",
+      cta_btn: "ابدأ الاستشارة"
     },
     profile: {
       eyebrow: "تعرف على طبيبك",
@@ -319,7 +319,7 @@ const translations = {
       modal: {
         badge: "خبرة 10+ سنوات",
         title: "رعاية خبيرة. توجيه موثوق. وصول عالمي.",
-        intro: "طبيب عام يتمتع بخبرة تزيد عن 10 سنوات في علاج الإصابات العصبية وتقديم العلاج الطبيعي في تركيا.",
+        intro: "طبيب عام يتمتع بخبرة تزيد عن 10 سنوات في علاج الإصابات العصبية وتقديم العلاج الطبيعي.",
         p1: "في دكتور رمدون، نجمع شبكة عالمية من المهنيين الطبيين ذوي الخبرة والرحمة المكرسين لرفاهيتك. سواء كنت تبحث عن رأي ثانٍ، أو مراجعة تشخيص، أو توجيه حول خيارات العلاج المتقدمة، فريقنا هنا لدعمك في كل خطوة.",
         p2: "نقدم مجموعة واسعة من الخدمات - من الاستشارات العامة إلى النصائح الطبية المتخصصة في مختلف المجالات - لضمان حصول كل مريض على خطة رعاية مصممة خصيصاً بناءً على أحدث المعايير العالمية.",
         bullets: ["خبراء طبيون معتمدون دولياً", "تقييمات دقيقة وفي الوقت المناسب وسرية", "نهج شخصي يركز على المريض"],
