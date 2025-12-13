@@ -232,7 +232,7 @@ export const Hero: React.FC = () => {
               visible: { transition: { staggerChildren: 0.1 } },
               hidden: {}
             }}
-            className="flex flex-col gap-6 md:gap-8 order-1 text-center md:text-start items-center md:items-start"
+            className="flex flex-col gap-6 md:gap-8 order-2 text-center md:text-start items-center md:items-start"
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="w-full flex justify-center md:justify-start">
               <Eyebrow />
@@ -256,7 +256,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
-            className="order-2 relative"
+            className="order-1 relative"
           >
             {/* Reduced height on mobile for better visibility of content below */}
             <div className="relative w-full max-w-sm md:max-w-full mx-auto">
