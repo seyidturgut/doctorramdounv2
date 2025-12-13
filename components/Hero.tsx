@@ -16,7 +16,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 const Eyebrow: React.FC = () => {
   const { t } = useLanguage();
   return (
-    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3 py-1.5 px-3 md:py-2 md:px-4 rounded-full bg-white/80 backdrop-blur-md border border-medical-secondary/20 shadow-sm text-[10px] md:text-sm font-bold text-gray-600 uppercase tracking-wide mb-6 max-w-full">
+    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 py-1.5 px-2 md:py-2 md:px-3 rounded-full bg-white/80 backdrop-blur-md border border-medical-secondary/20 shadow-sm text-[10px] md:text-sm font-bold text-gray-600 uppercase tracking-wide mb-6 max-w-fit mx-auto md:mx-0">
       <div className="flex items-center gap-1.5 text-medical-secondary whitespace-nowrap">
         <Globe size={14} />
         <span>{t.hero.eyebrow.patients}</span>
