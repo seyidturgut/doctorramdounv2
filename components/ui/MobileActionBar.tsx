@@ -47,28 +47,29 @@ export const MobileActionBar: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 w-full z-50 p-4 md:hidden flex justify-center items-end"
+          className="fixed bottom-0 left-0 w-full z-[100] px-3 pb-4 pt-2 md:hidden flex justify-center items-end pointer-events-none"
         >
-          <div className="w-full max-w-sm bg-white/80 backdrop-blur-lg border border-white/50 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] rounded-2xl p-2 flex gap-3 items-center justify-between">
+          <div className="w-full pointer-events-auto max-w-sm bg-white/90 backdrop-blur-xl border border-white/50 shadow-[0_-4px_30px_rgba(0,0,0,0.15)] rounded-2xl p-2.5 flex gap-3 items-center justify-between">
 
-            {/* Free Checkup Button (Replaced Call) */}
+            {/* Free Checkup Button */}
             <button
               onClick={scrollToAssessment}
-              className="flex-1 flex flex-col items-center justify-center gap-1 py-2.5 px-4 rounded-xl bg-teal-50 text-medical-secondary active:scale-95 transition-transform duration-200 border border-teal-100 hover:bg-teal-100"
+              className="flex-1 h-14 flex flex-col items-center justify-center gap-0.5 rounded-xl bg-teal-50 text-medical-secondary active:scale-95 transition-transform duration-200 border border-teal-100 hover:bg-teal-100/80"
             >
-              <Activity size={20} className="stroke-medical-secondary" />
-              <span className="text-xs font-bold whitespace-nowrap">{t.nav.quick_check}</span>
+              <Activity size={18} className="stroke-medical-secondary stroke-[2.5]" />
+              <span className="text-[11px] font-bold leading-none">{t.nav.quick_check}</span>
             </button>
 
-            {/* WhatsApp Button (Prominent) */}
+            {/* WhatsApp Button (Prominent & Thumb Friendly) */}
             <button
               onClick={() => window.open('https://wa.me/905539362222', '_blank')}
-              className="flex-[1.5] flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white shadow-lg shadow-green-500/30 active:scale-95 transition-transform duration-200"
+              className="flex-[1.8] h-14 flex items-center justify-center gap-2.5 rounded-xl bg-[#25D366] text-white shadow-lg shadow-green-500/30 active:scale-95 transition-transform duration-200 overflow-hidden relative group"
             >
-              <WhatsAppIcon className="w-6 h-6 text-white" />
-              <div className="flex flex-col items-start leading-tight">
-                <span className="text-sm font-bold">{t.nav.whatsapp}</span>
-                <span className="text-[10px] font-medium text-white/90 flex items-center gap-1">
+              <div className="absolute inset-0 bg-white/10 opacity-0 group-active:opacity-100 transition-opacity" />
+              <WhatsAppIcon className="w-7 h-7 text-white drop-shadow-sm" />
+              <div className="flex flex-col items-start leading-none gap-0.5">
+                <span className="text-base font-bold tracking-wide">{t.nav.whatsapp}</span>
+                <span className="text-[9px] font-semibold text-white/90 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   {t.nav.whatsapp_status}
                 </span>

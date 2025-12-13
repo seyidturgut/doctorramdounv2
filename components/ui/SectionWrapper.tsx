@@ -21,7 +21,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
   };
 
   return (
-    <section id={id} className={`py-16 md:py-24 ${bgColors[bg]} ${className}`}>
+    <section id={id} className={`py-12 md:py-24 ${bgColors[bg]} ${className}`}>
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
         {children}
       </div>
