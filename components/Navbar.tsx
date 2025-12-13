@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
     const element = document.getElementById(targetId);
 
     if (element) {
-      const headerOffset = 90;
+      const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -114,19 +114,21 @@ export const Navbar: React.FC = () => {
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
           className={`
-            flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full border transition-all duration-300 shadow-sm
-            ${scrolled || isOpen ? 'bg-white border-gray-200 hover:border-medical-secondary/50' : 'bg-white/90 backdrop-blur-md border-white/50 hover:bg-white'}
+            flex items-center gap-1.5 pl-1.5 pr-2.5 py-1.5 rounded-full border transition-all duration-300 backdrop-blur-sm
+            ${scrolled || isOpen
+              ? 'bg-gray-50/80 border-gray-200 hover:border-medical-primary/30 text-gray-700'
+              : 'bg-white/90 border-transparent hover:bg-white text-gray-800 shadow-sm'}
           `}
         >
-          <currentLang.Flag className="w-5 h-5 rounded-full object-cover shrink-0" />
-          <span className="text-xs font-bold text-gray-800 uppercase tracking-wide">{currentLang.short}</span>
-          <ChevronDown size={12} className={`text-gray-500 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+          <currentLang.Flag className="w-5 h-5 rounded-full object-cover shrink-0 shadow-sm" />
+          <span className="text-xs font-bold uppercase tracking-wider">{currentLang.short}</span>
+          <ChevronDown size={12} className={`opacity-60 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
         </button>
 
         {/* Dropdown Menu */}
         {dropdownOpen && (
           <div className={`
-            absolute top-full mt-2 w-36 bg-white rounded-xl shadow-xl border border-gray-100 p-1 z-50 animate-fade-in
+            absolute top-full mt-2 w-40 bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 p-1.5 z-50 animate-fade-in
             ${dir === 'rtl' ? 'left-0' : 'right-0'}
           `}>
             {languages.map((lang) => (
@@ -137,12 +139,14 @@ export const Navbar: React.FC = () => {
                   setDropdownOpen(false);
                 }}
                 className={`
-                  w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors group
-                  ${language === lang.code ? 'bg-medical-light text-medical-primary font-bold' : 'text-gray-600 hover:bg-gray-50'}
+                  w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200 group
+                  ${language === lang.code
+                    ? 'bg-medical-light/80 text-medical-primary font-bold shadow-sm'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}
                 `}
               >
-                <div className="flex items-center gap-2">
-                  <lang.Flag className="w-4 h-4 rounded-full" />
+                <div className="flex items-center gap-3">
+                  <lang.Flag className={`w-5 h-5 rounded-full shadow-sm transition-transform group-hover:scale-110 ${language === lang.code ? 'ring-2 ring-white' : ''}`} />
                   <span>{lang.label}</span>
                 </div>
                 {language === lang.code && <Check size={14} className="text-medical-secondary" />}
@@ -157,51 +161,67 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       aria-label="Main Navigation"
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 h-[80px] flex items-center
-      ${scrolled || isOpen ? 'bg-white shadow-sm' : 'bg-transparent'}`}
+      className={`
+        fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+        ${scrolled
+          ? 'h-[72px] bg-white/85 backdrop-blur-md shadow-[0_4px_30px_rgb(0,0,0,0.03)] border-b border-white/40 supports-[backdrop-filter]:bg-white/60'
+          : 'h-[88px] bg-transparent'}
+        ${isOpen ? '!bg-white' : ''}
+      `}
       dir={dir}
     >
-      <div className="max-w-[1200px] w-full mx-auto px-5 md:px-10 lg:px-20 relative z-[101]">
-        <div className="flex justify-between items-center">
+      <div className="max-w-[1400px] w-full mx-auto px-5 md:px-8 lg:px-12 h-full">
+        <div className="flex justify-between items-center h-full">
 
           {/* Logo Section */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div
+            className="flex-shrink-0 flex items-center cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <img
               src="/doctorramdoun-logo.svg"
               alt="Dr. Ramdoun"
-              className="h-8 md:h-9 w-auto object-contain"
+              className={`w-auto object-contain transition-all duration-300 ${scrolled ? 'h-8 md:h-9' : 'h-10 md:h-11'}`}
             />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-1 bg-white/50 backdrop-blur-sm px-2 py-1.5 rounded-full border border-white/20 shadow-sm transition-all duration-300 hover:bg-white/80 hover:shadow-md">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-base font-medium transition-colors hover:text-medical-secondary ${scrolled ? 'text-medical-primary' : 'text-medical-primary'}`}
+                className="relative px-4 py-2 text-sm font-medium text-gray-700 transition-colors rounded-full hover:text-medical-primary group overflow-hidden"
               >
-                {link.name}
+                <span className="relative z-10">{link.name}</span>
+                <span className="absolute inset-0 bg-white rounded-full opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-sm"></span>
               </a>
             ))}
-
-            {/* Desktop Language Switcher */}
-            <LanguageSelector />
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
+            {/* Desktop Language Switcher */}
+            <div className="hidden lg:block">
+              <LanguageSelector />
+            </div>
+
             {/* Compact CTA - Visible on scroll or Desktop */}
-            <div className={`transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 md:opacity-100'}`}>
+            <div className={`transition-all duration-500 transform ${scrolled ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100'}`}>
               <Button
                 size="sm"
                 variant="primary"
                 aria-label="Chat on WhatsApp"
-                className="text-sm font-bold px-3 md:px-4 py-2 h-auto min-h-[40px] flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] shadow-green-200"
+                className="
+                    rounded-full text-sm font-bold px-4 py-2.5 h-auto min-h-[40px] flex items-center gap-2 
+                    bg-[#25D366] hover:bg-[#20bd5a] text-white
+                    shadow-[0_4px_12px_rgb(37,211,102,0.3)] hover:shadow-[0_6px_16px_rgb(37,211,102,0.4)]
+                    transition-all duration-300 hover:-translate-y-0.5
+                  "
                 onClick={() => window.open('https://wa.me/905539362222', '_blank')}
               >
-                <WhatsAppIcon className="w-5 h-5 text-white" />
+                <WhatsAppIcon className="w-5 h-5 fill-white" />
                 <span className="hidden sm:inline">{t.nav.whatsapp}</span>
               </Button>
             </div>
@@ -214,46 +234,58 @@ export const Navbar: React.FC = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-[#0A2239] hover:bg-gray-100 transition-colors focus:outline-none"
+              className="lg:hidden p-2.5 rounded-full text-gray-700 hover:bg-gray-100/80 transition-colors focus:outline-none backdrop-blur-sm active:scale-95 duration-200"
               aria-label="Toggle Navigation Menu"
             >
-              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="fixed inset-0 z-[90] bg-white lg:hidden pt-[80px] animate-fade-in flex flex-col">
-          <div className="flex-1 overflow-y-auto py-6 px-5 space-y-1">
-            {navLinks.map((link) => (
+      <div
+        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden pt-[90px] transition-all duration-300 
+        ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}
+      >
+        <div className="flex flex-col h-full">
+          <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2">
+            {navLinks.map((link, idx) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="block px-4 py-5 rounded-xl text-xl font-bold text-medical-primary border-b border-gray-50 hover:bg-medical-light hover:text-medical-secondary transition-colors"
+                className="block px-4 py-4 rounded-2xl text-xl font-bold text-gray-800 hover:bg-gray-50 hover:text-medical-secondary transition-all active:scale-[0.99]"
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
-                {link.name}
+                <span className="flex items-center justify-between">
+                  {link.name}
+                  <ChevronDown size={16} className="-rotate-90 opacity-20" />
+                </span>
               </a>
             ))}
           </div>
 
-          <div className="p-6 bg-gray-50 border-t border-gray-100 space-y-4 pb-10">
-            <p className="text-center text-sm text-gray-500 font-medium">{t.nav.ready}</p>
+          <div className="p-8 bg-gray-50/50 border-t border-gray-100 space-y-5 pb-12 backdrop-blur-sm">
+            <p className="text-center text-sm text-gray-500 font-medium tracking-wide uppercase">{t.nav.ready}</p>
             <Button
               fullWidth
               size="lg"
               aria-label="Chat via WhatsApp"
-              className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] border-transparent text-lg shadow-lg"
+              className="
+                  flex items-center justify-center gap-3 rounded-2xl py-4
+                  bg-[#25D366] hover:bg-[#20bd5a] text-white border-transparent 
+                  text-lg font-bold shadow-[0_8px_20px_rgb(37,211,102,0.25)]
+                  active:scale-[0.98] transition-all duration-300
+                "
               onClick={() => window.open('https://wa.me/905539362222', '_blank')}
             >
-              <WhatsAppIcon className="w-6 h-6 text-white" />
+              <WhatsAppIcon className="w-6 h-6 fill-white" />
               {t.nav.chat}
             </Button>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
