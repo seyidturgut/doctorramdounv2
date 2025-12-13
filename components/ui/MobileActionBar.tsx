@@ -66,7 +66,13 @@ export const MobileActionBar: React.FC = () => {
               className="flex-[1.5] flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white shadow-lg shadow-green-500/30 active:scale-95 transition-transform duration-200"
             >
               <WhatsAppIcon className="w-6 h-6 text-white" />
-              <span className="text-sm font-bold">{t.nav.whatsapp}</span>
+              <div className="flex flex-col items-start leading-tight">
+                <span className="text-sm font-bold">{t.nav.whatsapp}</span>
+                <span className="text-[10px] font-medium text-white/90 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  {t.nav.whatsapp_status}
+                </span>
+              </div>
             </button>
 
           </div>

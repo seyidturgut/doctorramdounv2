@@ -15,7 +15,13 @@ export const ar = {
         whatsapp: "واتساب",
         ready: "هل أنت مستعد لبدء رحلتك؟",
         chat: "دردشة عبر واتساب",
-        quick_check: "فحص سريع"
+        quick_check: "فحص سريع",
+        whatsapp_status: "متصل الآن"
+    },
+    cta_section: {
+        title: "غير متأكد من حالتك؟ اسأل د. رمدون مباشرة.",
+        btn: "دردشة عبر واتساب",
+        note: "متوسط الرد: 5 دقائق"
     },
     hero: {
         eyebrow: {

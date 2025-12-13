@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { MobileActionBar } from './components/ui/MobileActionBar';
 import { ScrollToTop } from './components/ui/ScrollToTop';
+import { SectionCTA } from './components/ui/SectionCTA';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 
 // Lazy Load heavy components below the fold
@@ -121,6 +122,7 @@ const AppContent: React.FC = () => {
         <Hero />
         <Suspense fallback={<LoadingFallback />}>
           <Services />
+          <SectionCTA variant="light" />
           <SymptomChecker />
           <WhyChooseUs />
           <DoctorProfile onOpenBio={() => setIsBioModalOpen(true)} />
@@ -139,6 +141,7 @@ const AppContent: React.FC = () => {
             }}
           />
           <Testimonials />
+          <SectionCTA />
           <FAQ />
           <Contact />
         </Suspense>

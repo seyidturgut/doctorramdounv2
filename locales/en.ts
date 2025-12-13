@@ -15,7 +15,13 @@ export const en = {
         whatsapp: "WhatsApp",
         ready: "Ready for your journey?",
         chat: "Chat via WhatsApp",
-        quick_check: "Quick Check"
+        quick_check: "Quick Check",
+        whatsapp_status: "Online Now"
+    },
+    cta_section: {
+        title: "Unsure about your condition? Ask Dr. Ramdoun.",
+        btn: "Chat on WhatsApp",
+        note: "Average response: 5 mins"
     },
     hero: {
         eyebrow: {
