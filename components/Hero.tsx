@@ -34,7 +34,7 @@ const HeroText: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="space-y-6 text-center md:text-start w-full relative z-10">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] font-bold font-heading text-medical-primary tracking-tight break-words">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] font-bold font-heading text-medical-primary tracking-tight rtl:tracking-normal break-words">
         {t.hero.title_start} <br className="hidden xs:block" />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-secondary to-teal-500 relative">
           {t.hero.title_highlight}
@@ -115,7 +115,7 @@ const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="relative z-10 w-full overflow-hidden">
-      <div className="flex flex-nowrap overflow-x-auto items-center justify-start gap-3 pb-2 -mx-5 px-5 md:mx-0 md:px-0 scrollbar-hide w-[100vw] md:w-auto">
+      <div className="flex flex-nowrap overflow-x-auto items-center justify-start gap-3 pb-2 -mx-5 px-5 md:mx-0 md:px-0 scrollbar-hide w-[calc(100%+2.5rem)] md:w-auto">
         {[
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
