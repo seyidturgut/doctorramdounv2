@@ -100,6 +100,8 @@ export const en = {
     },
     assessment: {
         badge: "AI-Powered Check",
+        time_badge: "Takes 30s",
+        free_badge: "Free Analysis",
         trigger_title: "Not sure about your treatment?",
         trigger_desc: "Answer 4 quick questions. Get a preliminary profile to share with Dr. Ramdoun for a faster diagnosis.",
         btn_start: "Start Assessment",

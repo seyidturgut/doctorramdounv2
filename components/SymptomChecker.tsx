@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { SectionWrapper } from './ui/SectionWrapper';
 import { Button } from './ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Activity, 
-  CheckCircle2, 
+import {
+  Activity,
+  CheckCircle2,
   RefreshCcw,
   MessageCircle,
   ArrowLeft,
@@ -18,12 +18,12 @@ import { useLanguage } from '../contexts/LanguageContext';
 const ModalBackground: React.FC = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
     <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white to-teal-50/50"></div>
-    <motion.div 
+    <motion.div
       animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], opacity: [0.3, 0.5, 0.3] }}
       transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
       className="absolute top-0 right-0 w-96 h-96 bg-medical-secondary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"
     />
-    <motion.div 
+    <motion.div
       animate={{ scale: [1, 1.3, 1], x: [0, -30, 0], opacity: [0.2, 0.4, 0.2] }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       className="absolute bottom-0 left-0 w-80 h-80 bg-blue-200/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3"
@@ -86,17 +86,22 @@ export const SymptomChecker: React.FC = () => {
 
   return (
     <SectionWrapper id="assessment" bg="white" className="relative py-12 md:py-24">
-      
+
       {/* 1. Trigger Card */}
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-medical-primary to-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-          
+      <div className="max-w-4xl mx-auto relative group perspective-1000">
+        <div className="absolute -inset-1 bg-gradient-to-r from-medical-secondary to-teal-400 rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+        <div className="bg-gradient-to-br from-medical-primary to-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 ring-1 ring-white/10">
+
           <div className="absolute top-0 right-0 w-64 h-64 bg-medical-secondary rounded-full mix-blend-overlay filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/3"></div>
-          
+
           <div className="relative z-10 text-center md:text-start">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-medical-secondary mb-4 border border-white/10">
               <Activity size={14} />
               <span>{t.assessment.badge}</span>
+            </div>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-4">
+              <span className="text-xs font-bold text-teal-200 bg-teal-900/40 px-2 py-1 rounded border border-teal-700/50">{t.assessment.time_badge}</span>
+              <span className="text-xs font-bold text-green-200 bg-green-900/40 px-2 py-1 rounded border border-green-700/50">{t.assessment.free_badge}</span>
             </div>
             <h2 className="text-2xl md:text-4xl font-bold font-heading mb-3">
               {t.assessment.trigger_title}
@@ -107,17 +112,18 @@ export const SymptomChecker: React.FC = () => {
           </div>
 
           <div className="relative z-10 shrink-0">
-            <Button 
+            <Button
               variant="white"
-              size="lg" 
+              size="lg"
               onClick={() => setIsOpen(true)}
-              className="shadow-xl px-8 py-6 text-lg group border-none"
+              className="shadow-xl px-8 py-6 text-lg group border-none hover:ring-4 ring-white/30 transition-all duration-300 relative overflow-hidden"
             >
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
               {t.assessment.btn_start}
               {dir === 'rtl' ? (
-                 <ChevronRight className="mr-2 rotate-180 group-hover:-translate-x-1 transition-transform" />
+                <ChevronRight className="mr-2 rotate-180 group-hover:-translate-x-1 transition-transform" />
               ) : (
-                 <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               )}
             </Button>
           </div>
@@ -127,7 +133,7 @@ export const SymptomChecker: React.FC = () => {
       {/* 2. Full Screen Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '100%' }}
@@ -141,14 +147,14 @@ export const SymptomChecker: React.FC = () => {
 
               {/* Top Bar */}
               <div className="shrink-0 h-16 px-5 md:px-8 flex items-center justify-between border-b border-gray-100/60 bg-white/80 backdrop-blur-md z-30">
-                <button 
+                <button
                   onClick={handleClose}
                   className="flex items-center gap-2 text-gray-500 hover:text-medical-primary font-bold text-sm px-3 py-2 rounded-lg hover:bg-gray-100/50 transition-colors"
                 >
-                  <ArrowLeft size={18} className={dir === 'rtl' ? 'rotate-180' : ''}/>
+                  <ArrowLeft size={18} className={dir === 'rtl' ? 'rotate-180' : ''} />
                   {t.assessment.btn_back}
                 </button>
-                
+
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-wider bg-gray-50 px-3 py-1 rounded-full">
                   {!isFinished ? `${t.assessment.step} ${currentStep + 1} / ${questions.length}` : t.assessment.done}
                 </div>
@@ -156,7 +162,7 @@ export const SymptomChecker: React.FC = () => {
 
               {/* Progress Bar */}
               <div className="w-full h-1.5 bg-gray-100 shrink-0 relative z-30">
-                <motion.div 
+                <motion.div
                   className="h-full bg-gradient-to-r from-medical-secondary to-teal-400"
                   initial={{ width: 0 }}
                   animate={{ width: `${progressPercentage}%` }}
@@ -167,7 +173,7 @@ export const SymptomChecker: React.FC = () => {
               {/* Main Interactive Area */}
               <div className="flex-1 flex flex-col justify-center px-6 md:px-12 lg:px-16 w-full relative z-20 overflow-y-auto">
                 <AnimatePresence mode='wait'>
-                  
+
                   {!isFinished ? (
                     <motion.div
                       key={`step-${currentStep}`}
@@ -188,8 +194,8 @@ export const SymptomChecker: React.FC = () => {
                             onClick={() => handleOptionSelect(option)}
                             className={`
                               w-full p-4 md:p-5 rounded-2xl border-2 text-start transition-all duration-200 flex items-center justify-between group
-                              ${answers[currentStep] === option 
-                                ? 'border-medical-secondary bg-teal-50 text-medical-primary shadow-md scale-[1.02]' 
+                              ${answers[currentStep] === option
+                                ? 'border-medical-secondary bg-teal-50 text-medical-primary shadow-md scale-[1.02]'
                                 : 'border-white bg-white shadow-sm text-gray-600 hover:border-medical-secondary/40 hover:bg-gray-50'}
                             `}
                           >
@@ -214,7 +220,7 @@ export const SymptomChecker: React.FC = () => {
                       <div className="w-20 h-20 bg-gradient-to-tr from-green-100 to-emerald-50 text-[#25D366] rounded-full flex items-center justify-center mb-6 shadow-xl shadow-green-100 ring-4 ring-white shrink-0">
                         <CheckCircle2 size={40} />
                       </div>
-                      
+
                       <h3 className="text-2xl md:text-3xl font-bold text-medical-primary mb-2 font-heading">
                         {t.assessment.result_title}
                       </h3>
@@ -225,31 +231,31 @@ export const SymptomChecker: React.FC = () => {
                       {/* Summary Section */}
                       <div className="w-full bg-white rounded-2xl p-5 mb-8 border border-gray-100 shadow-sm text-start">
                         <div className="flex items-center gap-2 mb-4 border-b border-gray-100 pb-2">
-                           <FileText size={16} className="text-medical-secondary" />
-                           <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t.assessment.summary_title}</h4>
+                          <FileText size={16} className="text-medical-secondary" />
+                          <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t.assessment.summary_title}</h4>
                         </div>
                         <div className="space-y-4">
                           {questions.map((q, index) => (
                             <div key={index} className="group">
-                               <p className="text-[11px] font-semibold text-gray-400 mb-0.5 uppercase tracking-wide">{q.question}</p>
-                               <p className="text-sm md:text-base font-bold text-medical-primary">{answers[index]}</p>
+                              <p className="text-[11px] font-semibold text-gray-400 mb-0.5 uppercase tracking-wide">{q.question}</p>
+                              <p className="text-sm md:text-base font-bold text-medical-primary">{answers[index]}</p>
                             </div>
                           ))}
                         </div>
                       </div>
 
                       <div className="w-full space-y-4">
-                        <Button 
-                          fullWidth 
-                          size="lg" 
+                        <Button
+                          fullWidth
+                          size="lg"
                           className="bg-[#25D366] hover:bg-[#128C7E] flex items-center justify-center gap-3 py-5 text-lg shadow-xl shadow-green-500/20 rounded-2xl"
                           onClick={sendToWhatsApp}
                         >
                           <MessageCircle size={22} fill="white" />
                           {t.assessment.btn_send}
                         </Button>
-                        
-                        <button 
+
+                        <button
                           onClick={handleRestart}
                           className="flex items-center justify-center gap-2 text-gray-400 hover:text-medical-primary transition-colors py-2 font-medium text-sm"
                         >
@@ -265,26 +271,26 @@ export const SymptomChecker: React.FC = () => {
 
             {/* === RIGHT COLUMN: Image & Decor (Desktop Only) === */}
             <div className="hidden md:block md:w-1/2 lg:w-7/12 relative bg-medical-primary overflow-hidden">
-               <img 
-                 src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png" 
-                 alt="Dr. Ramdoun Medical Assessment" 
-                 className="absolute inset-0 w-full h-full object-cover object-top"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-medical-primary via-medical-primary/40 to-transparent opacity-90"></div>
+              <img
+                src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+                alt="Dr. Ramdoun Medical Assessment"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-medical-primary via-medical-primary/40 to-transparent opacity-90"></div>
 
-               <div className="absolute bottom-12 left-12 right-12 z-10 text-white text-start">
-                 <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-semibold text-medical-secondary">
-                    <Stethoscope size={16} />
-                    <span>{t.assessment.quote_badge}</span>
-                 </div>
-                 <blockquote className="text-3xl font-heading font-bold leading-tight mb-4">
-                   "{t.assessment.quote}"
-                 </blockquote>
-                 <div className="flex items-center gap-4">
-                    <div className="w-12 h-1 bg-medical-secondary rounded-full"></div>
-                    <p className="text-lg font-medium text-gray-300">Dr. Abdulalim Ramdoun</p>
-                 </div>
-               </div>
+              <div className="absolute bottom-12 left-12 right-12 z-10 text-white text-start">
+                <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-semibold text-medical-secondary">
+                  <Stethoscope size={16} />
+                  <span>{t.assessment.quote_badge}</span>
+                </div>
+                <blockquote className="text-3xl font-heading font-bold leading-tight mb-4">
+                  "{t.assessment.quote}"
+                </blockquote>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-1 bg-medical-secondary rounded-full"></div>
+                  <p className="text-lg font-medium text-gray-300">Dr. Abdulalim Ramdoun</p>
+                </div>
+              </div>
             </div>
 
           </motion.div>
