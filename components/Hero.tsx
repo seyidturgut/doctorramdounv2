@@ -33,8 +33,8 @@ const HeroText: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="space-y-6 text-center md:text-start w-full relative z-10">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] font-bold font-heading text-medical-primary tracking-tight rtl:tracking-normal break-words">
-        {t.hero.title_start} <br className="hidden xs:block" />
+      <h1 className="text-[1.75rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] font-bold font-heading text-medical-primary tracking-tight rtl:tracking-normal break-words">
+        {t.hero.title_start} <br className="block" />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-secondary to-teal-500 relative">
           {t.hero.title_highlight}
           <motion.span
