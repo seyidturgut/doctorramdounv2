@@ -76,11 +76,11 @@ const HeroCTAs: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center md:items-start space-y-5 w-full mx-auto md:mx-0 relative z-10">
+    <div className="flex flex-col items-center md:items-start space-y-3 md:space-y-5 w-full mx-auto md:mx-0 relative z-10">
       <div className="flex flex-row w-full gap-3">
         <Button
           fullWidth
-          className="group relative overflow-hidden flex items-center justify-center gap-1.5 xs:gap-2 text-[11px] xs:text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-3 md:py-4 flex-1 h-auto"
+          className="group relative overflow-hidden flex items-center justify-center gap-1.5 xs:gap-2 text-[11px] xs:text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-2.5 md:py-4 flex-1 h-auto"
           onClick={() => window.open('https://wa.me/905539362222', '_blank')}
           aria-label="Start WhatsApp Chat"
         >
@@ -92,7 +92,7 @@ const HeroCTAs: React.FC = () => {
           variant="white"
           fullWidth
           aria-label="Get assessment"
-          className="group flex items-center justify-center gap-1.5 xs:gap-2 text-[11px] xs:text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-3 md:py-4 flex-1 h-auto"
+          className="group flex items-center justify-center gap-1.5 xs:gap-2 text-[11px] xs:text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-2.5 md:py-4 flex-1 h-auto"
           onClick={scrollToAssessment}
         >
           <span className="relative z-10 flex items-center gap-1.5 xs:gap-2">
@@ -114,13 +114,13 @@ const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="relative z-10 w-full">
-      <div className="grid grid-cols-1 md:flex md:flex-row items-start md:items-center gap-3 pb-2 w-full">
+      <div className="grid grid-cols-1 md:flex md:flex-row items-start md:items-center gap-2 md:gap-3 pb-2 w-full">
         {[
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
           { icon: ShieldCheck, text: t.hero.badges.accredited },
         ].map((badge, idx) => (
-          <div key={idx} className="flex items-center gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-3 py-2 rounded-lg border border-white/60 shadow-sm w-fit">
+          <div key={idx} className="flex items-center gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-2 py-1.5 md:px-3 md:py-2 rounded-lg border border-white/60 shadow-sm w-fit">
             <badge.icon size={14} className="text-medical-secondary shrink-0" />
             <span className="text-xs font-semibold whitespace-normal">{badge.text}</span>
           </div>
