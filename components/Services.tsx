@@ -130,7 +130,7 @@ export const Services: React.FC = () => {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold font-heading text-medical-primary mb-3"
             >
-              Specialized Therapy
+              {t.services.title}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -20 }}

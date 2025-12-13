@@ -15,18 +15,53 @@ const Testimonials = React.lazy(() => import('./components/Testimonials').then(m
 const FAQ = React.lazy(() => import('./components/FAQ').then(module => ({ default: module.FAQ })));
 const Contact = React.lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
 
+import { SchemaMarkup } from './components/SEO/SchemaMarkup';
+
 // SEO Manager to update meta tags dynamically
 const SEOManager = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   React.useEffect(() => {
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', t.seo.description);
-    }
-  }, [t]);
+    // 1. Title
+    document.title = t.seo.title;
 
-  return null;
+    // 2. Meta Description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t.seo.description);
+
+    // 3. Open Graph (OG)
+    const updateMeta = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('property', property);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+
+    updateMeta('og:title', t.seo.title);
+    updateMeta('og:description', t.seo.description);
+    updateMeta('og:locale', language === 'ar' ? 'ar_TR' : 'en_US');
+    if (language === 'ar') updateMeta('og:locale:alternate', 'en_US');
+    else updateMeta('og:locale:alternate', 'ar_TR');
+
+    // 4. Canonical & Hreflang
+    let linkCanonical = document.querySelector('link[rel="canonical"]');
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link');
+      linkCanonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(linkCanonical);
+    }
+    linkCanonical.setAttribute('href', 'https://doctorramdoun.com');
+
+    // 5. HTML Lang Attribute
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+
+  }, [t, language]);
+
+  return <SchemaMarkup />;
 };
 
 const LoadingFallback = () => (
