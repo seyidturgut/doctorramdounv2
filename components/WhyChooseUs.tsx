@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
   MessageCircle,
   FileSearch,
-  HeartFirst,
+  Heart,
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
@@ -24,7 +24,7 @@ const stepsMetadata = [
   },
   {
     id: 3,
-    icon: <HeartFirst className="w-8 h-8 md:w-10 md:h-10" />,
+    icon: <Heart className="w-8 h-8 md:w-10 md:h-10" />,
     color: "bg-teal-50 text-teal-600 border-teal-200"
   }
 ];

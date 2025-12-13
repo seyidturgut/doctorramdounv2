@@ -175,6 +175,7 @@ export const en = {
         bio_short_2: "He serves as a <strong>visiting consultant</strong> at leading international hospitals and leads his practice with a vision centered on combining <strong>human compassion with the most advanced medical technologies</strong>.",
         stats: { exp: "Years Exp.", proc: "Procedures", awards: "Awards" },
         btn_bio: "Read Full Bio",
+        cta_book: "Book Consultation",
         modal: {
             badge: "10+ Years Experience",
             title: "Expert Care. Trusted Guidance. Global Reach.",

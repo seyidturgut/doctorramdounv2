@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SectionWrapper } from './ui/SectionWrapper';
 import { Button } from './ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle, Globe, Users, Target, Award } from 'lucide-react';
+import { X, CheckCircle, Globe, Users, Target, Award, Quote } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 // --- Modal Component ---
@@ -157,58 +157,105 @@ export const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ i
 };
 
 export const DoctorProfile: React.FC<{ onOpenBio: () => void }> = ({ onOpenBio }) => {
-  const { t } = useLanguage();
+  const { t, dir } = useLanguage();
 
   return (
-    <SectionWrapper id="profile" bg="dark" className="relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-20 rtl:right-auto rtl:left-0 rtl:-translate-x-20 rtl:-skew-x-12"></div>
+    <SectionWrapper id="profile" bg="dark" className="relative overflow-hidden py-0 md:py-0">
 
-      <div className="relative z-10 grid md:grid-cols-3 gap-12 lg:gap-16 items-center">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-medical-primary to-slate-900 opacity-90"></div>
+      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05)_0%,transparent_50%)]"></div>
 
-        <div className="md:col-span-2 text-white text-center md:text-start">
-          <h3 className="text-medical-secondary font-bold text-xl mb-3">{t.profile.eyebrow}</h3>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8">{t.profile.name}</h2>
+      <div className="relative z-10 grid md:grid-cols-2 lg:grid-cols-12 min-h-[600px] md:min-h-[700px] lg:min-h-[800px] items-stretch">
 
-          <div className="space-y-6 text-gray-300 text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
-            <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_1 }} />
-            <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_2 }} />
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
-            <div>
-              <div className="text-4xl font-bold text-white">10+</div>
-              <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.exp}</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white">5k+</div>
-              <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.proc}</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white">12</div>
-              <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.awards}</div>
-            </div>
-          </div>
-
-          <div className="mt-10">
-            <Button
-              variant="white"
-              size="lg"
-              className="text-lg"
-              onClick={onOpenBio}
-            >
-              {t.profile.btn_bio}
-            </Button>
+        {/* 1. Image Half (Premium Magazine Look) */}
+        <div className="order-1 md:order-2 md:col-span-1 lg:col-span-5 relative h-[50vh] md:h-auto overflow-hidden group">
+          <div className="absolute inset-0 bg-medical-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10 mix-blend-multiply"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-slate-900 to-transparent z-20 md:hidden"></div>
+          <motion.img
+            initial={{ scale: 1.1 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5 }}
+            src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+            alt="Dr. Abdulalim Ramdoun"
+            className="w-full h-full object-cover object-top md:object-center"
+          />
+          {/* Floating Badge (Desktop) */}
+          <div className="hidden md:flex absolute bottom-12 -left-12 z-30 bg-white p-6 rounded-2xl shadow-2xl max-w-xs border-l-4 border-medical-secondary animate-fade-in-up rtl:left-auto rtl:-right-12 rtl:border-l-0 rtl:border-r-4">
+            <Quote className="text-medical-secondary w-8 h-8 mb-3 opacity-50" />
+            <p className="text-medical-primary font-medium italic leading-relaxed">
+              "{t.profile.modal.footer_quote}"
+            </p>
           </div>
         </div>
 
-        <div className="md:col-span-1">
-          <div className="relative">
-            <div className="absolute inset-0 bg-medical-secondary rounded-2xl rotate-3"></div>
-            <img
-              src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
-              alt="Dr. Abdulalim Ramdoun"
-              className="relative rounded-2xl w-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
-            />
+        {/* 2. Content Half */}
+        <div className="order-2 md:order-1 md:col-span-1 lg:col-span-7 flex flex-col justify-center p-8 md:p-16 lg:p-24 relative">
+
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 mb-6"
+            >
+              <span className="w-12 h-0.5 bg-medical-secondary"></span>
+              <span className="text-medical-secondary font-bold uppercase tracking-widest text-sm">{t.profile.eyebrow}</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading text-white mb-8 leading-[1.1]"
+            >
+              {t.profile.name.split(' ').map((word, i) => (
+                <span key={i} className={i === 1 ? 'text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 block' : 'block'}>
+                  {word}
+                </span>
+              ))}
+            </motion.h2>
+
+            <div className="space-y-6 text-gray-300 text-lg md:text-xl leading-relaxed font-light border-l-2 border-white/10 pl-6 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-6">
+              <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_1 }} />
+              <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_2 }} className="hidden md:block" />
+            </div>
+
+            {/* Stats Cards */}
+            <div className="grid grid-cols-3 gap-4 md:gap-8 mt-12 mb-12">
+              {[
+                { val: "10+", label: t.profile.stats.exp },
+                { val: "5k+", label: t.profile.stats.proc },
+                { val: "12", label: t.profile.stats.awards }
+              ].map((stat, idx) => (
+                <div key={idx} className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl text-center md:text-start transition-colors hover:bg-white/10">
+                  <div className="text-2xl md:text-4xl font-bold text-white mb-1">{stat.val}</div>
+                  <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wide">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                onClick={() => window.open('https://wa.me/905539362222', '_blank')}
+                size="lg"
+                className="bg-medical-secondary hover:bg-yellow-600 text-medical-primary font-bold px-8 py-4 shadow-lg shadow-yellow-500/20"
+              >
+                {t.profile.cta_book}
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={onOpenBio}
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-4"
+              >
+                {t.profile.btn_bio}
+              </Button>
+            </div>
+
           </div>
         </div>
 

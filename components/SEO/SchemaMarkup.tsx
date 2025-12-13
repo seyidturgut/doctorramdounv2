@@ -137,11 +137,9 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
     }
 
     return (
-        <head>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-            />
-        </head>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+        />
     );
 };
