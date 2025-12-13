@@ -17,7 +17,7 @@ import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 // SEO Manager to update meta tags dynamically
 const SEOManager = () => {
   const { t } = useLanguage();
-  
+
   React.useEffect(() => {
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
@@ -40,7 +40,7 @@ const AppContent: React.FC = () => {
         <WhyChooseUs />
         <DoctorProfile />
         <Testimonials />
-        <News />
+        {/* <News /> */}
         <FAQ />
         <Contact />
       </main>
