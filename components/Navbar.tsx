@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
             ? 'w-full max-w-full h-[88px] mt-0 rounded-none bg-white border-none shadow-none' // Open State: Full Screen Header
             : (scrolled
               ? 'w-[90%] max-w-[1200px] h-[64px] md:h-[72px] mt-4 md:mt-6 rounded-2xl md:rounded-full bg-[#15B8A6]/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(20,184,166,0.15)] border border-white/20 ring-1 ring-white/20' // Scrolled State: Pill
-              : 'w-full max-w-full h-[88px] mt-0 rounded-none bg-transparent border-none shadow-none' // Default State
+              : 'w-full max-w-[1400px] h-[88px] mt-0 rounded-none bg-transparent border-none shadow-none' // Default State
             )
           }
         `}
