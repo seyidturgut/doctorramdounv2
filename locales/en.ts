@@ -209,6 +209,8 @@ export const en = {
         title: "Frequently Asked Questions",
         desc: "Can't find the answer you're looking for? Chat with our team directly.",
         ask_btn: "Ask on WhatsApp",
+        soft_cta: "Still have questions?",
+        cta_btn: "Chat with us directly",
         items: [
             { q: "Do you provide airport pickup and accommodation?", a: "Yes, absolutely. Our VIP International Patient package includes luxury airport transfers and discounted rates at 5-star partner hotels." },
             { q: "How soon can I start treatment after arriving?", a: "Typically, you will have your initial consultation with Dr. Ramdoun on the day of your arrival or the very next morning." },
