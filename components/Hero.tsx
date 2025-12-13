@@ -114,17 +114,19 @@ const HeroCTAs: React.FC = () => {
 const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
-    <div className="relative z-10 flex flex-nowrap md:flex-wrap overflow-x-auto md:overflow-visible items-center justify-start gap-2.5 md:gap-4 pt-4 pb-2 -mx-5 px-5 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] w-[100vw] md:w-auto max-w-none md:max-w-full">
-      {[
-        { icon: Phone, text: t.hero.badges.support },
-        { icon: Globe, text: t.hero.badges.language },
-        { icon: ShieldCheck, text: t.hero.badges.accredited },
-      ].map((badge, idx) => (
-        <div key={idx} className="shrink-0 flex items-center gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl border border-white/60 shadow-sm hover:shadow-md transition-shadow cursor-default whitespace-nowrap first:ml-5 md:first:ml-0 last:mr-5 md:last:mr-0 rtl:first:ml-0 rtl:first:mr-5 rtl:last:mr-0 rtl:last:ml-5">
-          <badge.icon size={15} className="text-medical-secondary" />
-          <span className="text-xs md:text-sm font-semibold">{badge.text}</span>
-        </div>
-      ))}
+    <div className="relative z-10 w-full overflow-hidden">
+      <div className="flex flex-nowrap overflow-x-auto items-center justify-start gap-3 pb-2 -mx-5 px-5 md:mx-0 md:px-0 scrollbar-hide w-[100vw] md:w-auto">
+        {[
+          { icon: Phone, text: t.hero.badges.support },
+          { icon: Globe, text: t.hero.badges.language },
+          { icon: ShieldCheck, text: t.hero.badges.accredited },
+        ].map((badge, idx) => (
+          <div key={idx} className="shrink-0 flex items-center gap-1.5 text-slate-600 bg-white/60 backdrop-blur-md px-2.5 py-1.5 md:px-3 md:py-2 rounded-lg border border-white/60 shadow-sm whitespace-nowrap">
+            <badge.icon size={13} className="text-medical-secondary" />
+            <span className="text-[10px] sm:text-xs font-semibold">{badge.text}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
