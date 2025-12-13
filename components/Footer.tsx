@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Heart } from 'lucide-react';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-medical-primary text-white pt-20 pb-28 md:pb-10 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-16 mb-16">
 
           {/* Brand */}

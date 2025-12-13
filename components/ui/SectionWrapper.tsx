@@ -8,9 +8,9 @@ interface SectionWrapperProps {
   id?: string;
 }
 
-export const SectionWrapper: React.FC<SectionWrapperProps> = ({ 
-  children, 
-  bg = 'white', 
+export const SectionWrapper: React.FC<SectionWrapperProps> = ({
+  children,
+  bg = 'white',
   className = '',
   id
 }) => {
@@ -22,16 +22,16 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
 
   return (
     <section id={id} className={`py-16 md:py-24 ${bgColors[bg]} ${className}`}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
         {children}
       </div>
     </section>
   );
 };
 
-export const SectionHeader: React.FC<{ title: string; subtitle?: string; align?: 'left' | 'center' | 'right', dark?: boolean }> = ({ 
-  title, 
-  subtitle, 
+export const SectionHeader: React.FC<{ title: string; subtitle?: string; align?: 'left' | 'center' | 'right', dark?: boolean }> = ({
+  title,
+  subtitle,
   align = 'center',
   dark = false
 }) => {
@@ -42,7 +42,7 @@ export const SectionHeader: React.FC<{ title: string; subtitle?: string; align?:
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

@@ -5,10 +5,10 @@ import { ArrowRight } from 'lucide-react';
 export const News: React.FC = () => {
   return (
     <SectionWrapper id="news" bg="white">
-      <div className="flex justify-between items-end mb-10 md:mb-14 px-2 max-w-7xl mx-auto">
+      <div className="flex justify-between items-end mb-10 md:mb-14 px-2 max-w-[1400px] mx-auto">
         <div className="max-w-2xl">
-           <h2 className="text-3xl md:text-4xl font-bold font-heading text-medical-primary mb-3">Medical Insights</h2>
-           <p className="text-base md:text-xl text-gray-600">Latest health tips and announcements.</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading text-medical-primary mb-3">Medical Insights</h2>
+          <p className="text-base md:text-xl text-gray-600">Latest health tips and announcements.</p>
         </div>
         <a href="#" className="hidden md:flex items-center text-base font-bold text-medical-secondary hover:text-teal-700 transition-colors group">
           View All <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -19,9 +19,9 @@ export const News: React.FC = () => {
         {[1, 2, 3].map((item) => (
           <div key={item} className="group cursor-pointer flex flex-col">
             <div className="rounded-2xl overflow-hidden h-56 mb-5 relative shadow-sm group-hover:shadow-lg transition-shadow duration-300">
-              <img 
-                src={`https://picsum.photos/400/300?random=${item + 10}`} 
-                alt="News" 
+              <img
+                src={`https://picsum.photos/400/300?random=${item + 10}`}
+                alt="News"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
               />
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg text-xs font-bold text-medical-primary uppercase tracking-wide">

@@ -2,12 +2,12 @@ import React from 'react';
 import { SectionWrapper } from './ui/SectionWrapper';
 import { Button } from './ui/Button';
 import { motion } from 'framer-motion';
-import { 
-  MessageCircle, 
-  FileSearch, 
-  Stethoscope, 
-  Home, 
-  ArrowRight 
+import {
+  MessageCircle,
+  FileSearch,
+  Stethoscope,
+  Home,
+  ArrowRight
 } from 'lucide-react';
 
 const steps = [
@@ -44,47 +44,47 @@ const steps = [
 export const WhyChooseUs: React.FC = () => {
   return (
     <SectionWrapper id="process" bg="white" className="relative overflow-hidden">
-      
+
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
 
       {/* Header */}
       <div className="relative text-center max-w-4xl mx-auto mb-16 md:mb-20">
-        <motion.h2 
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-medical-primary mb-6"
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-medical-primary mb-6"
         >
           Your Journey to Recovery
         </motion.h2>
-        <motion.p 
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ delay: 0.1 }}
-           className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto"
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto"
         >
           We handle every detail of your medical trip, so you can focus entirely on getting better. Here is how it works.
         </motion.p>
       </div>
 
       {/* Steps Grid */}
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-[1400px] mx-auto">
         {/* Connecting Line (Desktop Only) */}
         <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-1 bg-gray-100 z-0">
-          <motion.div 
-             initial={{ width: 0 }}
-             whileInView={{ width: "100%" }}
-             viewport={{ once: true }}
-             transition={{ duration: 1.5, delay: 0.5 }}
-             className="h-full bg-gradient-to-r from-medical-secondary/20 via-medical-secondary to-medical-secondary/20 w-full" 
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="h-full bg-gradient-to-r from-medical-secondary/20 via-medical-secondary to-medical-secondary/20 w-full"
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
           {steps.map((step, index) => (
-            <motion.div 
+            <motion.div
               key={step.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -121,18 +121,18 @@ export const WhyChooseUs: React.FC = () => {
 
       {/* CTA Area */}
       <div className="mt-16 md:mt-24 text-center">
-        <motion.div 
-           initial={{ opacity: 0, scale: 0.9 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: true }}
-           className="inline-flex flex-col items-center bg-medical-light p-8 md:p-10 rounded-3xl border border-gray-200 shadow-sm max-w-3xl mx-auto"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="inline-flex flex-col items-center bg-medical-light p-8 md:p-10 rounded-3xl border border-gray-200 shadow-sm max-w-3xl mx-auto"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-medical-primary mb-4">Ready to start?</h3>
           <p className="text-lg text-gray-600 mb-8">
             The first step is completely free. Send us a message to discuss your condition.
           </p>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="text-lg px-10 py-4 shadow-xl shadow-teal-500/20"
             onClick={() => window.open('https://wa.me/905539362222', '_blank')}
           >
