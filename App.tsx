@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
@@ -11,6 +11,8 @@ const Services = React.lazy(() => import('./components/Services').then(module =>
 const SymptomChecker = React.lazy(() => import('./components/SymptomChecker').then(module => ({ default: module.SymptomChecker })));
 const WhyChooseUs = React.lazy(() => import('./components/WhyChooseUs').then(module => ({ default: module.WhyChooseUs })));
 const DoctorProfile = React.lazy(() => import('./components/DoctorProfile').then(module => ({ default: module.DoctorProfile })));
+const BioModal = React.lazy(() => import('./components/DoctorProfile').then(module => ({ default: module.BioModal })));
+const Blog = React.lazy(() => import('./components/Blog').then(module => ({ default: module.Blog })));
 const Testimonials = React.lazy(() => import('./components/Testimonials').then(module => ({ default: module.Testimonials })));
 const FAQ = React.lazy(() => import('./components/FAQ').then(module => ({ default: module.FAQ })));
 const Contact = React.lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
@@ -18,16 +20,26 @@ const Contact = React.lazy(() => import('./components/Contact').then(module => (
 import { SchemaMarkup } from './components/SEO/SchemaMarkup';
 
 // SEO Manager to update meta tags dynamically
-const SEOManager = () => {
+interface SEOManagerProps {
+  activeBlogPost?: any;
+}
+
+const SEOManager: React.FC<SEOManagerProps> = ({ activeBlogPost }) => {
   const { t, language } = useLanguage();
 
   React.useEffect(() => {
+    // Determine content
+    const title = activeBlogPost ? `${activeBlogPost.title} | Dr. Ramdoun` : t.seo.title;
+    const description = activeBlogPost ? activeBlogPost.content.substring(0, 160).replace(/<[^>]*>/g, '') : t.seo.description;
+    const url = activeBlogPost ? `https://doctorramdoun.com/?blog=${activeBlogPost.slug}` : 'https://doctorramdoun.com';
+    const image = activeBlogPost?.originalImageUrl || 'https://doctorramdoun.com/dr-ramdoun-final.webp';
+
     // 1. Title
-    document.title = t.seo.title;
+    document.title = title;
 
     // 2. Meta Description
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', t.seo.description);
+    if (metaDesc) metaDesc.setAttribute('content', description);
 
     // 3. Meta Keywords
     let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -49,8 +61,11 @@ const SEOManager = () => {
       element.setAttribute('content', content);
     };
 
-    updateMeta('og:title', t.seo.title);
-    updateMeta('og:description', t.seo.description);
+    updateMeta('og:title', title);
+    updateMeta('og:description', description);
+    updateMeta('og:url', url);
+    updateMeta('og:image', image);
+    updateMeta('og:type', activeBlogPost ? 'article' : 'website');
     updateMeta('og:locale', language === 'ar' ? 'ar_TR' : 'en_US');
     if (language === 'ar') updateMeta('og:locale:alternate', 'en_US');
     else updateMeta('og:locale:alternate', 'ar_TR');
@@ -62,15 +77,15 @@ const SEOManager = () => {
       linkCanonical.setAttribute('rel', 'canonical');
       document.head.appendChild(linkCanonical);
     }
-    linkCanonical.setAttribute('href', 'https://doctorramdoun.com');
+    linkCanonical.setAttribute('href', url);
 
     // 6. HTML Lang Attribute
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
 
-  }, [t, language]);
+  }, [t, language, activeBlogPost]);
 
-  return <SchemaMarkup />;
+  return <SchemaMarkup activeBlogPost={activeBlogPost} />;
 };
 
 const LoadingFallback = () => (
@@ -79,10 +94,28 @@ const LoadingFallback = () => (
   </div>
 );
 
+// Import blog posts for SEO and URL handling
+// @ts-ignore
+import blogPostsRaw from './src/data/blog-posts.json';
+const blogPosts = blogPostsRaw as any[];
+
 const AppContent: React.FC = () => {
+  const [isBioModalOpen, setIsBioModalOpen] = useState(false);
+  const [activeBlogPost, setActiveBlogPost] = useState<any>(null);
+
+  // Check URL params on mount
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const blogSlug = params.get('blog');
+    if (blogSlug) {
+      const post = blogPosts.find(p => p.slug === blogSlug);
+      if (post) setActiveBlogPost(post);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-medical-light font-sans text-slate-900 scroll-smooth selection:bg-medical-secondary selection:text-white overflow-x-hidden">
-      <SEOManager />
+      <SEOManager activeBlogPost={activeBlogPost} />
       <Navbar />
       <main>
         <Hero />
@@ -90,7 +123,21 @@ const AppContent: React.FC = () => {
           <Services />
           <SymptomChecker />
           <WhyChooseUs />
-          <DoctorProfile />
+          <DoctorProfile onOpenBio={() => setIsBioModalOpen(true)} />
+          <Blog
+            onOpenBio={() => setIsBioModalOpen(true)}
+            activePost={activeBlogPost}
+            onPostChange={(post: any | null) => {
+              setActiveBlogPost(post);
+              if (post) {
+                const newUrl = `${window.location.pathname}?blog=${post.slug}`;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+              } else {
+                const newUrl = window.location.pathname;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+              }
+            }}
+          />
           <Testimonials />
           <FAQ />
           <Contact />
@@ -99,6 +146,11 @@ const AppContent: React.FC = () => {
       <Footer />
       <MobileActionBar />
       <ScrollToTop />
+
+      {/* Global Bio Modal */}
+      <Suspense fallback={null}>
+        <BioModal isOpen={isBioModalOpen} onClose={() => setIsBioModalOpen(false)} />
+      </Suspense>
     </div>
   );
 };

@@ -9,6 +9,7 @@ export const ar = {
         services: "الخدمات",
         process: "العملية",
         stories: "قصص نجاح",
+        blog: "المقالات",
         faq: "الأسئلة",
         contact: "اتصل بنا",
         whatsapp: "واتساب",

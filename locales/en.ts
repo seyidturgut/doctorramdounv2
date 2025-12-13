@@ -9,10 +9,11 @@ export const en = {
         services: "Services",
         process: "Process",
         stories: "Stories",
+        blog: "Medical Insights",
         faq: "FAQ",
         contact: "Contact",
         whatsapp: "WhatsApp",
-        ready: "Ready to start your journey?",
+        ready: "Ready for your journey?",
         chat: "Chat via WhatsApp",
         quick_check: "Quick Check"
     },

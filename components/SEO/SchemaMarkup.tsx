@@ -1,14 +1,18 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-export const SchemaMarkup: React.FC = () => {
+interface SchemaMarkupProps {
+    activeBlogPost?: any;
+}
+
+export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) => {
     const { language, t } = useLanguage();
 
     const baseUrl = 'https://doctorramdoun.com';
     const logoUrl = `${baseUrl}/doctorramdoun-logo.svg`;
     const doctorImage = `${baseUrl}/dr-ramdoun-final.webp`;
 
-    // 1. MedicalOrganization Schema
+    // 1. MedicalOrganization Schema (Same as before)
     const medicalOrgSchema = {
         '@context': 'https://schema.org',
         '@type': 'MedicalOrganization', // Specific type for clinics
@@ -82,7 +86,7 @@ export const SchemaMarkup: React.FC = () => {
         knowsLanguage: ['English', 'Arabic', 'Turkish']
     };
 
-    // 3. WebPage Schema
+    // 3. WebPage Schema (Base)
     const webPageSchema = {
         '@context': 'https://schema.org',
         '@type': 'MedicalWebPage',
@@ -103,11 +107,40 @@ export const SchemaMarkup: React.FC = () => {
         }
     };
 
+    const schemas: any[] = [medicalOrgSchema, physicianSchema, webPageSchema];
+
+    // 4. BlogPosting Schema (Conditional)
+    if (activeBlogPost) {
+        const blogSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            '@id': `${baseUrl}/?blog=${activeBlogPost.slug}`,
+            headline: activeBlogPost.title,
+            image: activeBlogPost.originalImageUrl || doctorImage,
+            datePublished: activeBlogPost.date,
+            dateModified: activeBlogPost.date,
+            author: {
+                '@type': 'Person',
+                name: 'Dr. Abdulalim Ramdoun',
+                url: `${baseUrl}/#physician`
+            },
+            publisher: {
+                '@id': `${baseUrl}/#organization`
+            },
+            description: activeBlogPost.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+            mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `${baseUrl}/?blog=${activeBlogPost.slug}`
+            }
+        };
+        schemas.push(blogSchema);
+    }
+
     return (
         <head>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify([medicalOrgSchema, physicianSchema, webPageSchema]) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
             />
         </head>
     );

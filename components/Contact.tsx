@@ -12,7 +12,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export const Contact: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <SectionWrapper id="contact" bg="light">
@@ -83,7 +83,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div className="text-left">
                   <h4 className="font-bold text-xl md:text-2xl leading-tight">{t.contact.btn_call}</h4>
-                  <p className="text-gray-500 text-base">+90 553 936 22 22</p>
+                  <p className="text-gray-500 text-base" dir="ltr">{language === 'ar' ? '+905539362222' : '+90 553 936 22 22'}</p>
                 </div>
               </div>
               <ArrowRight className="w-7 h-7 text-gray-400 group-hover:text-medical-primary group-hover:translate-x-1 transition-transform" />

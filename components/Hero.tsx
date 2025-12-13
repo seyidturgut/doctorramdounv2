@@ -81,7 +81,7 @@ const HeroCTAs: React.FC = () => {
       <div className="flex flex-row w-full gap-3 px-2 md:px-0">
         <Button
           fullWidth
-          className="group relative overflow-hidden flex items-center justify-center gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-3 md:py-4 whitespace-nowrap"
+          className="group relative overflow-hidden flex items-center justify-center gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-3 md:py-4 whitespace-nowrap flex-1"
           onClick={() => window.open('https://wa.me/905539362222', '_blank')}
           aria-label="Start WhatsApp Chat"
         >
@@ -93,12 +93,12 @@ const HeroCTAs: React.FC = () => {
           variant="white"
           fullWidth
           aria-label="Get assessment"
-          className="group flex items-center justify-center gap-2 text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-3 md:py-4 whitespace-nowrap"
+          className="group flex items-center justify-center gap-2 text-[11px] xs:text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-3 md:py-4 whitespace-nowrap flex-1"
           onClick={scrollToAssessment}
         >
-          <span className="relative z-10 flex items-center gap-2">
-            <Activity size={18} className="text-medical-secondary group-hover:scale-110 transition-transform" />
-            {t.hero.cta_assess}
+          <span className="relative z-10 flex items-center gap-1.5 xs:gap-2">
+            <Activity size={18} className="text-medical-secondary group-hover:scale-110 transition-transform shrink-0" />
+            <span className="truncate">{t.hero.cta_assess}</span>
           </span>
         </Button>
       </div>

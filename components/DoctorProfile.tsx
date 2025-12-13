@@ -6,7 +6,7 @@ import { X, CheckCircle, Globe, Users, Target, Award } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 // --- Modal Component ---
-const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+export const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const { t, dir } = useLanguage();
 
   useEffect(() => {
@@ -156,68 +156,63 @@ const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, 
   );
 };
 
-export const DoctorProfile: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export const DoctorProfile: React.FC<{ onOpenBio: () => void }> = ({ onOpenBio }) => {
   const { t } = useLanguage();
 
   return (
-    <>
-      <SectionWrapper id="profile" bg="dark" className="relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-20 rtl:right-auto rtl:left-0 rtl:-translate-x-20 rtl:-skew-x-12"></div>
+    <SectionWrapper id="profile" bg="dark" className="relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-20 rtl:right-auto rtl:left-0 rtl:-translate-x-20 rtl:-skew-x-12"></div>
 
-        <div className="relative z-10 grid md:grid-cols-3 gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 grid md:grid-cols-3 gap-12 lg:gap-16 items-center">
 
-          <div className="md:col-span-2 text-white text-center md:text-start">
-            <h3 className="text-medical-secondary font-bold text-xl mb-3">{t.profile.eyebrow}</h3>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8">{t.profile.name}</h2>
+        <div className="md:col-span-2 text-white text-center md:text-start">
+          <h3 className="text-medical-secondary font-bold text-xl mb-3">{t.profile.eyebrow}</h3>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8">{t.profile.name}</h2>
 
-            <div className="space-y-6 text-gray-300 text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
-              <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_1 }} />
-              <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_2 }} />
+          <div className="space-y-6 text-gray-300 text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
+            <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_1 }} />
+            <p dangerouslySetInnerHTML={{ __html: t.profile.bio_short_2 }} />
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
+            <div>
+              <div className="text-4xl font-bold text-white">10+</div>
+              <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.exp}</div>
             </div>
-
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
-              <div>
-                <div className="text-4xl font-bold text-white">10+</div>
-                <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.exp}</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-white">5k+</div>
-                <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.proc}</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-white">12</div>
-                <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.awards}</div>
-              </div>
+            <div>
+              <div className="text-4xl font-bold text-white">5k+</div>
+              <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.proc}</div>
             </div>
-
-            <div className="mt-10">
-              <Button
-                variant="white"
-                size="lg"
-                className="text-lg"
-                onClick={() => setIsModalOpen(true)}
-              >
-                {t.profile.btn_bio}
-              </Button>
+            <div>
+              <div className="text-4xl font-bold text-white">12</div>
+              <div className="text-sm uppercase tracking-wide text-gray-400 mt-1">{t.profile.stats.awards}</div>
             </div>
           </div>
 
-          <div className="md:col-span-1">
-            <div className="relative">
-              <div className="absolute inset-0 bg-medical-secondary rounded-2xl rotate-3"></div>
-              <img
-                src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
-                alt="Dr. Abdulalim Ramdoun"
-                className="relative rounded-2xl w-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
+          <div className="mt-10">
+            <Button
+              variant="white"
+              size="lg"
+              className="text-lg"
+              onClick={onOpenBio}
+            >
+              {t.profile.btn_bio}
+            </Button>
           </div>
-
         </div>
-      </SectionWrapper>
 
-      <BioModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+        <div className="md:col-span-1">
+          <div className="relative">
+            <div className="absolute inset-0 bg-medical-secondary rounded-2xl rotate-3"></div>
+            <img
+              src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+              alt="Dr. Abdulalim Ramdoun"
+              className="relative rounded-2xl w-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          </div>
+        </div>
+
+      </div>
+    </SectionWrapper>
   );
 };
