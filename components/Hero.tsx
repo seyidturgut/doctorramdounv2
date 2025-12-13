@@ -114,15 +114,15 @@ const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="relative z-10 w-full">
-      <div className="flex flex-nowrap overflow-x-auto items-center justify-start md:justify-start gap-3 pb-2 scrollbar-hide">
+      <div className="grid grid-cols-1 md:flex md:flex-row items-start md:items-center gap-3 pb-2 w-full">
         {[
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
           { icon: ShieldCheck, text: t.hero.badges.accredited },
         ].map((badge, idx) => (
-          <div key={idx} className="shrink-0 flex items-center gap-1.5 text-slate-600 bg-white/60 backdrop-blur-md px-2.5 py-1.5 md:px-3 md:py-2 rounded-lg border border-white/60 shadow-sm whitespace-nowrap">
-            <badge.icon size={13} className="text-medical-secondary" />
-            <span className="text-[10px] sm:text-xs font-semibold">{badge.text}</span>
+          <div key={idx} className="flex items-center gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-3 py-2 rounded-lg border border-white/60 shadow-sm w-fit">
+            <badge.icon size={14} className="text-medical-secondary shrink-0" />
+            <span className="text-xs font-semibold whitespace-normal">{badge.text}</span>
           </div>
         ))}
       </div>
