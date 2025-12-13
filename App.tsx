@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Services } from './components/Services';
-import { SymptomChecker } from './components/SymptomChecker';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { DoctorProfile } from './components/DoctorProfile';
-import { Testimonials } from './components/Testimonials';
-import { News } from './components/News';
-import { FAQ } from './components/FAQ';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { MobileActionBar } from './components/ui/MobileActionBar';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
+
+// Lazy Load heavy components below the fold
+const Services = React.lazy(() => import('./components/Services').then(module => ({ default: module.Services })));
+const SymptomChecker = React.lazy(() => import('./components/SymptomChecker').then(module => ({ default: module.SymptomChecker })));
+const WhyChooseUs = React.lazy(() => import('./components/WhyChooseUs').then(module => ({ default: module.WhyChooseUs })));
+const DoctorProfile = React.lazy(() => import('./components/DoctorProfile').then(module => ({ default: module.DoctorProfile })));
+const Testimonials = React.lazy(() => import('./components/Testimonials').then(module => ({ default: module.Testimonials })));
+const FAQ = React.lazy(() => import('./components/FAQ').then(module => ({ default: module.FAQ })));
+const Contact = React.lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
 
 // SEO Manager to update meta tags dynamically
 const SEOManager = () => {
@@ -28,6 +29,12 @@ const SEOManager = () => {
   return null;
 };
 
+const LoadingFallback = () => (
+  <div className="w-full py-20 flex justify-center items-center">
+    <div className="w-8 h-8 border-4 border-medical-primary/30 border-t-medical-primary rounded-full animate-spin"></div>
+  </div>
+);
+
 const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-medical-light font-sans text-slate-900 scroll-smooth selection:bg-medical-secondary selection:text-white overflow-x-hidden">
@@ -35,14 +42,15 @@ const AppContent: React.FC = () => {
       <Navbar />
       <main>
         <Hero />
-        <Services />
-        <SymptomChecker />
-        <WhyChooseUs />
-        <DoctorProfile />
-        <Testimonials />
-        {/* <News /> */}
-        <FAQ />
-        <Contact />
+        <Suspense fallback={<LoadingFallback />}>
+          <Services />
+          <SymptomChecker />
+          <WhyChooseUs />
+          <DoctorProfile />
+          <Testimonials />
+          <FAQ />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
       <MobileActionBar />

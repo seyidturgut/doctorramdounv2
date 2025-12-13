@@ -272,6 +272,9 @@ export const Hero: React.FC = () => {
                   className="w-full h-auto object-contain"
                   width="600"
                   height="800"
+                  loading="eager"
+                  // @ts-ignore
+                  fetchpriority="high"
                 />
 
                 {/* Desktop Quick Connect Card Position (Animated) */}
