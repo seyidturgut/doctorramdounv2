@@ -208,7 +208,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Compact CTA - Visible on scroll or Desktop */}
-            <div className={`transition-all duration-500 transform ${scrolled ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100'}`}>
+            <div className={`hidden lg:block transition-all duration-500 transform ${scrolled ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100'}`}>
               <Button
                 size="sm"
                 variant="primary"
