@@ -134,6 +134,27 @@ export const en = {
         cta_desc: "The first step is complimentary. Send us a message to discuss your condition.",
         cta_btn: "Start Consultation"
     },
+    stories: {
+        title: "Patient Stories",
+        subtitle: "Hear from those who trusted us.",
+        items: [
+            {
+                name: "Sarah Jenkins",
+                location: "London, UK",
+                text: "The level of care I received was outstanding. From the airport pickup to the post-op follow-up, Dr. Ramdoun's team made me feel safe."
+            },
+            {
+                name: "Michael Chen",
+                location: "Singapore",
+                text: "World-class facilities and a doctor who actually listens. The international patient center handled all my insurance paperwork seamlessly."
+            },
+            {
+                name: "Ahmed Al-Fayed",
+                location: "Dubai, UAE",
+                text: "Professionalism at its finest. The clinic is spotless, modern, and the staff treats you like family. Highly recommended."
+            }
+        ]
+    },
     profile: {
         eyebrow: "Meet Your Specialist",
         name: "Dr. Abdulalim Ramdoun",
