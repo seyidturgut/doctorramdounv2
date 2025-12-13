@@ -132,10 +132,10 @@ export const Navbar: React.FC = () => {
     <nav
       aria-label="Main Navigation"
       className={`
-        fixed z-[100] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+        fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-300 ease-out w-full
         ${isOpen
-          ? 'top-0 left-0 w-full h-[88px] bg-white border-none rounded-none'
-          : `left-1/2 -translate-x-1/2 w-full ${scrolled
+          ? 'top-0 max-w-full h-[88px] bg-white border-none rounded-none'
+          : `${scrolled
             ? 'top-4 md:top-6 max-w-[90%] md:max-w-[1200px] rounded-2xl md:rounded-full bg-[#15B8A6]/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(20,184,166,0.15)] border border-white/20 ring-1 ring-white/20 h-[64px] md:h-[72px]'
             : 'top-0 max-w-full h-[88px] bg-transparent border-none'
           }`
@@ -229,7 +229,7 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className="block px-4 py-4 rounded-2xl text-xl font-bold text-gray-800 hover:bg-gray-50 hover:text-medical-secondary transition-all active:scale-[0.99]"
-                style={{ animationDelay: `${idx * 50}ms` }}
+                style={{ animationDelay: `${100 + idx * 30}ms` }}
               >
                 <span className="flex items-center justify-between">
                   {link.name}
