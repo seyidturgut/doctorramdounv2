@@ -138,10 +138,9 @@ export const en = {
         title: "Your Journey to Recovery",
         description: "We handle every detail of your medical trip, so you can focus entirely on getting better. Here is how it works.",
         steps: [
-            { title: "Online Consultation", desc: "Contact us via WhatsApp. Share your medical reports and get a preliminary assessment from Dr. Ramdoun within 24 hours." },
-            { title: "Personalized Plan", desc: "We design your treatment plan, arrange your VIP airport transfer, and book your 5-star hotel accommodation." },
-            { title: "Your Treatment", desc: "Arrive at our clinic. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility." },
-            { title: "Recovery & Follow-up", desc: "After a successful procedure, return home safely. We provide lifetime follow-up support to monitor your progress." }
+            { title: "Assessment", desc: "Contact us via WhatsApp. Share your reports and get a free preliminary evaluation from Dr. Ramdoun." },
+            { title: "Personalized Plan", desc: "We design your full treatment program and arrange your VIP transfer & 5-star accommodation." },
+            { title: "Treatment & Care", desc: "Receive world-class care in our JCI facility. Includes surgery/therapy and lifetime follow-up support." }
         ],
         step_label: "Step",
         cta_title: "Ready to start?",
