@@ -165,10 +165,10 @@ export const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`relative px - 4 py - 2 text - sm font - medium transition - colors rounded - full group overflow - hidden ${scrolled ? 'text-white hover:text-white' : 'text-gray-700 hover:text-medical-primary'} `}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full group overflow-hidden ${scrolled ? 'text-white hover:text-white' : 'text-gray-700 hover:text-medical-primary'}`}
               >
                 <span className="relative z-10">{link.name}</span>
-                <span className={`absolute inset - 0 rounded - full opacity - 0 scale - 95 group - hover: opacity - 100 group - hover: scale - 100 transition - all duration - 300 shadow - sm ${scrolled ? 'bg-white/20' : 'bg-white'} `}></span>
+                <span className={`absolute inset-0 rounded-full opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-sm ${scrolled ? 'bg-white/20' : 'bg-white'}`}></span>
               </a>
             ))}
           </div>
@@ -181,7 +181,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Compact CTA - Visible on scroll or Desktop */}
-            <div className={`hidden lg:block transition - all duration - 500 transform ${scrolled ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100'} `}>
+            <div className={`hidden lg:block transition-all duration-500 transform ${scrolled ? 'translate-y-0 opacity-100' : 'translate-y-0 opacity-100'}`}>
               <Button
                 size="sm"
                 variant="primary"
@@ -207,7 +207,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p - 2.5 rounded - full hover: bg - gray - 100 / 80 transition - colors focus: outline - none backdrop - blur - sm active: scale - 95 duration - 200 ${scrolled && !isOpen ? 'text-white hover:bg-white/20' : 'text-gray-700'} `}
+              className={`lg:hidden p-2.5 rounded-full hover:bg-gray-100/80 transition-colors focus:outline-none backdrop-blur-sm active:scale-95 duration-200 ${scrolled && !isOpen ? 'text-white hover:bg-white/20' : 'text-gray-700'}`}
               aria-label="Toggle Navigation Menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -218,8 +218,8 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset - 0 z - [90] bg - white / 95 backdrop - blur - xl lg:hidden pt - [90px] transition - all duration - 300 
-        ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'} `}
+        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden pt-[90px] transition-all duration-300 
+        ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}
       >
         <div className="flex flex-col h-full">
           <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2">
@@ -229,7 +229,7 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className="block px-4 py-4 rounded-2xl text-xl font-bold text-gray-800 hover:bg-gray-50 hover:text-medical-secondary transition-all active:scale-[0.99]"
-                style={{ animationDelay: `${idx * 50} ms` }}
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <span className="flex items-center justify-between">
                   {link.name}
