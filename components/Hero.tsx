@@ -258,7 +258,7 @@ export const Hero: React.FC = () => {
             className="order-1 relative"
           >
             {/* Reduced height on mobile for better visibility of content below */}
-            <div className="relative w-full max-w-[260px] xs:max-w-sm md:max-w-full mx-auto">
+            <div className="relative w-full max-w-[340px] xs:max-w-[380px] md:max-w-full mx-auto transition-all duration-500">
 
               {/* Main Image with Modern Mask */}
               <div className="group relative w-full rounded-[40px] overflow-hidden shadow-2xl border-[6px] border-white bg-gray-100">
