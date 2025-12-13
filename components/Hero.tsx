@@ -48,7 +48,7 @@ const HeroText: React.FC = () => {
         </span>
         <br /> {t.hero.title_end}
       </h1>
-      <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal px-2 md:px-0">
+      <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal">
         {t.hero.description}
         <br className="hidden md:block my-3" />
         <span className="font-semibold text-medical-primary block mt-3">{t.hero.tagline}</span>
@@ -77,8 +77,8 @@ const HeroCTAs: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center md:items-start space-y-5 w-full max-w-lg mx-auto md:mx-0 relative z-10">
-      <div className="flex flex-row w-full gap-3 px-2 md:px-0">
+    <div className="flex flex-col items-center md:items-start space-y-5 w-full mx-auto md:mx-0 relative z-10">
+      <div className="flex flex-row w-full gap-3">
         <Button
           fullWidth
           className="group relative overflow-hidden flex items-center justify-center gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-3 md:py-4 whitespace-nowrap flex-1"
@@ -115,7 +115,7 @@ const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="relative z-10 w-full">
-      <div className="flex flex-nowrap overflow-x-auto items-center justify-start gap-3 pb-2 -mx-5 px-5 md:mx-0 md:px-0 scrollbar-hide w-auto md:w-auto self-stretch">
+      <div className="flex flex-nowrap overflow-x-auto items-center justify-start md:justify-start gap-3 pb-2 scrollbar-hide">
         {[
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
