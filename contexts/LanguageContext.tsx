@@ -103,19 +103,19 @@ const translations = {
       questions: [
         {
           question: "What is your primary concern?",
-          options: ["Stroke / Neuro Issue", "Orthopedic / Joint Pain", "Spinal Cord Injury", "Post-Surgery Recovery", "Sports Injury"]
+          options: ["Stroke / Neuro Issue", "Orthopedic / Joint Pain", "Spinal Cord Injury", "Post-Surgery Recovery", "Sports Injury", "Other"]
         },
         {
           question: "Duration of symptoms?",
-          options: ["Less than 1 month", "1 - 6 months", "6 months - 1 year", "More than 1 year"]
+          options: ["Less than 1 month", "1 - 6 months", "6 months - 1 year", "More than 1 year", "Other"]
         },
         {
           question: "Current mobility level?",
-          options: ["Fully Independent", "Needs Assistance (Cane/Walker)", "Wheelchair bound", "Bedridden"]
+          options: ["Fully Independent", "Needs Assistance (Cane/Walker)", "Wheelchair bound", "Bedridden", "Other"]
         },
         {
           question: "Main treatment goal?",
-          options: ["Pain Relief", "Walking Again", "Daily Independence", "Avoiding Surgery"]
+          options: ["Pain Relief", "Walking Again", "Daily Independence", "Avoiding Surgery", "Other"]
         }
       ],
       result_title: "Profile Ready!",
@@ -272,20 +272,20 @@ const translations = {
       done: "تم",
       questions: [
         {
-          question: "ما هو قلقك الأساسي؟",
-          options: ["جلطة / مشكلة عصبية", "عظام / ألم مفاصل", "إصابة الحبل الشوكي", "تعافي ما بعد الجراحة", "إصابة رياضية"]
+          question: "ما هي مشكلتك الرئيسية؟",
+          options: ["سكتة دماغية / إصابة عصبية", "آلام العظام / المفاصل", "إصابة الحبل الشوكي", "تعافي ما بعد الجراحة", "إصابة رياضية", "أخرى"]
         },
         {
           question: "مدة الأعراض؟",
-          options: ["أقل من شهر", "1 - 6 أشهر", "6 أشهر - سنة", "أكثر من سنة"]
+          options: ["أقل من شهر", "1 - 6 أشهر", "6 أشهر - سنة", "أكثر من سنة", "أخرى"]
         },
         {
           question: "مستوى الحركة الحالي؟",
-          options: ["مستقل تماماً", "يحتاج مساعدة (عكاز/مشاية)", "على كرسي متحرك", "طريح الفراش"]
+          options: ["مستقل تماماً", "يحتاج مساعدة (عكاز/مشاية)", "على كرسي متحرك", "طريح الفراش", "أخرى"]
         },
         {
           question: "هدف العلاج الرئيسي؟",
-          options: ["تخفيف الألم", "المشي مجدداً", "الاستقلالية اليومية", "تجنب الجراحة"]
+          options: ["تخفيف الألم", "المشي مجدداً", "الاستقلالية اليومية", "تجنب الجراحة", "أخرى"]
         }
       ],
       result_title: "الملف جاهز!",
