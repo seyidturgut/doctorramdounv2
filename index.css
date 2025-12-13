@@ -13,8 +13,10 @@
   --font-heading: 'Manrope', sans-serif;
   --font-sans: 'Manrope', sans-serif;
 
-  --shadow-soft: 0 4px 20px -2px rgba(10, 34, 57, 0.08);
-  --shadow-hover: 0 10px 25px -3px rgba(10, 34, 57, 0.12);
+  /* Premium Shadows */
+  --shadow-soft: 0 4px 20px -2px rgba(10, 34, 57, 0.05), 0 0 10px rgba(20, 184, 166, 0.05);
+  --shadow-hover: 0 20px 40px -5px rgba(10, 34, 57, 0.1), 0 10px 20px -5px rgba(20, 184, 166, 0.1);
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.03);
 
   --animate-fade-in: fadeIn 0.5s ease-out;
   --animate-shimmer: shimmer 2s linear infinite;

@@ -52,48 +52,58 @@ const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, i
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.15, type: "spring", stiffness: 50 }}
       className="
-        bg-white rounded-2xl p-5
-        border border-gray-100
-        shadow-[0_4px_20px_-12px_rgba(0,0,0,0.1)]
-        hover:shadow-[0_10px_30px_-10px_rgba(20,184,166,0.15)] 
-        hover:border-medical-secondary/30 hover:-translate-y-1
-        transition-all duration-300 ease-out group flex flex-col h-full relative overflow-hidden
+        bg-white/80 backdrop-blur-xl rounded-3xl p-6 md:p-8
+        border border-white/60
+        shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]
+        hover:shadow-[0_20px_50px_-12px_rgba(20,184,166,0.2)]
+        hover:border-medical-secondary/40 hover:-translate-y-2
+        transition-all duration-500 ease-out group flex flex-col h-full relative overflow-hidden ring-1 ring-white/50
       "
     >
       {/* Soft Glow Background on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-medical-light via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-50/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
       {/* Top Decor Line with Animation */}
-      <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-medical-secondary to-teal-400 group-hover:w-full transition-all duration-700 ease-in-out"></div>
+      <div className="absolute top-0 left-0 w-0 h-1.5 bg-gradient-to-r from-medical-secondary to-teal-400 group-hover:w-full transition-all duration-700 ease-in-out opacity-80"></div>
 
       {/* Header: Icon & Note */}
-      <div className="relative z-10 flex items-start justify-between mb-4">
-        <div className="w-12 h-12 rounded-xl bg-gray-50 group-hover:bg-medical-secondary group-hover:text-white text-medical-primary flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:rotate-3">
+      <div className="relative z-10 flex items-start justify-between mb-6">
+        <div className="
+          w-14 h-14 rounded-2xl 
+          bg-gradient-to-br from-white to-teal-50 
+          border border-white/80 shadow-sm
+          group-hover:bg-medical-secondary group-hover:from-medical-secondary group-hover:to-teal-600 group-hover:text-white group-hover:shadow-lg group-hover:border-transparent
+          text-medical-secondary flex items-center justify-center 
+          transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3
+        ">
           {service.icon}
         </div>
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gray-50 border border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wide group-hover:bg-white/80 transition-colors">
-          <Clock size={10} className="text-medical-secondary" />
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-gray-100/80 text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest shadow-sm backdrop-blur-sm group-hover:bg-white group-hover:text-medical-secondary transition-colors">
+          <Clock size={12} className="text-medical-secondary" />
           {service.note}
         </div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-grow">
-        <h3 className="text-lg md:text-xl font-bold font-heading text-medical-primary mb-1 group-hover:text-teal-700 transition-colors leading-tight">
+      <div className="relative z-10 flex-grow flex flex-col">
+        <h3 className="text-xl md:text-2xl font-bold font-heading text-medical-primary mb-3 group-hover:text-teal-800 transition-colors leading-tight">
           {service.title}
         </h3>
-        <p className="text-sm text-gray-500 font-medium mb-4 line-clamp-2">
+        <p className="text-sm md:text-base text-gray-500 font-medium mb-6 leading-relaxed flex-grow">
           {service.subtitle}
         </p>
 
+        {/* Separator */}
+        <div className="w-12 h-1 bg-gray-100 rounded-full mb-6 group-hover:w-full group-hover:bg-medical-secondary/20 transition-all duration-500"></div>
+
         {/* Compact Benefits List */}
-        <div className="space-y-2">
+        <div className="space-y-3 mt-auto">
           {service.benefits.map((benefit, idx) => (
-            <div key={idx} className="flex items-start gap-2.5">
-              <div className="w-4 h-4 rounded-full bg-teal-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-teal-100 transition-colors">
-                <CheckCircle2 size={10} className="text-medical-secondary" />
+            <div key={idx} className="flex items-start gap-3 group/item">
+              <div className="w-5 h-5 rounded-full bg-teal-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-teal-100 transition-colors group-hover/item:scale-110 duration-300">
+                <CheckCircle2 size={12} className="text-medical-secondary" />
               </div>
-              <span className="text-xs md:text-sm text-slate-600 font-medium leading-snug group-hover:text-slate-800">{benefit}</span>
+              <span className="text-xs md:text-sm text-slate-600 font-semibold leading-snug group-hover:text-slate-800 transition-colors">{benefit}</span>
             </div>
           ))}
         </div>
