@@ -72,7 +72,6 @@ export const Navbar: React.FC = () => {
     // Flag PNGs
     const languages = [
       { code: 'en', label: 'English', short: 'EN', flagSrc: '/en.png' },
-      { code: 'tr', label: 'Türkçe', short: 'TR', flagSrc: '/tr.png' },
       { code: 'ar', label: 'العربية', short: 'AR', flagSrc: '/ar.png' },
     ];
 
@@ -132,15 +131,15 @@ export const Navbar: React.FC = () => {
     <nav
       aria-label="Main Navigation"
       className={`
-        fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+        fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] w-full
         ${scrolled
-          ? 'h-[72px] bg-white/85 backdrop-blur-md shadow-[0_4px_30px_rgb(0,0,0,0.03)] border-b border-white/40 supports-[backdrop-filter]:bg-white/60'
-          : 'h-[88px] bg-transparent'}
-        ${isOpen ? '!bg-white' : ''}
+          ? 'top-4 md:top-6 max-w-[90%] md:max-w-[1200px] rounded-2xl md:rounded-full bg-white/70 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/40 ring-1 ring-white/50 h-[64px] md:h-[72px]'
+          : 'top-0 max-w-full h-[88px] bg-transparent border-none'}
+        ${isOpen ? '!bg-white !top-0 !max-w-full !rounded-none !h-full !border-none' : ''}
       `}
       dir={dir}
     >
-      <div className="relative z-[101] max-w-[1400px] w-full mx-auto px-5 md:px-8 lg:px-12 h-full">
+      <div className={`relative z-[101] w-full mx-auto px-4 md:px-8 h-full transition-all duration-500 ${scrolled ? 'max-w-full' : 'max-w-[1400px]'}`}>
         <div className="flex justify-between items-center h-full">
 
           {/* Logo Section */}
@@ -256,6 +255,6 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
