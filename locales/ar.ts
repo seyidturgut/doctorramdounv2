@@ -12,7 +12,8 @@ export const ar = {
         contact: "اتصل بنا",
         whatsapp: "واتساب",
         ready: "هل أنت مستعد لبدء رحلتك؟",
-        chat: "دردشة عبر واتساب"
+        chat: "دردشة عبر واتساب",
+        quick_check: "فحص سريع"
     },
     hero: {
         eyebrow: {

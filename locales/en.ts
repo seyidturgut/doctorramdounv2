@@ -12,7 +12,8 @@ export const en = {
         contact: "Contact",
         whatsapp: "WhatsApp",
         ready: "Ready to start your journey?",
-        chat: "Chat via WhatsApp"
+        chat: "Chat via WhatsApp",
+        quick_check: "Quick Check"
     },
     hero: {
         eyebrow: {
