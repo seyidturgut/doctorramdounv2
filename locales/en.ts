@@ -38,7 +38,10 @@ export const en = {
         consultation: "Online Consultation",
         agent_name: "Patient Coordinator",
         agent_status: "Online Now",
-        agent_msg: "Hi! I can help with treatment prices and travel plans."
+        agent_msg: "Hi! I can help with treatment prices and travel plans.",
+        sub_headline: "Leading destination for international patients seeking expert stroke, neuro, and orthopedic recovery.",
+        micro_band: "15+ Years Exp • 1,000+ Patients • JCI Standards",
+        cta_secondary_sub: "Or take free check"
     },
     services: {
         heading: "Specialized Therapy",

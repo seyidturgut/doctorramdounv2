@@ -47,7 +47,10 @@ const HeroText: React.FC = () => {
         </span>
         <br /> {t.hero.title_end}
       </h1>
-      <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal">
+      <p className="text-lg md:text-xl text-medical-secondary font-semibold max-w-2xl mx-auto md:mx-0 leading-relaxed mb-4">
+        {t.hero.sub_headline}
+      </p>
+      <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal">
         {t.hero.description}
         <br className="hidden md:block my-3" />
         <span className="font-semibold text-medical-primary block mt-3">{t.hero.tagline}</span>
@@ -101,12 +104,11 @@ const HeroCTAs: React.FC = () => {
           </span>
         </Button>
       </div>
-      <div className="flex items-center gap-4 text-xs md:text-sm text-slate-500 font-medium">
-        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> {t.hero.fast_response}</span>
-        <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-        <span>{t.hero.consultation}</span>
+      <div className="flex items-center gap-2 text-[10px] xs:text-xs md:text-sm text-slate-500 font-bold bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
+        <ShieldCheck size={14} className="text-medical-secondary" />
+        <span>{t.hero.micro_band}</span>
       </div>
-    </div>
+    </div >
   );
 };
 
