@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             vendor: ['react', 'react-dom'],
             framer: ['framer-motion'],
-            icons: ['lucide-react'],
+            ui: ['lucide-react']
           }
         }
       },
