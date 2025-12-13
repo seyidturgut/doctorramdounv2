@@ -27,7 +27,7 @@ const translations = {
       },
       title_start: "World-Class",
       title_highlight: "Physiotherapy",
-      title_end: "& Rehab in Türkiye",
+      title_end: "& Rehab",
       description: "Expert guidance in neurological and orthopedic rehabilitation, with facilitation of Deep Brain Stimulation (DBS) for Parkinson’s disease, smart spinal cord stimulation, baclofen pump therapy, psychological support, and general medical consultations.",
       tagline: "Personalized care. Advanced solutions. Compassionate guidance.",
       cta_whatsapp: "Chat on WhatsApp",
@@ -538,7 +538,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     // Handle Title SEO dynamically
     document.title = translations[language].seo.title;
-    
+
   }, [language]);
 
   return (
