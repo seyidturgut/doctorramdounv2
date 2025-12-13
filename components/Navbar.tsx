@@ -137,7 +137,7 @@ export const Navbar: React.FC = () => {
       {/* Inner Container: HANDLING ALL LAYOUT TRANSITIONS */}
       <div
         className={`
-          relative mx-auto pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+          relative z-[101] mx-auto pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
           ${isOpen
             ? 'w-full max-w-full h-[88px] mt-0 rounded-none bg-white border-none shadow-none' // Open State: Full Screen Header
             : (scrolled
