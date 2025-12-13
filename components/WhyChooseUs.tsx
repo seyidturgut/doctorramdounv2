@@ -9,18 +9,6 @@ import {
   Home,
   ArrowRight
 } from 'lucide-react';
-
-import React from 'react';
-import { SectionWrapper } from './ui/SectionWrapper';
-import { Button } from './ui/Button';
-import { motion } from 'framer-motion';
-import {
-  MessageCircle,
-  FileSearch,
-  Stethoscope,
-  Home,
-  ArrowRight
-} from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const stepsMetadata = [
