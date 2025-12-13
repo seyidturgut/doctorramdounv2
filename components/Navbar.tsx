@@ -215,7 +215,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden pt-[90px] transition-all duration-300 
+        className={`fixed inset-0 z-[90] bg-white pt-[90px] transition-all duration-300 transform
         ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}
       >
         <div className="flex flex-col h-full">
