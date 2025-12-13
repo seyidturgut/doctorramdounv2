@@ -5,37 +5,6 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 // --- Assets: High Quality Flag Icons (SVG) ---
 
-const FlagTR = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 32 32" className={className} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#E30A17" />
-    <path d="M13 10.5C11.5 10.5 10.1 11 9 11.9C10.8 10.8 13.2 10.8 15 11.9C16.8 13 17.5 15.2 16.6 17.1C15.7 19 13.8 20.1 11.8 19.8C12.8 20.9 14.3 21.5 15.8 21.3C18.8 20.9 21 18.2 20.6 15.2C20.3 12.8 18.6 10.9 16.4 10.2C15.4 9.9 14.2 10.5 13 10.5Z" fill="white" />
-    <path d="M22.0988 13.5615L22.9529 15.3582L24.872 15.892L23.6335 17.4308L23.7196 19.4147L22.0988 18.336L20.4779 19.4147L20.564 17.4308L19.3255 15.892L21.2446 15.3582L22.0988 13.5615Z" fill="white" />
-  </svg>
-);
-
-const FlagUK = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 32 32" className={className} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#012169" />
-    <path d="M4.6875 4.6875L27.3125 27.3125M27.3125 4.6875L4.6875 27.3125" stroke="white" strokeWidth="3" />
-    <path d="M4.6875 4.6875L27.3125 27.3125M27.3125 4.6875L4.6875 27.3125" stroke="#C8102E" strokeWidth="1.5" />
-    <path d="M16 0V32M0 16H32" stroke="white" strokeWidth="5" />
-    <path d="M16 0V32M0 16H32" stroke="#C8102E" strokeWidth="3" />
-  </svg>
-);
-
-const FlagAR = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 32 32" className={className} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#007A3D" />
-    {/* Abstract Sword */}
-    <path d="M10 21L20 21" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    <path d="M11 22L11 20" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    {/* Abstract Shahada Script (Lines) */}
-    <path d="M11 14C12 13 13 13 14 14C15 15 17 15 18 14" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-    <path d="M19 13C20 12 21 12 22 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-    <path d="M15 11L15 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    <path d="M13 16C15 16 19 16 21 16" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.8" />
-  </svg>
-);
 
 // Authentic WhatsApp Icon Component
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -100,10 +69,11 @@ export const Navbar: React.FC = () => {
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Flag PNGs
     const languages = [
-      { code: 'en', label: 'English', short: 'EN', Flag: FlagUK },
-      { code: 'tr', label: 'Türkçe', short: 'TR', Flag: FlagTR },
-      { code: 'ar', label: 'العربية', short: 'AR', Flag: FlagAR },
+      { code: 'en', label: 'English', short: 'EN', flagSrc: '/en.png' },
+      { code: 'tr', label: 'Türkçe', short: 'TR', flagSrc: '/tr.png' },
+      { code: 'ar', label: 'العربية', short: 'AR', flagSrc: '/ar.png' },
     ];
 
     const currentLang = languages.find(l => l.code === language) || languages[0];
@@ -120,7 +90,7 @@ export const Navbar: React.FC = () => {
               : 'bg-white/90 border-transparent hover:bg-white text-gray-800 shadow-sm'}
           `}
         >
-          <currentLang.Flag className="w-5 h-5 rounded-full object-cover shrink-0 shadow-sm" />
+          <img src={currentLang.flagSrc} alt={currentLang.label} className="w-5 h-5 rounded-full object-cover shrink-0 shadow-sm" />
           <span className="text-xs font-bold uppercase tracking-wider">{currentLang.short}</span>
           <ChevronDown size={12} className={`opacity-60 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -146,7 +116,7 @@ export const Navbar: React.FC = () => {
                 `}
               >
                 <div className="flex items-center gap-3">
-                  <lang.Flag className={`w-5 h-5 rounded-full shadow-sm transition-transform group-hover:scale-110 ${language === lang.code ? 'ring-2 ring-white' : ''}`} />
+                  <img src={lang.flagSrc} alt={lang.label} className={`w-5 h-5 rounded-full shadow-sm transition-transform group-hover:scale-110 ${language === lang.code ? 'ring-2 ring-white' : ''}`} />
                   <span>{lang.label}</span>
                 </div>
                 {language === lang.code && <Check size={14} className="text-medical-secondary" />}
