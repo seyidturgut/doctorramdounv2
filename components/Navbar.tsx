@@ -131,20 +131,23 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       aria-label="Main Navigation"
-      className={`
-        fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-300 ease-out w-full
-        ${isOpen
-          ? 'top-0 max-w-full h-[88px] bg-white border-none rounded-none'
-          : `${scrolled
-            ? 'top-4 md:top-6 max-w-[90%] md:max-w-[1200px] rounded-2xl md:rounded-full bg-[#15B8A6]/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(20,184,166,0.15)] border border-white/20 ring-1 ring-white/20 h-[64px] md:h-[72px]'
-            : 'top-0 max-w-full h-[88px] bg-transparent border-none'
-          }`
-        }
-      `}
+      className="fixed top-0 left-0 w-full z-[100] pointer-events-none" // Outer Wrapper: FIXED, NO TRANSITION, NO CLICKS
       dir={dir}
     >
-      <div className={`relative z-[101] w-full mx-auto px-4 md:px-8 h-full transition-all duration-500 ${scrolled || isOpen ? 'max-w-full' : 'max-w-[1400px]'}`}>
-        <div className="flex justify-between items-center h-full">
+      {/* Inner Container: HANDLING ALL LAYOUT TRANSITIONS */}
+      <div
+        className={`
+          relative mx-auto pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+          ${isOpen
+            ? 'w-full max-w-full h-[88px] mt-0 rounded-none bg-white border-none shadow-none' // Open State: Full Screen Header
+            : (scrolled
+              ? 'w-[90%] max-w-[1200px] h-[64px] md:h-[72px] mt-4 md:mt-6 rounded-2xl md:rounded-full bg-[#15B8A6]/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(20,184,166,0.15)] border border-white/20 ring-1 ring-white/20' // Scrolled State: Pill
+              : 'w-full max-w-full h-[88px] mt-0 rounded-none bg-transparent border-none shadow-none' // Default State
+            )
+          }
+        `}
+      >
+        <div className="flex justify-between items-center h-full px-4 md:px-8">
 
           {/* Logo Section */}
           <div
@@ -217,9 +220,10 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
+      {/* This is positioned RELATIVE to the VIEWPORT, not the nav wrapper, thanks to fixed inset-0 */}
       <div
-        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden pt-[90px] transition-all duration-300 
-        ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}
+        className={`fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl lg:hidden pt-[90px] transition-all duration-300 pointer-events-auto
+        ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}
       >
         <div className="flex flex-col h-full">
           <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2">
