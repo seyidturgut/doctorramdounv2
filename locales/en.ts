@@ -129,6 +129,7 @@ export const en = {
             { title: "Your Treatment", desc: "Arrive at our clinic. Our coordinator greets you. Your treatment is performed in our JCI-accredited facility." },
             { title: "Recovery & Follow-up", desc: "After a successful procedure, return home safely. We provide lifetime follow-up support to monitor your progress." }
         ],
+        step_label: "Step",
         cta_title: "Ready to start?",
         cta_desc: "The first step is complimentary. Send us a message to discuss your condition.",
         cta_btn: "Start Consultation"
