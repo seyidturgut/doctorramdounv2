@@ -15,8 +15,8 @@ export default {
                 }
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                heading: ['Plus Jakarta Sans', 'sans-serif'],
+                sans: ['Manrope', 'sans-serif'],
+                heading: ['Manrope', 'sans-serif'],
             },
             boxShadow: {
                 'soft': '0 4px 20px -2px rgba(10, 34, 57, 0.08)',
