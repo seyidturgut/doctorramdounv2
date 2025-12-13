@@ -264,12 +264,12 @@ export const Hero: React.FC = () => {
               {/* Main Image with Modern Mask */}
               <div className="group relative w-full h-full rounded-[40px] overflow-hidden shadow-2xl border-[6px] border-white transition-transform duration-700 hover:scale-[1.005] bg-gray-100">
                 <img
-                  src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+                  src="/dr-ramdoun-final.webp"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop";
                   }}
                   alt="Dr. Ramdoun - Leading Physiotherapy Specialist in Turkey"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-center"
                   width="600"
                   height="800"
                 />
