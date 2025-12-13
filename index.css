@@ -46,6 +46,7 @@
   body {
     font-family: var(--font-sans);
     color: #1e293b;
+    overflow-x: hidden;
   }
 
   h1,

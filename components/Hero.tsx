@@ -114,8 +114,8 @@ const HeroCTAs: React.FC = () => {
 const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
-    <div className="relative z-10 w-full overflow-hidden">
-      <div className="flex flex-nowrap overflow-x-auto items-center justify-start gap-3 pb-2 -mx-5 px-5 md:mx-0 md:px-0 scrollbar-hide w-[calc(100%+2.5rem)] md:w-auto">
+    <div className="relative z-10 w-full">
+      <div className="flex flex-nowrap overflow-x-auto items-center justify-start gap-3 pb-2 -mx-5 px-5 md:mx-0 md:px-0 scrollbar-hide w-auto md:w-auto self-stretch">
         {[
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
