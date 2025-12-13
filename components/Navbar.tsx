@@ -181,7 +181,7 @@ export const Navbar: React.FC = () => {
             <img
               src="/doctorramdoun-logo.svg"
               alt="Dr. Ramdoun"
-              className={`w-auto object-contain transition-all duration-300 ${scrolled ? 'h-8 md:h-9' : 'h-10 md:h-11'}`}
+              className={`w-auto object-contain transition-all duration-300 ${scrolled ? 'h-7 md:h-9' : 'h-8 md:h-11'}`}
             />
           </div>
 

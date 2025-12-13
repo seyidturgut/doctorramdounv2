@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
               <img
                 src="/doctorramdoun-logo.svg"
                 alt="Dr. Ramdoun"
-                className="h-9 w-auto object-contain brightness-0 invert"
+                className="h-8 md:h-12 w-auto object-contain brightness-0 invert"
               />
             </div>
             <p className="text-gray-400 text-base leading-relaxed max-w-sm">
