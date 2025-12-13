@@ -33,7 +33,7 @@ const HeroText: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="space-y-6 text-center md:text-start w-full relative z-10">
-      <h1 className="text-[1.75rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] font-bold font-heading text-medical-primary tracking-tight rtl:tracking-normal break-words">
+      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl leading-[1.15] font-bold font-heading text-medical-primary tracking-tight rtl:tracking-normal break-words">
         {t.hero.title_start} <br className="block" />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-secondary to-teal-500 relative">
           {t.hero.title_highlight}
@@ -77,10 +77,10 @@ const HeroCTAs: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center md:items-start space-y-3 md:space-y-5 w-full mx-auto md:mx-0 relative z-10">
-      <div className="flex flex-row w-full gap-3">
+      <div className="flex flex-col sm:flex-row w-full gap-3">
         <Button
           fullWidth
-          className="group relative overflow-hidden flex items-center justify-center gap-1.5 xs:gap-2 text-[11px] xs:text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-2.5 md:py-4 flex-1 h-auto"
+          className="group relative overflow-hidden flex items-center justify-center gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-4 flex-1 h-auto min-h-[50px] shadow-lg shadow-green-500/20"
           onClick={() => window.open('https://wa.me/905539362222', '_blank')}
           aria-label="Start WhatsApp Chat"
         >
@@ -92,12 +92,12 @@ const HeroCTAs: React.FC = () => {
           variant="white"
           fullWidth
           aria-label="Get assessment"
-          className="group flex items-center justify-center gap-1.5 xs:gap-2 text-[11px] xs:text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-2.5 md:py-4 flex-1 h-auto"
+          className="group flex items-center justify-center gap-2 text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-4 flex-1 h-auto min-h-[50px]"
           onClick={scrollToAssessment}
         >
-          <span className="relative z-10 flex items-center gap-1.5 xs:gap-2">
+          <span className="relative z-10 flex items-center gap-2">
             <Activity size={18} className="text-medical-secondary group-hover:scale-110 transition-transform shrink-0" />
-            <span className="truncate">{t.hero.cta_assess}</span>
+            <span className="">{t.hero.cta_assess}</span>
           </span>
         </Button>
       </div>
@@ -114,15 +114,15 @@ const TrustBadges: React.FC = () => {
   const { t } = useLanguage();
   return (
     <div className="relative z-10 w-full">
-      <div className="grid grid-cols-1 md:flex md:flex-row items-start md:items-center gap-2 md:gap-3 pb-2 w-full">
+      <div className="grid grid-cols-2 md:flex md:flex-row items-center gap-3 pb-2 w-full">
         {[
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
           { icon: ShieldCheck, text: t.hero.badges.accredited },
         ].map((badge, idx) => (
-          <div key={idx} className="flex items-center gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-2 py-1.5 md:px-3 md:py-2 rounded-lg border border-white/60 shadow-sm w-fit">
-            <badge.icon size={14} className="text-medical-secondary shrink-0" />
-            <span className="text-xs font-semibold whitespace-normal">{badge.text}</span>
+          <div key={idx} className={`flex items-center justify-center md:justify-start gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-3 py-3 rounded-xl border border-white/60 shadow-sm w-full md:w-fit ${idx === 2 ? 'col-span-2 md:col-span-auto' : ''}`}>
+            <badge.icon size={16} className="text-medical-secondary shrink-0" />
+            <span className="text-xs font-bold whitespace-nowrap text-center">{badge.text}</span>
           </div>
         ))}
       </div>
