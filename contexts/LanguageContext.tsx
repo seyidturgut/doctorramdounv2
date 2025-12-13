@@ -48,23 +48,47 @@ const translations = {
       subheading: "Expert rehabilitation programs tailored to your needs.",
       items: [
         {
-          title: 'Neurological Rehab',
-          subtitle: 'Stroke & Spinal Recovery',
-          benefits: ['Robotic-Assisted Therapy', 'Motor Function Recovery'],
-          note: 'Specialized Team',
+          id: '1',
+          title: "Neurological Rehab",
+          subtitle: "Stroke & Spinal Recovery",
+          note: "Specialized Team",
+          benefits: ["Robotic-Assisted Therapy", "Motor Function Recovery"]
         },
         {
-          title: 'Orthopedic Rehab',
-          subtitle: 'Post-Op & Sports Injury',
-          benefits: ['Joint Mobilization', 'Performance Return'],
-          note: 'Personalized',
+          id: '2',
+          title: "Orthopedic Rehab",
+          subtitle: "Post-Op & Sports Injury",
+          note: "Personalized",
+          benefits: ["Joint Mobilization", "Performance Return"]
         },
         {
-          title: 'Manual Therapy',
-          subtitle: 'Spine Care & Pain Relief',
-          benefits: ['Myofascial Release', 'Chronic Pain Mgmt'],
-          note: 'Fast Relief',
+          id: '3',
+          title: "Manual Therapy",
+          subtitle: "Spine Care & Pain Relief",
+          note: "Fast Relief",
+          benefits: ["Myofascial Release", "Chronic Pain Mgmt"]
         },
+        {
+          id: '4',
+          title: "Deep Brain Stimulation",
+          subtitle: "For Parkinson Patients",
+          note: "Surgical Therapy",
+          benefits: ["Tremor Reduction", "Motor Control"]
+        },
+        {
+          id: '5',
+          title: "Smart Spinal Stimulation", // Shortened slightly for UI fit
+          subtitle: "Chronic Pain Solution",
+          note: "Advanced Tech",
+          benefits: ["Pain Signal Blocking", "Implantable Device"]
+        },
+        {
+          id: '6',
+          title: "Psychological Support",
+          subtitle: "Mental Health & Wellness",
+          note: "Compassionate",
+          benefits: ["Emotional Support", "Rehab Motivation"]
+        }
       ],
       chat_btn: "Chat Now"
     },

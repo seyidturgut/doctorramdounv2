@@ -7,8 +7,12 @@ import {
   Bone,
   Clock,
   CheckCircle2,
-  HelpingHand
+  HelpingHand,
+  Zap,
+  Activity,
+  HeartHandshake
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Authentic WhatsApp Icon
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -20,43 +24,23 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 interface Service {
   id: string;
   title: string;
-  slug: string;
   subtitle: string;
   benefits: string[];
   note: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode; // Optional because we attach it dynamically
 }
 
-// --- Data: 3 Key Physical Therapy Branches ---
-const SERVICES_DATA: Service[] = [
-  {
-    id: '1',
-    title: 'Neurological Rehab',
-    slug: 'neuro-rehab',
-    subtitle: 'Stroke & Spinal Recovery',
-    benefits: ['Robotic-Assisted Therapy', 'Motor Function Recovery'],
-    note: 'Specialized Team',
-    icon: <Brain className="w-7 h-7" />,
-  },
-  {
-    id: '2',
-    title: 'Orthopedic Rehab',
-    slug: 'ortho-rehab',
-    subtitle: 'Post-Op & Sports Injury',
-    benefits: ['Joint Mobilization', 'Performance Return'],
-    note: 'Personalized',
-    icon: <Bone className="w-7 h-7" />,
-  },
-  {
-    id: '3',
-    title: 'Manual Therapy',
-    slug: 'manual-therapy',
-    subtitle: 'Spine Care & Pain Relief',
-    benefits: ['Myofascial Release', 'Chronic Pain Mgmt'],
-    note: 'Fast Relief',
-    icon: <HelpingHand className="w-7 h-7" />,
-  },
-];
+const getIcon = (id: string) => {
+  switch (id) {
+    case '1': return <Brain className="w-7 h-7" />;
+    case '2': return <Bone className="w-7 h-7" />;
+    case '3': return <HelpingHand className="w-7 h-7" />;
+    case '4': return <Zap className="w-7 h-7" />;
+    case '5': return <Activity className="w-7 h-7" />;
+    case '6': return <HeartHandshake className="w-7 h-7" />;
+    default: return <Brain className="w-7 h-7" />;
+  }
+};
 
 // --- Components ---
 
@@ -68,11 +52,11 @@ const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, i
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.15, type: "spring", stiffness: 50 }}
       className="
-        bg-white rounded-2xl p-6
+        bg-white rounded-2xl p-5
         border border-gray-100
         shadow-[0_4px_20px_-12px_rgba(0,0,0,0.1)]
-        hover:shadow-[0_20px_40px_-12px_rgba(20,184,166,0.15)] 
-        hover:border-medical-secondary/30 hover:-translate-y-2 
+        hover:shadow-[0_10px_30px_-10px_rgba(20,184,166,0.15)] 
+        hover:border-medical-secondary/30 hover:-translate-y-1
         transition-all duration-300 ease-out group flex flex-col h-full relative overflow-hidden
       "
     >
@@ -83,56 +67,44 @@ const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, i
       <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-medical-secondary to-teal-400 group-hover:w-full transition-all duration-700 ease-in-out"></div>
 
       {/* Header: Icon & Note */}
-      <div className="relative z-10 flex items-start justify-between mb-5">
-        <div className="w-14 h-14 rounded-2xl bg-gray-50 group-hover:bg-medical-secondary group-hover:text-white text-medical-primary flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:rotate-3">
+      <div className="relative z-10 flex items-start justify-between mb-4">
+        <div className="w-12 h-12 rounded-xl bg-gray-50 group-hover:bg-medical-secondary group-hover:text-white text-medical-primary flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:rotate-3">
           {service.icon}
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100 text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-wide group-hover:bg-white/80 transition-colors">
-          <Clock size={12} className="text-medical-secondary" />
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gray-50 border border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wide group-hover:bg-white/80 transition-colors">
+          <Clock size={10} className="text-medical-secondary" />
           {service.note}
         </div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex-grow">
-        <h3 className="text-xl md:text-2xl font-bold font-heading text-medical-primary mb-1.5 group-hover:text-teal-700 transition-colors">
+        <h3 className="text-lg md:text-xl font-bold font-heading text-medical-primary mb-1 group-hover:text-teal-700 transition-colors leading-tight">
           {service.title}
         </h3>
-        <p className="text-sm md:text-base text-gray-500 font-medium mb-6">
+        <p className="text-sm text-gray-500 font-medium mb-4 line-clamp-2">
           {service.subtitle}
         </p>
 
         {/* Compact Benefits List */}
-        <div className="space-y-3 mb-8">
+        <div className="space-y-2">
           {service.benefits.map((benefit, idx) => (
-            <div key={idx} className="flex items-start gap-3">
-              <div className="w-5 h-5 rounded-full bg-teal-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-teal-100 transition-colors">
-                <CheckCircle2 size={12} className="text-medical-secondary" />
+            <div key={idx} className="flex items-start gap-2.5">
+              <div className="w-4 h-4 rounded-full bg-teal-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-teal-100 transition-colors">
+                <CheckCircle2 size={10} className="text-medical-secondary" />
               </div>
-              <span className="text-sm text-slate-600 font-medium leading-snug group-hover:text-slate-800">{benefit}</span>
+              <span className="text-xs md:text-sm text-slate-600 font-medium leading-snug group-hover:text-slate-800">{benefit}</span>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Action Footer - Only Chat Button */}
-      <div className="relative z-10 mt-auto pt-5 border-t border-gray-50">
-        <Button
-          variant="white"
-          size="sm"
-          fullWidth
-          className="rounded-xl h-11 text-sm font-bold border-gray-200 hover:bg-medical-secondary hover:text-white hover:border-transparent transition-all duration-300 group-hover:shadow-lg"
-          onClick={() => window.open('https://wa.me/905539362222', '_blank')}
-        >
-          <WhatsAppIcon className="w-[18px] h-[18px] text-current" />
-          <span className="ml-2">Chat Now</span>
-        </Button>
       </div>
     </motion.div>
   );
 };
 
 export const Services: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <SectionWrapper id="services" bg="light" className="relative py-12 md:py-24 overflow-hidden">
       {/* Background Blobs - Animated */}
@@ -173,10 +145,14 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Grid with Staggered Animation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-2 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 md:px-0">
           <AnimatePresence>
-            {SERVICES_DATA.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+            {t.services.items.map((service, index) => (
+              <ServiceCard
+                key={service.id}
+                service={{ ...service, icon: getIcon(service.id) }}
+                index={index}
+              />
             ))}
           </AnimatePresence>
         </div>
