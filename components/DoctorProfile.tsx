@@ -48,7 +48,7 @@ export const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ i
           <div className="w-full md:w-2/5 h-64 md:h-auto relative bg-medical-primary shrink-0">
             <div className="absolute inset-0 bg-gradient-to-t from-medical-primary/90 via-transparent to-transparent z-10 md:hidden"></div>
             <img
-              src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+              src="/dr-ramdoun-final.webp"
               alt="Dr. Ramdoun"
               className="w-full h-full object-cover object-top"
             />
@@ -177,7 +177,7 @@ export const DoctorProfile: React.FC<{ onOpenBio: () => void }> = ({ onOpenBio }
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
-            src="https://doctorramdoun.com/wp-content/uploads/2025/08/home-hero-image-2025-08-17-1-2-1.png"
+            src="/dr-ramdoun-final.webp"
             alt="Dr. Abdulalim Ramdoun"
             className="w-full h-full object-cover object-top md:object-center"
           />
