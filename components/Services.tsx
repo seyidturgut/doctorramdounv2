@@ -139,7 +139,7 @@ export const Services: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="text-base md:text-xl text-gray-500 font-light"
             >
-              Expert rehabilitation programs tailored to your needs.
+              {t.services.subheading}
             </motion.p>
           </div>
         </div>
