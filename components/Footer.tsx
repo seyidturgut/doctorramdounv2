@@ -60,6 +60,9 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} Dr. Ramdoun. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-gray-500">
+            <a href="https://www.behance.net/seyidturgut" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              by : Seyid Turgut
+            </a>
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span className="flex items-center gap-1">Made with <Heart size={12} className="text-red-500" fill="currentColor" /> for Health</span>
           </div>

@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1 bg-white/50 backdrop-blur-sm px-2 py-1.5 rounded-full border border-white/20 shadow-sm transition-all duration-300 hover:bg-white/80 hover:shadow-md">
+          <div className={`hidden lg:flex items-center gap-1 backdrop-blur-sm px-2 py-1.5 rounded-full border shadow-sm transition-all duration-300 ${scrolled ? 'bg-white/20 border-white/20' : 'bg-white/50 border-white/20 hover:bg-white/80 hover:shadow-md'}`}>
             {navLinks.map((link) => (
               <a
                 key={link.name}
