@@ -170,7 +170,7 @@ export const Navbar: React.FC = () => {
       `}
       dir={dir}
     >
-      <div className="max-w-[1400px] w-full mx-auto px-5 md:px-8 lg:px-12 h-full">
+      <div className="relative z-[101] max-w-[1400px] w-full mx-auto px-5 md:px-8 lg:px-12 h-full">
         <div className="flex justify-between items-center h-full">
 
           {/* Logo Section */}
