@@ -175,6 +175,12 @@ export const en = {
             }
         ]
     },
+    blog_section: {
+        title: "Medical Insights",
+        soft_cta: "Have questions about these conditions? Dr. Ramdoun can explain your specific case.",
+        btn_ask: "Ask a Question",
+        read_more: "Read Article"
+    },
     profile: {
         eyebrow: "Meet Your Specialist",
         name: "Dr. Abdulalim Ramdoun",

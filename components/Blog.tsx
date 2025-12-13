@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SectionWrapper } from './ui/SectionWrapper';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Calendar, User, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowRight, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import blogPostsRaw from '../src/data/blog-posts.json';
 
@@ -58,85 +58,85 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
     const hiddenPosts = filteredPosts.slice(3);
 
     return (
-        <SectionWrapper id="blog" bg="gray">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold font-heading text-medical-primary mb-4">
-                    {language === 'ar' ? 'المقالات الطبية' : 'Medical Insights'}
+        <SectionWrapper id="blog" bg="gray" className="py-20">
+            <div className="text-center mb-12">
+                <h2 className="text-2xl md:text-3xl font-bold font-heading text-slate-800 mb-2 opacity-90">
+                    {t.blog_section?.title || (language === 'ar' ? 'المقالات الطبية' : 'Medical Insights')}
                 </h2>
-                <div className="w-24 h-1.5 bg-medical-secondary mx-auto rounded-full"></div>
+                <div className="w-16 h-1 bg-gray-300 mx-auto rounded-full"></div>
             </div>
 
-            {/* Grid Layout for Top 3 */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Grid Layout (Simplified Cards) */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {visiblePosts.map((post) => (
                     <motion.div
                         key={post.id}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden flex flex-col h-full border border-gray-100"
+                        className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full border border-gray-100 group cursor-pointer"
+                        onClick={() => handleExpand(post)}
                     >
-                        {/* Image */}
-                        <div className="h-56 overflow-hidden relative group cursor-pointer" onClick={() => handleExpand(post)}>
+                        {/* Image (Muted until hover) */}
+                        <div className="h-48 overflow-hidden relative">
                             {post.localImage ? (
                                 <img
                                     src={post.localImage}
                                     alt={post.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
                                     loading="lazy"
                                 />
                             ) : (
-                                <div className="w-full h-full bg-medical-primary/5 flex items-center justify-center">
-                                    <span className="text-medical-primary opacity-30 font-bold text-xl">Dr. Ramdoun</span>
+                                <div className="w-full h-full bg-slate-100 flex items-center justify-center">
+                                    <span className="text-slate-300 font-bold">Dr. Ramdoun</span>
                                 </div>
                             )}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span className="text-white font-bold text-sm bg-medical-secondary/90 px-4 py-1.5 rounded-full backdrop-blur-sm transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                                    {language === 'ar' ? 'اقرأ المقال' : 'Read Article'}
-                                </span>
-                            </div>
                         </div>
 
                         {/* Content */}
-                        <div className="p-6 flex flex-col flex-grow">
-                            <div className="flex items-center justify-between text-xs font-semibold text-gray-500 mb-4 uppercase tracking-wider">
-                                <div className="flex items-center gap-1.5">
-                                    <Calendar size={14} className="text-medical-secondary" />
-                                    <span>{new Date(post.date).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                                </div>
+                        <div className="p-5 flex flex-col flex-grow">
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                                <Calendar size={12} className="text-gray-400" />
+                                <span>{new Date(post.date).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             </div>
 
-                            <h3
-                                className="text-lg font-bold font-heading text-slate-900 mb-3 line-clamp-2 leading-tight group-hover:text-medical-primary transition-colors cursor-pointer"
-                                onClick={() => handleExpand(post)}
-                            >
+                            <h3 className="text-base font-bold font-heading text-slate-800 mb-2 line-clamp-2 leading-tight group-hover:text-medical-secondary transition-colors">
                                 {post.title}
                             </h3>
 
                             <div
-                                className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3"
+                                className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2"
                                 dangerouslySetInnerHTML={{ __html: post.content.split('</p>')[0] + '</p>' }}
                             />
 
                             <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
-                                <button
-                                    onClick={() => handleExpand(post)}
-                                    className="inline-flex items-center gap-2 text-medical-primary font-bold text-sm hover:text-medical-secondary transition-colors group/btn"
-                                >
-                                    {language === 'ar' ? 'اقرأ المزيد' : 'Read Article'}
-                                    <ArrowRight size={16} className={`transition-transform ${language === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : 'group-hover/btn:translate-x-1'}`} />
-                                </button>
-                                <button
-                                    onClick={(e) => { e.stopPropagation(); onOpenBio(); }}
-                                    className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-medical-secondary transition-colors"
-                                >
-                                    <User size={14} />
-                                    <span>{language === 'ar' ? 'د. رمدون' : 'Dr. Ramdoun'}</span>
-                                </button>
+                                <span className="text-xs font-bold text-medical-primary group-hover:text-medical-secondary transition-colors inline-flex items-center gap-1">
+                                    {t.blog_section?.read_more || 'Read Article'}
+                                    <ArrowRight size={12} className={`transition-transform ${language === 'ar' ? 'rotate-180' : ''}`} />
+                                </span>
                             </div>
                         </div>
                     </motion.div>
                 ))}
+            </div>
+
+            {/* Soft CTA Block */}
+            <div className="max-w-3xl mx-auto mt-12 bg-white rounded-xl border border-medical-secondary/20 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+                <div className="w-12 h-12 rounded-full bg-medical-secondary/10 flex items-center justify-center shrink-0">
+                    <MessageCircle className="text-medical-secondary w-6 h-6" />
+                </div>
+                <div className="text-center md:text-start flex-grow">
+                    <p className="text-slate-700 font-medium text-lg">
+                        {t.blog_section?.soft_cta || "Have questions about these conditions?"}
+                    </p>
+                </div>
+                <button
+                    onClick={() => window.open('https://wa.me/905539362222', '_blank')}
+                    className="inline-flex items-center gap-2 text-medical-secondary font-bold hover:text-medical-primary transition-colors whitespace-nowrap"
+                >
+                    {t.blog_section?.btn_ask || "Ask a Question"}
+                    <ArrowRight size={18} className={language === 'ar' ? 'rotate-180' : ''} />
+                </button>
             </div>
 
             {/* Hidden Posts for SEO */}
@@ -175,7 +175,7 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                                 onClick={handleClose}
                                 className="absolute top-4 right-4 z-50 p-2 bg-white/80 backdrop-blur rounded-full text-slate-900 hover:bg-slate-100 transition-colors shadow-sm rtl:right-auto rtl:left-4"
                             >
-                                <XIcon size={24} />
+                                <X size={24} />
                             </button>
                             {/* ... Modal Content Reuse ... */}
                             <div className="overflow-y-auto h-full customs-scroll">
@@ -227,8 +227,3 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
         </SectionWrapper >
     );
 };
-
-// Helper for Close Icon
-const XIcon = ({ size, className }: { size?: number, className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-);
