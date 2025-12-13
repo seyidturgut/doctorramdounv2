@@ -30,8 +30,8 @@ const translations = {
       title_end: "& Rehab",
       description: "Expert guidance in neurological and orthopedic rehabilitation, with facilitation of Deep Brain Stimulation (DBS) for Parkinson’s disease, smart spinal cord stimulation, baclofen pump therapy, psychological support, and general medical consultations.",
       tagline: "Personalized care. Advanced solutions. Compassionate guidance.",
-      cta_whatsapp: "Chat on WhatsApp",
-      cta_assess: "Start Quick Assessment",
+      cta_whatsapp: "WhatsApp",
+      cta_assess: "Quick Check",
       badges: {
         support: "24/7 Medical Support",
         language: "English & Arabic Speaking",

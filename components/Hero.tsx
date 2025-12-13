@@ -78,28 +78,26 @@ const HeroCTAs: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center md:items-start space-y-5 w-full max-w-lg mx-auto md:mx-0 relative z-10">
-      <div className="flex flex-row w-full gap-3 sm:gap-4 px-2 md:px-0">
+      <div className="flex flex-row w-full gap-3 px-2 md:px-0">
         <Button
-          size="lg"
           fullWidth
-          className="group relative overflow-hidden flex items-center justify-center gap-3 text-lg bg-[#25D366] hover:bg-[#128C7E] border-transparent"
+          className="group relative overflow-hidden flex items-center justify-center gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#128C7E] border-transparent py-3 md:py-4 whitespace-nowrap"
           onClick={() => window.open('https://wa.me/905539362222', '_blank')}
           aria-label="Start WhatsApp Chat"
         >
-          <WhatsAppIcon className="w-[22px] h-[22px] text-white" />
+          <WhatsAppIcon className="w-5 h-5 text-white" />
           <span className="relative z-10">{t.hero.cta_whatsapp}</span>
         </Button>
 
         <Button
           variant="white"
-          size="lg"
           fullWidth
-          aria-label="Get Free Assessment"
-          className="group flex items-center justify-center gap-2 text-lg border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden"
+          aria-label="Get assessment"
+          className="group flex items-center justify-center gap-2 text-sm sm:text-base font-bold border-2 border-medical-secondary/20 hover:border-medical-secondary text-medical-primary relative overflow-hidden py-3 md:py-4 whitespace-nowrap"
           onClick={scrollToAssessment}
         >
           <span className="relative z-10 flex items-center gap-2">
-            <Activity size={20} className="text-medical-secondary group-hover:scale-110 transition-transform" />
+            <Activity size={18} className="text-medical-secondary group-hover:scale-110 transition-transform" />
             {t.hero.cta_assess}
           </span>
         </Button>
