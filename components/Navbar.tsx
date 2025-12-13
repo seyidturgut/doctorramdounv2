@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
           onClick={() => setDropdownOpen(!dropdownOpen)}
           className={`
             flex items-center gap-1.5 pl-1.5 pr-2.5 py-1.5 rounded-full border transition-all duration-300 backdrop-blur-sm
-            ${scrolled
+            ${scrolled && !isOpen
               ? 'bg-white/10 border-white/20 text-white hover:bg-white/20'
               : (isOpen ? 'bg-gray-50/80 border-gray-200 text-gray-700' : 'bg-white/90 border-transparent hover:bg-white text-gray-800 shadow-sm')
             }
@@ -151,7 +151,7 @@ export const Navbar: React.FC = () => {
             <img
               src="/doctorramdoun-logo.svg"
               alt="Dr. Ramdoun"
-              className={`w-auto object-contain transition-all duration-300 ${scrolled ? 'h-7 md:h-9 brightness-0 invert' : 'h-8 md:h-11'}`}
+              className={`w-auto object-contain transition-all duration-300 ${scrolled && !isOpen ? 'h-7 md:h-9 brightness-0 invert' : 'h-8 md:h-11'}`}
             />
           </div>
 
@@ -204,7 +204,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2.5 rounded-full text-gray-700 hover:bg-gray-100/80 transition-colors focus:outline-none backdrop-blur-sm active:scale-95 duration-200"
+              className={`lg:hidden p-2.5 rounded-full hover:bg-gray-100/80 transition-colors focus:outline-none backdrop-blur-sm active:scale-95 duration-200 ${scrolled && !isOpen ? 'text-white hover:bg-white/20' : 'text-gray-700'}`}
               aria-label="Toggle Navigation Menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
