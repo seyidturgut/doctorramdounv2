@@ -136,7 +136,7 @@ export const Navbar: React.FC = () => {
         ${scrolled
           ? 'top-4 md:top-6 max-w-[90%] md:max-w-[1200px] rounded-2xl md:rounded-full bg-[#15B8A6]/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(20,184,166,0.15)] border border-white/20 ring-1 ring-white/20 h-[64px] md:h-[72px]'
           : 'top-0 max-w-full h-[88px] bg-transparent border-none'}
-        ${isOpen ? '!bg-white !top-0 !max-w-full !rounded-none !h-full !border-none' : ''}
+        ${isOpen ? '!bg-white !top-0 !max-w-full !rounded-none !border-none' : ''}
       `}
       dir={dir}
     >
