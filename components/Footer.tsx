@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Together Toward Better Health. I am committed to providing world-class medical care with a focus on your safety, comfort, and sustainable recovery.
+              {t.footer.desc}
             </p>
             <div className="flex space-x-5 pt-1">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links - Synced with Header */}
           <div className="w-full md:w-auto">
-            <h4 className="font-heading font-bold text-lg mb-4 md:mb-0 md:hidden">Menu</h4>
+            <h4 className="font-heading font-bold text-lg mb-4 md:mb-0 md:hidden">{t.footer.menu}</h4>
             <ul className="flex flex-col md:flex-row gap-4 md:gap-8 text-base font-medium text-gray-300">
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -57,14 +57,14 @@ export const Footer: React.FC = () => {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-gray-500 text-center md:text-left">
-            © {new Date().getFullYear()} Dr. Ramdoun. All rights reserved.
+            © {new Date().getFullYear()} {t.footer.rights}
           </p>
           <div className="flex items-center gap-6 text-xs text-gray-500">
             <a href="https://www.behance.net/seyidturgut" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
               by : Seyid Turgut
             </a>
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <span className="flex items-center gap-1">Made with <Heart size={12} className="text-red-500" fill="currentColor" /> for Health</span>
+            <span className="flex items-center gap-1">{t.footer.made_with} <Heart size={12} className="text-red-500" fill="currentColor" /> for Health</span>
           </div>
         </div>
       </div>
