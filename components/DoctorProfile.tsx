@@ -212,7 +212,14 @@ export const DoctorProfile: React.FC<{ onOpenBio: () => void }> = ({ onOpenBio }
               className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6 leading-[1.1]"
             >
               {t.profile.name.split(' ').map((word, i) => (
-                <span key={i} className={i === 1 ? 'text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 block' : 'block'}>
+                <span
+                  key={i}
+                  className={
+                    dir === 'rtl'
+                      ? (i === 1 ? 'text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 inline-block mx-1' : 'inline-block mx-1')
+                      : (i === 1 ? 'text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 block' : 'block')
+                  }
+                >
                   {word}
                 </span>
               ))}
