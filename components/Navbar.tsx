@@ -41,7 +41,12 @@ export const Navbar: React.FC = () => {
     { name: t.nav.blog, href: '#blog' },
     { name: t.nav.faq, href: '#faq' },
     { name: t.nav.contact, href: '#contact' },
-  ];
+  ].filter(link => {
+    if (language === 'ar') {
+      return link.href !== '#process' && link.href !== '#testimonials';
+    }
+    return true;
+  });
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();

@@ -14,7 +14,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 // --- Sub-Components ---
 
 const Eyebrow: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  if (language === 'ar') return null;
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2 mb-6">
       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-medical-secondary text-xs font-semibold whitespace-nowrap">
@@ -60,7 +61,7 @@ const HeroText: React.FC = () => {
 };
 
 const HeroCTAs: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const scrollToAssessment = () => {
     const element = document.getElementById('assessment');
@@ -104,16 +105,18 @@ const HeroCTAs: React.FC = () => {
           </span>
         </Button>
       </div>
-      <div className="flex items-center gap-2 text-[10px] xs:text-xs md:text-sm text-slate-500 font-bold bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
-        <ShieldCheck size={14} className="text-medical-secondary" />
-        <span>{t.hero.micro_band}</span>
-      </div>
-    </div >
+      {language !== 'ar' && (
+        <div className="flex items-center gap-2 text-[10px] xs:text-xs md:text-sm text-slate-500 font-bold bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
+          <ShieldCheck size={14} className="text-medical-secondary" />
+          <span>{t.hero.micro_band}</span>
+        </div>
+      )}
+    </div>
   );
 };
 
 const TrustBadges: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <div className="relative z-10 w-full">
       <div className="grid grid-cols-2 md:flex md:flex-row items-center gap-3 pb-2 w-full">
@@ -121,7 +124,7 @@ const TrustBadges: React.FC = () => {
           { icon: Phone, text: t.hero.badges.support },
           { icon: Globe, text: t.hero.badges.language },
           { icon: ShieldCheck, text: t.hero.badges.accredited },
-        ].map((badge, idx) => (
+        ].filter(b => language === 'ar' ? b.text !== t.hero.badges.accredited : true).map((badge, idx) => (
           <div key={idx} className={`flex items-center justify-center md:justify-start gap-2 text-slate-600 bg-white/60 backdrop-blur-md px-3 py-3 rounded-xl border border-white/60 shadow-sm w-full md:w-fit ${idx === 2 ? 'col-span-2 md:col-span-auto' : ''}`}>
             <badge.icon size={16} className="text-medical-secondary shrink-0" />
             <span className="text-xs font-bold whitespace-nowrap text-center">{badge.text}</span>
