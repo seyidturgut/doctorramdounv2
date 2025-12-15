@@ -1,4 +1,5 @@
 import React from 'react';
+import { toPlainText } from '../../src/lib/sanity';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 interface SchemaMarkupProps {
@@ -111,6 +112,17 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
 
     // 4. BlogPosting Schema (Conditional)
     if (activeBlogPost) {
+        let description = 'Medical Insights from Dr. Abdulalim Ramdoun';
+        try {
+            if (activeBlogPost.body) {
+                description = toPlainText(activeBlogPost.body).substring(0, 160);
+            } else if (activeBlogPost.content) {
+                description = activeBlogPost.content.substring(0, 160).replace(/<[^>]*>/g, '');
+            }
+        } catch (e) {
+            console.error('Schema generation error', e);
+        }
+
         const blogSchema = {
             '@context': 'https://schema.org',
             '@type': 'BlogPosting',
