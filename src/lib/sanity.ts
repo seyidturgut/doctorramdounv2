@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { createClient } from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 
 export const client = createClient({
     projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
@@ -9,7 +9,7 @@ export const client = createClient({
     apiVersion: '2023-12-15',
 })
 
-const builder = imageUrlBuilder(client)
+const builder = createImageUrlBuilder(client)
 
 export function urlFor(source: any) {
     return builder.image(source)
