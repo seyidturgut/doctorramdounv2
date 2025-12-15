@@ -66,7 +66,13 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
 
     // Filter posts by current language
     const filteredPosts = posts.filter(post => post.language === language);
-    const expandedPost = localExpandedId ? filteredPosts.find(p => p._id === localExpandedId) : (activePost?.language === language ? activePost : null);
+
+    // Logic to find the expanded post:
+    // 1. Try to find it in the loaded list (filteredPosts)
+    // 2. If not found (e.g. list loading), check if the prop `activePost` matches the ID we want.
+    const expandedPost = localExpandedId
+        ? (filteredPosts.find(p => p._id === localExpandedId) || (activePost?._id === localExpandedId ? activePost : null))
+        : null;
 
     if (!isLoading && filteredPosts.length === 0) return null;
 
