@@ -34,8 +34,18 @@ const SEOManager: React.FC<SEOManagerProps> = ({ activeBlogPost }) => {
     // Determine content
     const title = activeBlogPost ? `${activeBlogPost.title} | Dr. Ramdoun` : t.seo.title;
     // Handle both old structure (if any legacy) and new Portable Text structure
-    const rawDescription = activeBlogPost?.body ? toPlainText(activeBlogPost.body) : (activeBlogPost?.content || '');
-    const description = activeBlogPost ? rawDescription.substring(0, 160).replace(/<[^>]*>/g, '') : t.seo.description;
+    let rawDescription = '';
+    try {
+      if (activeBlogPost?.body) {
+        rawDescription = toPlainText(activeBlogPost.body) || '';
+      } else if (activeBlogPost?.content) {
+        rawDescription = activeBlogPost.content || '';
+      }
+    } catch (err) {
+      console.error('Error generating description:', err);
+    }
+
+    const description = activeBlogPost ? (rawDescription || '').substring(0, 160).replace(/<[^>]*>/g, '') : t.seo.description;
     const slug = activeBlogPost?.slug?.current || activeBlogPost?.slug;
     const url = activeBlogPost ? `https://doctorramdoun.com/?blog=${slug}` : 'https://doctorramdoun.com';
     const image = activeBlogPost?.mainImage ? urlFor(activeBlogPost.mainImage).url() : (activeBlogPost?.originalImageUrl || 'https://doctorramdoun.com/dr-ramdoun-final.webp');
