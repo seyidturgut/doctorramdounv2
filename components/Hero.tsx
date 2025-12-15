@@ -51,9 +51,11 @@ const HeroText: React.FC = () => {
       <p className="text-lg md:text-xl text-medical-secondary font-semibold max-w-2xl mx-auto md:mx-0 leading-relaxed mb-4">
         {t.hero.sub_headline}
       </p>
+      <p
+        className="text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal"
+        dangerouslySetInnerHTML={{ __html: t.hero.description }}
+      />
       <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal">
-        {t.hero.description}
-        <br className="hidden md:block my-3" />
         <span className="font-semibold text-medical-primary block mt-3">{t.hero.tagline}</span>
       </p>
     </div>
