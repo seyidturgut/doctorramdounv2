@@ -3,21 +3,20 @@ import { SectionWrapper } from './ui/SectionWrapper';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, User, ArrowRight, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import blogPostsRaw from '../src/data/blog-posts.json';
+import { getPosts, urlFor } from '../src/lib/sanity';
+import { PortableText } from '@portabletext/react';
 
-// Type definition for blog posts
+// Type definition for blog posts from Sanity
 interface BlogPost {
-    id: string;
+    _id: string;
     title: string;
-    content: string;
-    date: string;
+    slug: { current: string };
+    content: any; // Portable Text
+    publishedAt: string;
     language: string;
-    slug: string;
-    originalImageUrl: string | null;
-    localImage: string | null;
+    mainImage: any;
+    body: any; // Use body for Portable Text
 }
-
-const blogPosts = blogPostsRaw as BlogPost[];
 
 interface BlogProps {
     onOpenBio: () => void;
@@ -28,18 +27,35 @@ interface BlogProps {
 export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange }) => {
     const { language, t, dir } = useLanguage();
     const [localExpandedId, setLocalExpandedId] = useState<string | null>(null);
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const data = await getPosts();
+                setPosts(data);
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchPosts();
+    }, []);
 
     // Sync prop with local state or vice versa
     useEffect(() => {
         if (activePost) {
-            setLocalExpandedId(activePost.id);
+            setLocalExpandedId(activePost._id);
         } else {
             setLocalExpandedId(null);
         }
     }, [activePost]);
 
     const handleExpand = (post: BlogPost) => {
-        setLocalExpandedId(post.id);
+        setLocalExpandedId(post._id);
         if (onPostChange) onPostChange(post);
     };
 
@@ -49,13 +65,15 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
     };
 
     // Filter posts by current language
-    const filteredPosts = blogPosts.filter(post => post.language === language);
-    const expandedPost = localExpandedId ? filteredPosts.find(p => p.id === localExpandedId) : (activePost?.language === language ? activePost : null);
+    const filteredPosts = posts.filter(post => post.language === language);
+    const expandedPost = localExpandedId ? filteredPosts.find(p => p._id === localExpandedId) : (activePost?.language === language ? activePost : null);
 
-    if (filteredPosts.length === 0) return null;
+    if (!isLoading && filteredPosts.length === 0) return null;
 
     const visiblePosts = filteredPosts.slice(0, 3);
-    const hiddenPosts = filteredPosts.slice(3);
+    const hiddenPosts = filteredPosts.slice(3); // Keep for SEO if needed, but client-side fetching makes this less relevant for SEO unless SSR.
+
+    const dateOptions: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' };
 
     return (
         <SectionWrapper id="blog" bg="gray" className="py-20">
@@ -68,56 +86,70 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
 
             {/* Grid Layout (Simplified Cards) */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                {visiblePosts.map((post) => (
-                    <motion.div
-                        key={post.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full border border-gray-100 group cursor-pointer"
-                        onClick={() => handleExpand(post)}
-                    >
-                        {/* Image (Muted until hover) */}
-                        <div className="h-48 overflow-hidden relative">
-                            {post.localImage ? (
-                                <img
-                                    src={post.localImage}
-                                    alt={post.title}
-                                    className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
-                                    loading="lazy"
-                                />
-                            ) : (
-                                <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-                                    <span className="text-slate-300 font-bold">Dr. Ramdoun</span>
+                {isLoading ? (
+                    // Skeleton Loading
+                    [...Array(3)].map((_, i) => (
+                        <div key={i} className="bg-white rounded-xl shadow-sm h-96 animate-pulse">
+                            <div className="h-48 bg-gray-200 rounded-t-xl"></div>
+                            <div className="p-5">
+                                <div className="h-4 bg-gray-200 rounded w-1/3 mb-4"></div>
+                                <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+                                <div className="h-6 bg-gray-200 rounded w-1/2"></div>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    visiblePosts.map((post) => (
+                        <motion.div
+                            key={post._id}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full border border-gray-100 group cursor-pointer"
+                            onClick={() => handleExpand(post)}
+                        >
+                            {/* Image (Muted until hover) */}
+                            <div className="h-48 overflow-hidden relative">
+                                {post.mainImage ? (
+                                    <img
+                                        src={urlFor(post.mainImage).width(400).height(300).url()}
+                                        alt={post.title}
+                                        className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-slate-100 flex items-center justify-center">
+                                        <span className="text-slate-300 font-bold">Dr. Ramdoun</span>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-5 flex flex-col flex-grow">
+                                <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                                    <Calendar size={12} className="text-gray-400" />
+                                    <span>{new Date(post.publishedAt || Date.now()).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', dateOptions)}</span>
                                 </div>
-                            )}
-                        </div>
 
-                        {/* Content */}
-                        <div className="p-5 flex flex-col flex-grow">
-                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                                <Calendar size={12} className="text-gray-400" />
-                                <span>{new Date(post.date).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                <h3 className="text-base font-bold font-heading text-slate-800 mb-2 line-clamp-2 leading-tight group-hover:text-medical-secondary transition-colors">
+                                    {post.title}
+                                </h3>
+
+                                <div className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                                    {/* Simple Text Preview from blocks if possible, or just hide. Portable Text needs a serializer for plain text */}
+                                    <p>Click to read more...</p>
+                                </div>
+
+                                <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+                                    <span className="text-xs font-bold text-medical-primary group-hover:text-medical-secondary transition-colors inline-flex items-center gap-1">
+                                        {t.blog_section?.read_more || 'Read Article'}
+                                        <ArrowRight size={12} className={`transition-transform ${language === 'ar' ? 'rotate-180' : ''}`} />
+                                    </span>
+                                </div>
                             </div>
-
-                            <h3 className="text-base font-bold font-heading text-slate-800 mb-2 line-clamp-2 leading-tight group-hover:text-medical-secondary transition-colors">
-                                {post.title}
-                            </h3>
-
-                            <div
-                                className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2"
-                                dangerouslySetInnerHTML={{ __html: post.content.split('</p>')[0] + '</p>' }}
-                            />
-
-                            <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
-                                <span className="text-xs font-bold text-medical-primary group-hover:text-medical-secondary transition-colors inline-flex items-center gap-1">
-                                    {t.blog_section?.read_more || 'Read Article'}
-                                    <ArrowRight size={12} className={`transition-transform ${language === 'ar' ? 'rotate-180' : ''}`} />
-                                </span>
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
+                        </motion.div>
+                    ))
+                )}
             </div>
 
             {/* Soft CTA Block */}
@@ -137,20 +169,6 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                     {t.blog_section?.btn_ask || "Ask a Question"}
                     <ArrowRight size={18} className={language === 'ar' ? 'rotate-180' : ''} />
                 </button>
-            </div>
-
-            {/* Hidden Posts for SEO */}
-            <div className="hidden">
-                {hiddenPosts.map(post => (
-                    <article key={post.id} itemScope itemType="http://schema.org/BlogPosting">
-                        <h2 itemProp="headline">{post.title}</h2>
-                        <div itemProp="articleBody" dangerouslySetInnerHTML={{ __html: post.content }} />
-                        <time itemProp="datePublished" dateTime={post.date}>{post.date}</time>
-                        <span itemProp="author" itemScope itemType="http://schema.org/Person">
-                            <span itemProp="name">Dr. Abdulalim Ramdoun</span>
-                        </span>
-                    </article>
-                ))}
             </div>
 
             {/* Full Post Modal */}
@@ -177,12 +195,12 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                             >
                                 <X size={24} />
                             </button>
-                            {/* ... Modal Content Reuse ... */}
+
                             <div className="overflow-y-auto h-full customs-scroll">
-                                {expandedPost?.localImage && (
+                                {expandedPost?.mainImage && (
                                     <div className="w-full h-64 md:h-80 relative">
                                         <img
-                                            src={expandedPost.localImage}
+                                            src={urlFor(expandedPost.mainImage).width(1200).height(800).url()}
                                             alt="Article Cover"
                                             className="w-full h-full object-cover"
                                         />
@@ -193,7 +211,7 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                                                     {language === 'ar' ? 'طب وصحة' : 'Medical & Health'}
                                                 </span>
                                                 <span>
-                                                    {new Date(expandedPost.date).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                                    {new Date(expandedPost.publishedAt || Date.now()).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                                                 </span>
                                             </div>
                                             <h2 className="text-2xl md:text-4xl font-bold font-heading leading-tight shadow-sm">
@@ -217,7 +235,16 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="prose prose-lg prose-slate max-w-none prose-headings:font-heading prose-headings:font-bold prose-headings:text-medical-primary prose-a:text-medical-secondary hover:prose-a:text-medical-primary prose-img:rounded-2xl prose-img:shadow-lg prose-img:my-8 prose-li:marker:text-medical-secondary prose-strong:text-medical-primary prose-strong:font-bold prose-blockquote:border-l-4 prose-blockquote:border-medical-secondary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg" dangerouslySetInnerHTML={{ __html: expandedPost.content }} />
+                                    <div className="prose prose-lg prose-slate max-w-none prose-headings:font-heading prose-headings:font-bold prose-headings:text-medical-primary prose-a:text-medical-secondary hover:prose-a:text-medical-primary prose-img:rounded-2xl prose-img:shadow-lg prose-img:my-8 prose-li:marker:text-medical-secondary prose-strong:text-medical-primary prose-strong:font-bold prose-blockquote:border-l-4 prose-blockquote:border-medical-secondary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg">
+                                        <PortableText
+                                            value={expandedPost.body}
+                                            components={{
+                                                types: {
+                                                    image: ({ value }: any) => <img src={urlFor(value).url()} className="rounded-lg shadow-md my-4" />
+                                                }
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

@@ -20,6 +20,8 @@ const Contact = React.lazy(() => import('./components/Contact').then(module => (
 
 import { SchemaMarkup } from './components/SEO/SchemaMarkup';
 
+import { getPostBySlug, urlFor, toPlainText } from './src/lib/sanity';
+
 // SEO Manager to update meta tags dynamically
 interface SEOManagerProps {
   activeBlogPost?: any;
@@ -31,9 +33,12 @@ const SEOManager: React.FC<SEOManagerProps> = ({ activeBlogPost }) => {
   React.useEffect(() => {
     // Determine content
     const title = activeBlogPost ? `${activeBlogPost.title} | Dr. Ramdoun` : t.seo.title;
-    const description = activeBlogPost ? activeBlogPost.content.substring(0, 160).replace(/<[^>]*>/g, '') : t.seo.description;
-    const url = activeBlogPost ? `https://doctorramdoun.com/?blog=${activeBlogPost.slug}` : 'https://doctorramdoun.com';
-    const image = activeBlogPost?.originalImageUrl || 'https://doctorramdoun.com/dr-ramdoun-final.webp';
+    // Handle both old structure (if any legacy) and new Portable Text structure
+    const rawDescription = activeBlogPost?.body ? toPlainText(activeBlogPost.body) : (activeBlogPost?.content || '');
+    const description = activeBlogPost ? rawDescription.substring(0, 160).replace(/<[^>]*>/g, '') : t.seo.description;
+    const slug = activeBlogPost?.slug?.current || activeBlogPost?.slug;
+    const url = activeBlogPost ? `https://doctorramdoun.com/?blog=${slug}` : 'https://doctorramdoun.com';
+    const image = activeBlogPost?.mainImage ? urlFor(activeBlogPost.mainImage).url() : (activeBlogPost?.originalImageUrl || 'https://doctorramdoun.com/dr-ramdoun-final.webp');
 
     // 1. Title
     document.title = title;
@@ -95,11 +100,6 @@ const LoadingFallback = () => (
   </div>
 );
 
-// Import blog posts for SEO and URL handling
-// @ts-ignore
-import blogPostsRaw from './src/data/blog-posts.json';
-const blogPosts = blogPostsRaw as any[];
-
 const AppContent: React.FC = () => {
   const [isBioModalOpen, setIsBioModalOpen] = useState(false);
   const [activeBlogPost, setActiveBlogPost] = useState<any>(null);
@@ -109,8 +109,9 @@ const AppContent: React.FC = () => {
     const params = new URLSearchParams(window.location.search);
     const blogSlug = params.get('blog');
     if (blogSlug) {
-      const post = blogPosts.find(p => p.slug === blogSlug);
-      if (post) setActiveBlogPost(post);
+      getPostBySlug(blogSlug).then(post => {
+        if (post) setActiveBlogPost(post);
+      }).catch(console.error);
     }
   }, []);
 
@@ -132,7 +133,8 @@ const AppContent: React.FC = () => {
             onPostChange={(post: any | null) => {
               setActiveBlogPost(post);
               if (post) {
-                const newUrl = `${window.location.pathname}?blog=${post.slug}`;
+                const slug = post.slug?.current || post.slug;
+                const newUrl = `${window.location.pathname}?blog=${slug}`;
                 window.history.pushState({ path: newUrl }, '', newUrl);
               } else {
                 const newUrl = window.location.pathname;
