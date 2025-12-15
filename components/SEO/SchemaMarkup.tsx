@@ -139,7 +139,7 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
             publisher: {
                 '@id': `${baseUrl}/#organization`
             },
-            description: activeBlogPost.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+            description: description,
             mainEntityOfPage: {
                 '@type': 'WebPage',
                 '@id': `${baseUrl}/?blog=${activeBlogPost.slug}`
