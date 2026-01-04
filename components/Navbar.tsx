@@ -37,13 +37,13 @@ export const Navbar: React.FC = () => {
     { name: t.nav.about, href: '#profile' },
     { name: t.nav.services, href: '#services' },
     { name: t.nav.process, href: '#process' },
-    { name: t.nav.stories, href: '#testimonials' },
+    { name: t.nav.stories, href: '#stories' },
     { name: t.nav.blog, href: '#blog' },
     { name: t.nav.faq, href: '#faq' },
     { name: t.nav.contact, href: '#contact' },
   ].filter(link => {
     if (language === 'ar') {
-      return link.href !== '#process' && link.href !== '#testimonials';
+      return link.href !== '#process' && link.href !== '#stories';
     }
     return true;
   });

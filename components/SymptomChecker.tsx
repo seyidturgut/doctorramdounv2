@@ -272,7 +272,7 @@ export const SymptomChecker: React.FC = () => {
             {/* === RIGHT COLUMN: Image & Decor (Desktop Only) === */}
             <div className="hidden md:block md:w-1/2 lg:w-7/12 relative bg-medical-primary overflow-hidden">
               <img
-                src="/dr-ramdoun-final.webp"
+                src="/doctor-profil-v3.webp"
                 alt="Dr. Ramdoun Medical Assessment"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />

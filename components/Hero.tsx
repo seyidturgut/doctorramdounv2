@@ -270,7 +270,7 @@ export const Hero: React.FC = () => {
               {/* Main Image with Modern Mask */}
               <div className="group relative w-full rounded-[40px] overflow-hidden shadow-2xl border-[6px] border-white bg-gray-100">
                 <img
-                  src="/dr-ramdoun-final.webp"
+                  src="/doctor-profil-v2.webp"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop";
                   }}
