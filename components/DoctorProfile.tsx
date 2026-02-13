@@ -49,7 +49,7 @@ export const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ i
             <div className="absolute inset-0 bg-gradient-to-t from-medical-primary/90 via-transparent to-transparent z-10 md:hidden"></div>
             <img
               src="/doctor-profil-v3.webp"
-              alt="Dr. Ramdoun"
+              alt="Dr. Abdulalim Ramdoun"
               className="w-full h-full object-cover object-top"
             />
 

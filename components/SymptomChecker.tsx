@@ -273,7 +273,7 @@ export const SymptomChecker: React.FC = () => {
             <div className="hidden md:block md:w-1/2 lg:w-7/12 relative bg-medical-primary overflow-hidden">
               <img
                 src="/doctor-profil-v3.webp"
-                alt="Dr. Ramdoun Medical Assessment"
+                alt="Dr. Abdulalim Ramdoun Medical Assessment"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-medical-primary via-medical-primary/40 to-transparent opacity-90"></div>

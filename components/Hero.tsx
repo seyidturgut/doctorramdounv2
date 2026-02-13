@@ -274,7 +274,7 @@ export const Hero: React.FC = () => {
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop";
                   }}
-                  alt="Dr. Ramdoun - Leading Physiotherapy Specialist"
+                  alt="Dr. Abdulalim Ramdoun - Leading Physiotherapy Specialist"
                   className="w-full h-auto object-contain"
                   width="600"
                   height="800"

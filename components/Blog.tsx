@@ -125,7 +125,7 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                                     />
                                 ) : (
                                     <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-                                        <span className="text-slate-300 font-bold">Dr. Ramdoun</span>
+                                        <span className="text-slate-300 font-bold">Dr. Abdulalim Ramdoun</span>
                                     </div>
                                 )}
                             </div>
@@ -236,7 +236,7 @@ export const Blog: React.FC<BlogProps> = ({ onOpenBio, activePost, onPostChange 
                                             <div>
                                                 <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">{language === 'ar' ? 'كتب بواسطة' : 'Written by'}</p>
                                                 <button onClick={() => { handleClose(); onOpenBio(); }} className="text-medical-primary font-bold hover:text-medical-secondary transition-colors text-sm">
-                                                    {language === 'ar' ? 'د. عبد العليم رمضان' : 'Dr. Abdulalim Ramdoun'}
+                                                    {language === 'ar' ? 'د. عبدالعليم رمضون' : 'Dr. Abdulalim Ramdoun'}
                                                 </button>
                                             </div>
                                         </div>

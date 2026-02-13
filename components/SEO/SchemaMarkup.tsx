@@ -18,8 +18,8 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
         '@context': 'https://schema.org',
         '@type': 'MedicalOrganization', // Specific type for clinics
         '@id': `${baseUrl}/#organization`,
-        name: 'Dr. Ramdoun - Expert Physiotherapy & Rehab Center',
-        alternateName: language === 'ar' ? 'Dr. Ramdoun - Physiotherapy & Rehabilitation' : 'Dr. Ramdoun Clinic',
+        name: 'Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehab Center',
+        alternateName: language === 'ar' ? 'Dr. Abdulalim Ramdoun - Physiotherapy & Rehabilitation' : 'Dr. Abdulalim Ramdoun Clinic',
         url: baseUrl,
         logo: {
             '@type': 'ImageObject',
@@ -77,7 +77,7 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
         '@context': 'https://schema.org',
         '@type': 'Physician',
         '@id': `${baseUrl}/#physician`,
-        name: 'Dr. Ramdoun',
+        name: 'Dr. Abdulalim Ramdoun',
         url: `${baseUrl}/#profile`,
         image: doctorImage,
         medicalSpecialty: 'Physiotherapy',

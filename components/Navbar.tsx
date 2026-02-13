@@ -169,7 +169,7 @@ export const Navbar: React.FC = () => {
           >
             <img
               src="/doctorramdoun-logo.svg"
-              alt="Dr. Ramdoun"
+              alt="Dr. Abdulalim Ramdoun"
               className={`w-auto object-contain transition-all duration-300 ${scrolled && !isOpen ? 'h-7 md:h-9 brightness-0 invert' : 'h-8 md:h-11'}`}
             />
           </div>

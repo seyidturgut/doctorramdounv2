@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-2">
               <img
                 src="/doctorramdoun-logo.svg"
-                alt="Dr. Ramdoun"
+                alt="Dr. Abdulalim Ramdoun"
                 className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
               />
             </div>

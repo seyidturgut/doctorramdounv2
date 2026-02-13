@@ -32,7 +32,7 @@ const SEOManager: React.FC<SEOManagerProps> = ({ activeBlogPost }) => {
 
   React.useEffect(() => {
     // Determine content
-    const title = activeBlogPost ? `${activeBlogPost.title} | Dr. Ramdoun` : t.seo.title;
+    const title = activeBlogPost ? `${activeBlogPost.title} | Dr. Abdulalim Ramdoun` : t.seo.title;
     // Handle both old structure (if any legacy) and new Portable Text structure
     let rawDescription = '';
     try {

@@ -1,8 +1,8 @@
 export const en = {
     seo: {
-        title: "Dr. Ramdoun | Expert Physiotherapy & Rehabilitation Center",
-        description: "Expert medical rehabilitation by Dr. Ramdoun. Specialized stroke, neuro & orthopedic physical therapy for international patients.",
-        keywords: "Dr. Ramdoun, Physiotherapy Turkey, Neuro Rehabilitation, Stroke Recovery, Orthopedic Rehab, Physical Therapy Istanbul, Medical Tourism Turkey, Deep Brain Stimulation Support"
+        title: "Dr. Abdulalim Ramdoun | Expert Physiotherapy & Rehabilitation Center",
+        description: "Expert medical rehabilitation by Dr. Abdulalim Ramdoun. Specialized stroke, neuro & orthopedic physical therapy for international patients.",
+        keywords: "Dr. Abdulalim Ramdoun, Physiotherapy Turkey, Neuro Rehabilitation, Stroke Recovery, Orthopedic Rehab, Physical Therapy Istanbul, Medical Tourism Turkey, Deep Brain Stimulation Support"
     },
     nav: {
         about: "About",
@@ -19,7 +19,7 @@ export const en = {
         whatsapp_status: "Online Now"
     },
     cta_section: {
-        title: "Unsure about your condition? Ask Dr. Ramdoun.",
+        title: "Unsure about your condition? Ask Dr. Abdulalim Ramdoun.",
         btn: "Chat on WhatsApp",
         note: "Average response: 5 mins"
     },
@@ -103,7 +103,7 @@ export const en = {
         time_badge: "Takes 30s",
         free_badge: "Free Analysis",
         trigger_title: "Not sure about your treatment?",
-        trigger_desc: "Answer 4 quick questions. Get a preliminary profile to share with Dr. Ramdoun for a faster diagnosis.",
+        trigger_desc: "Answer 4 quick questions. Get a preliminary profile to share with Dr. Abdulalim Ramdoun for a faster diagnosis.",
         btn_start: "Start Assessment",
         btn_back: "Back to Home",
         step: "Question",
@@ -138,7 +138,7 @@ export const en = {
         title: "Your Journey to Recovery",
         description: "We handle every detail of your medical trip, so you can focus entirely on getting better. Here is how it works.",
         steps: [
-            { title: "Assessment", desc: "Contact us via WhatsApp. Share your reports and get a free preliminary evaluation from Dr. Ramdoun." },
+            { title: "Assessment", desc: "Contact us via WhatsApp. Share your reports and get a free preliminary evaluation from Dr. Abdulalim Ramdoun." },
             { title: "Personalized Plan", desc: "We design your full treatment program and arrange your VIP transfer & 5-star accommodation." },
             { title: "Treatment & Care", desc: "Receive world-class care in our JCI facility. Includes surgery/therapy and lifetime follow-up support." }
         ],
@@ -155,7 +155,7 @@ export const en = {
             {
                 name: "Sarah Jenkins",
                 location: "London, UK",
-                text: "The level of care I received was outstanding. From the airport pickup to the post-op follow-up, Dr. Ramdoun's team made me feel safe.",
+                text: "The level of care I received was outstanding. From the airport pickup to the post-op follow-up, Dr. Abdulalim Ramdoun's team made me feel safe.",
                 treatment: "Orthopedic Rehab",
                 outcome: "Full mobility restored in 3 weeks"
             },
@@ -177,7 +177,7 @@ export const en = {
     },
     blog_section: {
         title: "Medical Insights",
-        soft_cta: "Have questions about these conditions? Dr. Ramdoun can explain your specific case.",
+        soft_cta: "Have questions about these conditions? Dr. Abdulalim Ramdoun can explain your specific case.",
         btn_ask: "Ask a Question",
         read_more: "Read Article"
     },
@@ -213,10 +213,10 @@ export const en = {
         cta_btn: "Chat with us directly",
         items: [
             { q: "Do you provide airport pickup and accommodation?", a: "Yes, absolutely. Our VIP International Patient package includes luxury airport transfers and discounted rates at 5-star partner hotels." },
-            { q: "How soon can I start treatment after arriving?", a: "Typically, you will have your initial consultation with Dr. Ramdoun on the day of your arrival or the very next morning." },
+            { q: "How soon can I start treatment after arriving?", a: "Typically, you will have your initial consultation with Dr. Abdulalim Ramdoun on the day of your arrival or the very next morning." },
             { q: "Do you accept international insurance?", a: "We work with many international insurance providers. Please share your policy details with our coordinators via WhatsApp." },
             { q: "Is there a language barrier?", a: "Not at all. Our team speaks fluent English, Arabic, and Turkish. We also provide personal translators." },
-            { q: "What if I need follow-up care after returning home?", a: "We provide lifetime digital follow-up. You can schedule video calls with Dr. Ramdoun to monitor your progress." }
+            { q: "What if I need follow-up care after returning home?", a: "We provide lifetime digital follow-up. You can schedule video calls with Dr. Abdulalim Ramdoun to monitor your progress." }
         ]
     },
     contact: {
@@ -237,9 +237,9 @@ export const en = {
         desc: "Together Toward Better Health. I am committed to providing world-class medical care with a focus on your safety, comfort, and sustainable recovery.",
         menu: "Menu",
         connect: "Stay Connected",
-        subscribe_desc: "Subscribe to receive health tips and updates directly from Dr. Ramdoun.",
+        subscribe_desc: "Subscribe to receive health tips and updates directly from Dr. Abdulalim Ramdoun.",
         btn_sub: "Subscribe",
-        rights: "Dr. Ramdoun. All rights reserved.",
+        rights: "Dr. Abdulalim Ramdoun. All rights reserved.",
         made_with: "Made with"
     }
 };
