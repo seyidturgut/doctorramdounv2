@@ -4,14 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "generate:medical-insights": "node scripts/generate-medical-insights.cjs",
+    "migrate:medical-insights": "node scripts/migrate-medical-insights-to-markdown.cjs",
+    "predev": "npm run generate:medical-insights",
+    "prebuild": "npm run generate:medical-insights",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@portabletext/react": "^6.0.0",
-    "@sanity/client": "^7.13.2",
-    "@sanity/image-url": "^2.0.2",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.560.0",
     "react": "^19.2.3",

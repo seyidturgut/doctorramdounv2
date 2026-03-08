@@ -1,22 +1,16 @@
 import React from 'react';
-import { toPlainText } from '../../src/lib/sanity';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-interface SchemaMarkupProps {
-    activeBlogPost?: any;
-}
-
-export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) => {
+export const SchemaMarkup: React.FC = () => {
     const { language, t } = useLanguage();
 
     const baseUrl = 'https://doctorramdoun.com';
     const logoUrl = `${baseUrl}/doctorramdoun-logo.svg`;
     const doctorImage = `${baseUrl}/dr-ramdoun-final.webp`;
 
-    // 1. MedicalOrganization Schema (Same as before)
     const medicalOrgSchema = {
         '@context': 'https://schema.org',
-        '@type': 'MedicalOrganization', // Specific type for clinics
+        '@type': 'MedicalOrganization',
         '@id': `${baseUrl}/#organization`,
         name: 'Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehab Center',
         alternateName: language === 'ar' ? 'Dr. Abdulalim Ramdoun - Physiotherapy & Rehabilitation' : 'Dr. Abdulalim Ramdoun Clinic',
@@ -31,16 +25,11 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
         description: t.seo.description,
         address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Ataköy 7-8-9-10. Kısım Mah. Çobançeşme E-5 Yan Yol Cad., Ataköy Towers B Blok No: 20/1, İç Kapı No: 110',
-            addressLocality: 'Bakırköy',
+            streetAddress: 'Atakoy 7-8-9-10. Kisim Mah. Cobancesme E-5 Yan Yol Cad., Atakoy Towers B Blok No: 20/1, Ic Kapi No: 110',
+            addressLocality: 'Bakirkoy',
             addressRegion: 'Istanbul',
             postalCode: '34158',
             addressCountry: 'TR'
-        },
-        geo: {
-            '@type': 'GeoCoordinates',
-            latitude: '40.9888', // Approximation based on location
-            longitude: '28.8344'
         },
         telephone: '+905539362222',
         email: 'info@doctorramdoun.com',
@@ -50,29 +39,9 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
             'Neurological Rehabilitation',
             'Orthopedic Rehabilitation',
             'Deep Brain Stimulation (DBS) Support'
-        ],
-        availableService: [
-            {
-                '@type': 'MedicalTherapy',
-                name: 'Neurological Rehabilitation'
-            },
-            {
-                '@type': 'MedicalTherapy',
-                name: 'Orthopedic Rehabilitation'
-            },
-            {
-                '@type': 'MedicalTherapy',
-                name: 'Manual Therapy'
-            }
-        ],
-        sameAs: [
-            'https://www.facebook.com/Dr.Ramdoun',
-            'https://www.instagram.com/dr.ramdoun',
-            'https://www.youtube.com/@DrRamdoun'
         ]
     };
 
-    // 2. Physician Schema
     const physicianSchema = {
         '@context': 'https://schema.org',
         '@type': 'Physician',
@@ -87,7 +56,6 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
         knowsLanguage: ['English', 'Arabic', 'Turkish']
     };
 
-    // 3. WebPage Schema (Base)
     const webPageSchema = {
         '@context': 'https://schema.org',
         '@type': 'MedicalWebPage',
@@ -108,50 +76,10 @@ export const SchemaMarkup: React.FC<SchemaMarkupProps> = ({ activeBlogPost }) =>
         }
     };
 
-    const schemas: any[] = [medicalOrgSchema, physicianSchema, webPageSchema];
-
-    // 4. BlogPosting Schema (Conditional)
-    if (activeBlogPost) {
-        let description = 'Medical Insights from Dr. Abdulalim Ramdoun';
-        try {
-            if (activeBlogPost.body) {
-                description = toPlainText(activeBlogPost.body).substring(0, 160);
-            } else if (activeBlogPost.content) {
-                description = activeBlogPost.content.substring(0, 160).replace(/<[^>]*>/g, '');
-            }
-        } catch (e) {
-            console.error('Schema generation error', e);
-        }
-
-        const blogSchema = {
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            '@id': `${baseUrl}/?blog=${activeBlogPost.slug}`,
-            headline: activeBlogPost.title,
-            image: activeBlogPost.originalImageUrl || doctorImage,
-            datePublished: activeBlogPost.date,
-            dateModified: activeBlogPost.date,
-            author: {
-                '@type': 'Person',
-                name: 'Dr. Abdulalim Ramdoun',
-                url: `${baseUrl}/#physician`
-            },
-            publisher: {
-                '@id': `${baseUrl}/#organization`
-            },
-            description: description,
-            mainEntityOfPage: {
-                '@type': 'WebPage',
-                '@id': `${baseUrl}/?blog=${activeBlogPost.slug}`
-            }
-        };
-        schemas.push(blogSchema);
-    }
-
     return (
         <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify([medicalOrgSchema, physicianSchema, webPageSchema]) }}
         />
     );
 };
