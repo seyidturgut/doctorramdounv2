@@ -13,25 +13,29 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(),
       {
-        name: 'medical-insights-static-routes',
+        name: 'seo-static-routes',
         configureServer(server) {
           server.middlewares.use((req, res, next) => {
             const requestUrl = req.url?.split('?')[0] || '';
-            const cleanPath = requestUrl.replace(/\/+$/, '');
+            const cleanPath = requestUrl.replace(/\/+$/, '') || '/';
 
-            if (!cleanPath.startsWith('/en/medical-insights/') && !cleanPath.startsWith('/ar/medical-insights/')) {
+            if ((!cleanPath.startsWith('/en') && !cleanPath.startsWith('/ar')) || path.extname(cleanPath)) {
               next();
               return;
             }
 
-            const articleFile = path.join(process.cwd(), 'public', cleanPath.replace(/^\/+/, ''), 'index.html');
-            if (!fs.existsSync(articleFile)) {
+            const staticFile = path.join(process.cwd(), 'public', cleanPath.replace(/^\/+/, ''), 'index.html');
+            if (!fs.existsSync(staticFile)) {
               next();
               return;
             }
 
-            res.setHeader('Content-Type', 'text/html; charset=utf-8');
-            res.end(fs.readFileSync(articleFile, 'utf8'));
+            server.transformIndexHtml(requestUrl, fs.readFileSync(staticFile, 'utf8'), req.originalUrl)
+              .then((html) => {
+                res.setHeader('Content-Type', 'text/html; charset=utf-8');
+                res.end(html);
+              })
+              .catch(next);
           });
         }
       }

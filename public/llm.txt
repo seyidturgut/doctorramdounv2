@@ -1,25 +1,37 @@
-# Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehabilitation Center
+# Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehab Center
 
 ## About
-Dr. Abdulalim Ramdoun is a leading expert in physiotherapy and rehabilitation, specializing in neurological and orthopedic recovery for international patients in Turkey. With over 10 years of experience, he provides personalized care plans combining advanced medical technology with compassionate support.
+Dr. Abdulalim Ramdoun is a rehabilitation and physiotherapy specialist serving international patients in Istanbul, Turkey. The website provides bilingual English and Arabic landing pages plus medical insight articles.
 
-## Services
-- **Neurological Rehabilitation:** Stroke recovery, spinal cord injury, robotic-assisted therapy.
-- **Orthopedic Rehabilitation:** Post-op recovery, sports injuries, joint mobilization.
-- **Deep Brain Stimulation (DBS) Support:** Guidance and facilitation for Parkinson's patients.
-- **Smart Spinal Stimulation:** Advanced chronic pain management.
-- **Manual Therapy:** Spine care, myofascial release.
-- **Psychological Support:** Mental health support for rehabilitation patients.
+## Languages
+- English routes under `/en/`
+- Arabic routes under `/ar/`
 
 ## Key Information
-- **Doctor:** Dr. Abdulalim Ramdoun
-- **Location:** Istanbul, Turkey (JCI Accredited Partners)
-- **Languages:** English, Arabic, Turkish
-- **Contact:** +90 553 936 22 22 (WhatsApp)
-- **Email:** info@doctorramdoun.com
-- **Website:** https://doctorramdoun.com
+- Doctor (EN): Dr. Abdulalim Ramdoun
+- Doctor (AR): د. عبدالعليم رمضون
+- Arabic brand variants: د. عبدالعليم رمضون / عبدالعليم رمضون
+- Location: Istanbul, Turkey
+- Contact: +90 553 936 22 22
+- Email: info@doctorramdoun.com
+- Website: https://doctorramdoun.com
 
-## Content Structure
-- `/`: Homepage with overview of services, doctor profile, and patient testimonials.
-- `/en/medical-insights/[slug]/`: English medical insights articles as static pages.
-- `/ar/medical-insights/[slug]/`: Arabic medical insights articles as static pages.
+## Route Structure
+- `/en/`: English home landing page.
+- `/en/about/`: English about landing page.
+- `/en/services/`: English services landing page.
+- `/en/faq/`: English faq landing page.
+- `/en/contact/`: English contact landing page.
+- `/en/medical-insights/`: English medical-insights landing page.
+- `/ar/`: Arabic home landing page.
+- `/ar/about/`: Arabic about landing page.
+- `/ar/services/`: Arabic services landing page.
+- `/ar/faq/`: Arabic faq landing page.
+- `/ar/contact/`: Arabic contact landing page.
+- `/ar/medical-insights/`: Arabic medical-insights landing page.
+- `/en/medical-insights/[slug]/`: English medical insight article.
+- `/ar/medical-insights/[slug]/`: Arabic medical insight article.
+
+## Content Inventory
+- Static EN/AR landing pages: 12
+- Static EN/AR medical insight articles: 4

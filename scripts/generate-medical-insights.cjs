@@ -5,7 +5,9 @@ const ROOT = path.join(__dirname, '..');
 const MEDICAL_CONTENT_DIR = path.join(ROOT, 'content', 'medical-insights');
 const SITE_CONTENT_DIR = path.join(ROOT, 'content', 'site-pages');
 const PUBLIC_DIR = path.join(ROOT, 'public');
+const DIST_DIR = path.join(ROOT, 'dist');
 const BASE_URL = 'https://doctorramdoun.com';
+const BRAND = require(path.join(ROOT, 'src', 'config', 'brand.json'));
 
 const GENERATED_MEDICAL_TS_PATH = path.join(ROOT, 'src', 'data', 'medicalInsights.generated.ts');
 const GENERATED_SITE_TS_PATH = path.join(ROOT, 'src', 'data', 'sitePages.generated.ts');
@@ -101,6 +103,33 @@ const SERVICE_ITEMS = {
     'الدعم النفسي',
   ],
 };
+
+const SECTION_TARGETS = {
+  home: 'top',
+  about: 'about',
+  services: 'services',
+  faq: 'faq',
+  contact: 'contact',
+  'medical-insights': 'blog',
+};
+
+function getBrandName(locale) {
+  return locale === 'ar' ? BRAND.ar : BRAND.en;
+}
+
+function getOrganizationName(locale) {
+  return locale === 'ar' ? BRAND.organization.ar : BRAND.organization.en;
+}
+
+function getOrganizationAlternateNames(locale) {
+  return locale === 'ar' ? BRAND.organizationAlternate.ar : BRAND.organizationAlternate.en;
+}
+
+function getPhysicianAlternateNames(locale) {
+  return locale === 'ar'
+    ? [BRAND.en, ...BRAND.arVariants]
+    : [BRAND.ar, ...BRAND.arVariants.slice(1)];
+}
 
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -331,9 +360,10 @@ function writeGeneratedMedicalModule(posts) {
     coverImage: post.coverImage,
     canonicalPath: post.canonicalPath,
     translationKey: post.translationKey,
+    html: post.html,
   }));
 
-  const fileContent = `export type MedicalInsightLocale = 'en' | 'ar';\n\nexport interface MedicalInsightSummary {\n  title: string;\n  slug: string;\n  locale: MedicalInsightLocale;\n  publishedAt: string;\n  excerpt: string;\n  coverImage: string;\n  canonicalPath: string;\n  translationKey: string;\n}\n\nexport const medicalInsights: MedicalInsightSummary[] = ${JSON.stringify(summaries, null, 2)};\n`;
+  const fileContent = `export type MedicalInsightLocale = 'en' | 'ar';\n\nexport interface MedicalInsightSummary {\n  title: string;\n  slug: string;\n  locale: MedicalInsightLocale;\n  publishedAt: string;\n  excerpt: string;\n  coverImage: string;\n  canonicalPath: string;\n  translationKey: string;\n  html: string;\n}\n\nexport const medicalInsights: MedicalInsightSummary[] = ${JSON.stringify(summaries, null, 2)};\n`;
   fs.writeFileSync(GENERATED_MEDICAL_TS_PATH, fileContent);
 }
 
@@ -362,13 +392,64 @@ function renderAlternateLinks(entry, alternateEntry) {
 
   if (alternateEntry) {
     links.push(`<link rel="alternate" hreflang="${alternateEntry.locale}" href="${BASE_URL}${alternateEntry.canonicalPath}" />`);
-    const xDefaultPath = alternateEntry.locale === 'en' ? alternateEntry.canonicalPath : entry.canonicalPath;
+    const isHomePair = entry.translationKey === 'home' || alternateEntry.translationKey === 'home';
+    const xDefaultPath = isHomePair ? '/' : (alternateEntry.locale === 'en' ? alternateEntry.canonicalPath : entry.canonicalPath);
     links.push(`<link rel="alternate" hreflang="x-default" href="${BASE_URL}${xDefaultPath}" />`);
   } else {
-    links.push(`<link rel="alternate" hreflang="x-default" href="${BASE_URL}${entry.canonicalPath}" />`);
+    const xDefaultPath = entry.translationKey === 'home' ? '/' : entry.canonicalPath;
+    links.push(`<link rel="alternate" hreflang="x-default" href="${BASE_URL}${xDefaultPath}" />`);
   }
 
   return links.join('\n  ');
+}
+
+function upsertTag(html, pattern, replacement, fallbackNeedle = '</head>') {
+  if (pattern.test(html)) {
+    return html.replace(pattern, replacement);
+  }
+
+  return html.replace(fallbackNeedle, `  ${replacement}\n${fallbackNeedle}`);
+}
+
+function renderSeoMetaBlock(page, alternatePage) {
+  return `<!-- SEO Meta Tags -->
+  <title>${escapeHtml(page.metaTitle)}</title>
+  <meta name="description" content="${escapeAttribute(page.metaDescription)}" />
+  <meta name="keywords" content="Physiotherapy, Rehabilitation Center, Dr Abdulalim Ramdoun, Stroke Recovery, Neurological Rehab, Orthopedic Rehab, Medical Tourism" />
+  <meta name="author" content="Dr. Abdulalim Ramdoun" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preload" as="image" href="/dr-ramdoun-final.webp">
+
+  ${renderAlternateLinks(page, alternatePage)}
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="${BASE_URL}${page.canonicalPath}" />
+  <meta property="og:title" content="${escapeAttribute(page.metaTitle)}" />
+  <meta property="og:description" content="${escapeAttribute(page.metaDescription)}" />
+  <meta property="og:image" content="${BASE_URL}/dr-ramdoun-final.webp" />
+  <meta property="og:locale" content="${page.locale === 'ar' ? 'ar' : 'en_US'}" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeAttribute(page.metaTitle)}" />
+  <meta name="twitter:description" content="${escapeAttribute(page.metaDescription)}" />
+  <meta name="twitter:image" content="${BASE_URL}/dr-ramdoun-final.webp" />`;
+}
+
+function renderSpaShellPage(page, alternatePage, templateHtml, posts) {
+  const schemaJson = renderPageSchema(page, posts);
+  const sectionTarget = SECTION_TARGETS[page.translationKey] || 'top';
+  let html = templateHtml;
+
+  html = html.replace(/<html lang="[^"]+"/, `<html lang="${page.locale}"`);
+  html = html.replace(/<html([^>]*)class="([^"]*)"/, `<html$1class="$2" dir="${page.locale === 'ar' ? 'rtl' : 'ltr'}"`);
+  html = html.replace(/<!-- SEO Meta Tags -->[\s\S]*?<!-- Fonts -->/, `${renderSeoMetaBlock(page, alternatePage)}\n\n  <!-- Fonts -->`);
+  html = upsertTag(html, /<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${schemaJson}</script>`);
+  html = upsertTag(html, /<script>\s*window\.__SEO_ROUTE__ = [\s\S]*?<\/script>/, `<script>window.__SEO_ROUTE__ = ${JSON.stringify({ locale: page.locale, translationKey: page.translationKey, sectionTarget, canonicalPath: page.canonicalPath })};</script>`);
+  html = html.replace(/<body([^>]*)>/, `<body$1 data-locale="${page.locale}" data-translation-key="${page.translationKey}" data-section-target="${sectionTarget}">`);
+
+  return html;
 }
 
 function renderOrganizationSchema(locale) {
@@ -376,13 +457,14 @@ function renderOrganizationSchema(locale) {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
     '@id': `${BASE_URL}/#organization`,
-    name: 'Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehab Center',
-    alternateName: locale === 'ar' ? 'د. عبدالعليم رمضون - العلاج الطبيعي وإعادة التأهيل' : 'Dr. Abdulalim Ramdoun Clinic',
+    name: getOrganizationName(locale),
+    alternateName: getOrganizationAlternateNames(locale),
     url: BASE_URL,
     logo: `${BASE_URL}/doctorramdoun-logo.svg`,
     image: `${BASE_URL}/dr-ramdoun-final.webp`,
     telephone: '+905539362222',
     email: 'info@doctorramdoun.com',
+    sameAs: BRAND.sameAs,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Atakoy Towers, B Blok No: 20/1, Ic Kapi No: 110',
@@ -393,15 +475,18 @@ function renderOrganizationSchema(locale) {
   };
 }
 
-function renderPhysicianSchema() {
+function renderPhysicianSchema(locale) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Physician',
     '@id': `${BASE_URL}/#physician`,
-    name: 'Dr. Abdulalim Ramdoun',
+    name: getBrandName(locale),
+    alternateName: getPhysicianAlternateNames(locale),
     image: `${BASE_URL}/dr-ramdoun-final.webp`,
     medicalSpecialty: 'Physiotherapy',
     worksFor: { '@id': `${BASE_URL}/#organization` },
+    knowsLanguage: ['English', 'Arabic', 'Turkish'],
+    sameAs: BRAND.sameAs,
   };
 }
 
@@ -464,7 +549,7 @@ function renderPageSpecificSchema(page, posts) {
 function renderPageSchema(page, posts) {
   return JSON.stringify([
     renderOrganizationSchema(page.locale),
-    renderPhysicianSchema(),
+    renderPhysicianSchema(page.locale),
     renderPageSpecificSchema(page, posts),
   ]);
 }
@@ -480,10 +565,11 @@ function renderArticleSchema(post, alternatePost) {
     inLanguage: post.locale,
     image: `${BASE_URL}${post.coverImage}`,
     mainEntityOfPage: `${BASE_URL}${post.canonicalPath}`,
-    author: { '@type': 'Person', name: 'Dr. Abdulalim Ramdoun' },
+    author: { '@type': 'Person', name: getBrandName(post.locale), alternateName: getPhysicianAlternateNames(post.locale) },
     publisher: {
       '@type': 'MedicalOrganization',
-      name: 'Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehab Center',
+      name: getOrganizationName(post.locale),
+      alternateName: getOrganizationAlternateNames(post.locale),
       logo: { '@type': 'ImageObject', url: `${BASE_URL}/doctorramdoun-logo.svg` },
     },
   };
@@ -897,14 +983,14 @@ function cleanGeneratedLocaleDirs() {
   fs.rmSync(path.join(PUBLIC_DIR, 'ar'), { recursive: true, force: true });
 }
 
-function writeStaticSitePages(sitePages, posts) {
+function writeStaticSitePages(sitePages, posts, outputRoot, templateHtml) {
   const pageMap = new Map(sitePages.map((page) => [`${page.translationKey}:${page.locale}`, page]));
 
   for (const page of sitePages) {
     const alternatePage = pageMap.get(`${page.translationKey}:${page.locale === 'en' ? 'ar' : 'en'}`) || null;
-    const outputDir = path.join(PUBLIC_DIR, page.canonicalPath.replace(/^\/+/, ''));
+    const outputDir = path.join(outputRoot, page.canonicalPath.replace(/^\/+/, ''));
     ensureDir(outputDir);
-    fs.writeFileSync(path.join(outputDir, 'index.html'), renderPageHtml(page, alternatePage, sitePages, posts));
+    fs.writeFileSync(path.join(outputDir, 'index.html'), renderSpaShellPage(page, alternatePage, templateHtml, posts));
   }
 }
 
@@ -959,17 +1045,19 @@ function writeLLMFile(sitePages, posts) {
     ar: sitePages.filter((page) => page.locale === 'ar'),
   };
 
-  const content = `# Dr. Abdulalim Ramdoun - Expert Physiotherapy & Rehabilitation Center
+  const content = `# ${BRAND.organization.en}
 
 ## About
-Dr. Abdulalim Ramdoun is a rehabilitation and physiotherapy specialist serving international patients in Istanbul, Turkey. The website provides bilingual English and Arabic landing pages plus medical insight articles.
+${BRAND.en} is a rehabilitation and physiotherapy specialist serving international patients in Istanbul, Turkey. The website provides bilingual English and Arabic landing pages plus medical insight articles.
 
 ## Languages
 - English routes under \`/en/\`
 - Arabic routes under \`/ar/\`
 
 ## Key Information
-- Doctor: Dr. Abdulalim Ramdoun
+- Doctor (EN): ${BRAND.en}
+- Doctor (AR): ${BRAND.ar}
+- Arabic brand variants: ${BRAND.arVariants.join(' / ')}
 - Location: Istanbul, Turkey
 - Contact: +90 553 936 22 22
 - Email: info@doctorramdoun.com
@@ -992,11 +1080,12 @@ ${groupedPages.ar.map((page) => `- \`${page.canonicalPath}\`: Arabic ${page.tran
 function generateMedicalInsights() {
   const posts = loadPosts();
   const sitePages = loadSitePages();
+  const appShellTemplate = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
   cleanGeneratedLocaleDirs();
   writeGeneratedMedicalModule(posts);
   writeGeneratedSitePageModule(sitePages);
-  writeStaticSitePages(sitePages, posts);
+  writeStaticSitePages(sitePages, posts, PUBLIC_DIR, appShellTemplate);
   writeStaticArticlePages(posts);
   writeSitemap(sitePages, posts);
   writeLLMFile(sitePages, posts);
@@ -1004,11 +1093,26 @@ function generateMedicalInsights() {
   return { posts, sitePages };
 }
 
+function generateDistSeoShellPages() {
+  if (!fs.existsSync(path.join(DIST_DIR, 'index.html'))) {
+    throw new Error('dist/index.html not found. Run the Vite build before generating dist SEO pages.');
+  }
+
+  const posts = loadPosts();
+  const sitePages = loadSitePages();
+  const distTemplate = fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf8');
+  writeStaticSitePages(sitePages, posts, DIST_DIR, distTemplate);
+
+  return { posts, sitePages };
+}
+
 if (require.main === module) {
-  const { posts, sitePages } = generateMedicalInsights();
+  const isDistMode = process.argv.includes('--dist');
+  const { posts, sitePages } = isDistMode ? generateDistSeoShellPages() : generateMedicalInsights();
   console.log(`Generated ${sitePages.length} site pages and ${posts.length} Medical Insights posts.`);
 }
 
 module.exports = {
   generateMedicalInsights,
+  generateDistSeoShellPages,
 };

@@ -3,9 +3,9 @@ import { SectionWrapper } from './ui/SectionWrapper';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, ArrowRight, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { medicalInsights } from '../src/data/medicalInsights.generated';
+import { medicalInsights, type MedicalInsightSummary } from '../src/data/medicalInsights.generated';
 
-export const Blog: React.FC = () => {
+export const Blog: React.FC<{ onOpenPost: (post: MedicalInsightSummary) => void }> = ({ onOpenPost }) => {
     const { language, t } = useLanguage();
 
     const filteredPosts = medicalInsights
@@ -31,6 +31,10 @@ export const Blog: React.FC = () => {
                     <motion.a
                         key={`${post.locale}-${post.slug}`}
                         href={post.canonicalPath}
+                        onClick={(event) => {
+                            event.preventDefault();
+                            onOpenPost(post);
+                        }}
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}

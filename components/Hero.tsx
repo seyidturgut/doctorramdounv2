@@ -3,6 +3,7 @@ import { Button } from './ui/Button';
 import { ShieldCheck, Globe, Star, Phone, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import brandConfig from '../src/config/brand.json';
 
 // Authentic WhatsApp Icon
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -31,7 +32,7 @@ const Eyebrow: React.FC = () => {
 };
 
 const HeroText: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <div className="space-y-6 text-center md:text-start w-full relative z-10">
       <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl leading-[1.15] font-bold font-heading text-medical-primary tracking-tight rtl:tracking-normal break-words">
@@ -51,6 +52,11 @@ const HeroText: React.FC = () => {
       <p className="text-lg md:text-xl text-medical-secondary font-semibold max-w-2xl mx-auto md:mx-0 leading-relaxed mb-4">
         {t.hero.sub_headline}
       </p>
+      {language === 'ar' && (
+        <p className="text-sm md:text-base text-slate-500 font-semibold tracking-tight max-w-2xl mx-auto md:mx-0">
+          {brandConfig.ar} | {brandConfig.arVariants[1]} | أخصائي العلاج الطبيعي وإعادة التأهيل في إسطنبول، تركيا
+        </p>
+      )}
       <p
         className="text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0 font-normal"
         dangerouslySetInnerHTML={{ __html: t.hero.description }}
@@ -138,7 +144,7 @@ const TrustBadges: React.FC = () => {
 };
 
 const QuickConnectCard: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <motion.div
       initial={{ y: 0 }}
@@ -149,7 +155,7 @@ const QuickConnectCard: React.FC = () => {
       <div className="flex items-center gap-4 mb-3">
         <div className="relative">
           <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-[#25D366] border-2 border-white rounded-full z-10 animate-pulse rtl:right-auto rtl:left-0"></span>
-          <img src="/favicon.png" className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md p-1 bg-white" alt="Patient Support Agent" />
+          <img src="/favicon.png" className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md p-1 bg-white" alt={language === 'ar' ? 'منسق المرضى لدى د. عبدالعليم رمضون' : 'Patient coordinator for Dr. Abdulalim Ramdoun'} />
         </div>
         <div className="text-start">
           <p className="text-sm font-bold text-gray-900">{t.hero.agent_name}</p>
@@ -221,7 +227,7 @@ const MedicalBackground: React.FC = () => {
 // --- Main Hero Component ---
 
 export const Hero: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <section className="relative pt-[110px] md:pt-[150px] pb-12 md:pb-28 overflow-hidden">
 
@@ -274,7 +280,7 @@ export const Hero: React.FC = () => {
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop";
                   }}
-                  alt="Dr. Abdulalim Ramdoun - Leading Physiotherapy Specialist"
+                  alt={t.profile?.name ? `${t.profile.name} ${language === 'ar' ? '- أخصائي إعادة التأهيل والعلاج الطبيعي' : '- rehabilitation and physiotherapy specialist'}` : 'Dr. Abdulalim Ramdoun rehabilitation portrait'}
                   className="w-full h-auto object-contain"
                   width="600"
                   height="800"

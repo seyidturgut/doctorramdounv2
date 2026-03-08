@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "generate:medical-insights": "node scripts/generate-medical-insights.cjs",
+    "generate:medical-insights:dist": "node scripts/generate-medical-insights.cjs --dist",
     "migrate:medical-insights": "node scripts/migrate-medical-insights-to-markdown.cjs",
     "predev": "npm run generate:medical-insights",
     "prebuild": "npm run generate:medical-insights",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run generate:medical-insights:dist",
     "preview": "vite preview"
   },
   "dependencies": {

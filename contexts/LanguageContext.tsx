@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { en } from '../locales/en';
 import { ar } from '../locales/ar';
+import { getAlternateUrl, getLocaleFromPath } from '../src/lib/siteRouting';
 
 type Language = 'en' | 'ar';
 
@@ -20,15 +21,41 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
-  const [dir, setDir] = useState<'ltr' | 'rtl'>('ltr');
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'en';
+    return getLocaleFromPath(window.location.pathname);
+  });
+  const [dir, setDir] = useState<'ltr' | 'rtl'>(language === 'ar' ? 'rtl' : 'ltr');
 
   useEffect(() => {
-    // Handle Direction
+    const syncLanguageFromUrl = () => {
+      setLanguageState(getLocaleFromPath(window.location.pathname));
+    };
+
+    syncLanguageFromUrl();
+    window.addEventListener('popstate', syncLanguageFromUrl);
+    return () => window.removeEventListener('popstate', syncLanguageFromUrl);
+  }, []);
+
+  useEffect(() => {
     const direction = language === 'ar' ? 'rtl' : 'ltr';
     setDir(direction);
-    // Note: document.dir and document.lang are now managed by SEOManager in App.tsx
   }, [language]);
+
+  const setLanguage = (nextLanguage: Language) => {
+    if (typeof window === 'undefined') {
+      setLanguageState(nextLanguage);
+      return;
+    }
+
+    const targetUrl = getAlternateUrl(window.location.pathname, window.location.hash, nextLanguage);
+    if (targetUrl === `${window.location.pathname}${window.location.hash}`) {
+      setLanguageState(nextLanguage);
+      return;
+    }
+
+    window.location.href = targetUrl;
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t: translations[language], dir }}>

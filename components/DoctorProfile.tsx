@@ -49,7 +49,7 @@ export const BioModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ i
             <div className="absolute inset-0 bg-gradient-to-t from-medical-primary/90 via-transparent to-transparent z-10 md:hidden"></div>
             <img
               src="/doctor-profil-v3.webp"
-              alt="Dr. Abdulalim Ramdoun"
+              alt={t.profile?.name ? `${t.profile.name} ${dir === 'rtl' ? '- صورة تعريفية' : '- profile portrait'}` : 'Dr. Abdulalim Ramdoun profile portrait'}
               className="w-full h-full object-cover object-top"
             />
 
@@ -160,7 +160,7 @@ export const DoctorProfile: React.FC<{ onOpenBio: () => void }> = ({ onOpenBio }
   const { t, dir } = useLanguage();
 
   return (
-    <SectionWrapper id="profile" bg="dark" className="relative overflow-hidden py-0 md:py-0">
+    <SectionWrapper id="about" bg="dark" className="relative overflow-hidden py-0 md:py-0">
 
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-medical-primary to-slate-900 opacity-90"></div>
@@ -178,7 +178,7 @@ export const DoctorProfile: React.FC<{ onOpenBio: () => void }> = ({ onOpenBio }
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
             src="/doctor-profil-v3.webp"
-            alt="Dr. Abdulalim Ramdoun"
+            alt={t.profile?.name ? `${t.profile.name} ${dir === 'rtl' ? '- صورة الطبيب في قسم من نحن' : '- doctor portrait in the About section'}` : 'Dr. Abdulalim Ramdoun about section portrait'}
             className="w-full h-full object-cover object-top md:object-center"
           />
           {/* Floating Badge (Desktop) */}

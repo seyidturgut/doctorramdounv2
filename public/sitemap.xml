@@ -7,62 +7,98 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://doctorramdoun.com/en/medical-insights/choosing-the-best-prosthetics-exceptional-quality-competitive-prices/</loc>
-    <lastmod>2025-08-12</lastmod>
+    <loc>https://doctorramdoun.com/ar/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/en/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/ar/about/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/en/about/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/ar/services/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/en/services/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/ar/faq/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/en/faq/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/ar/contact/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/en/contact/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/ar/medical-insights/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/en/medical-insights/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://doctorramdoun.com/ar/medical-insights/non-surgical-disc-treatment-manual-therapy-traction/</loc>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doctorramdoun.com/en/medical-insights/achieving-a-hollywood-smile-guaranteed-results-and-high-expertise-in-dental-health/</loc>
-    <lastmod>2025-08-12</lastmod>
+    <loc>https://doctorramdoun.com/en/medical-insights/non-surgical-disc-treatment-manual-therapy-traction/</loc>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doctorramdoun.com/en/medical-insights/knee-hip-joint-replacement-surgeries-in-turkey-a-comprehensive-guide/</loc>
-    <lastmod>2025-08-12</lastmod>
+    <loc>https://doctorramdoun.com/ar/medical-insights/spinal-cord-stimulation-via-catheter/</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doctorramdoun.com/en/medical-insights/understanding-deep-brain-stimulation-a-comprehensive-guide/</loc>
-    <lastmod>2025-08-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://doctorramdoun.com/en/medical-insights/the-da-vinci-robot-revolutionizing-modern-surgery/</loc>
-    <lastmod>2025-08-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://doctorramdoun.com/ar/medical-insights/the-da-vinci-robot/</loc>
-    <lastmod>2025-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://doctorramdoun.com/ar/medical-insights/deep-brain-stimulation/</loc>
-    <lastmod>2025-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://doctorramdoun.com/ar/medical-insights/knee-hip-joint-replacement-surgeries-in-turkey/</loc>
-    <lastmod>2025-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://doctorramdoun.com/ar/medical-insights/hollywood-smile/</loc>
-    <lastmod>2025-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://doctorramdoun.com/ar/medical-insights/choosing-the-best-prosthetics/</loc>
-    <lastmod>2025-07-20</lastmod>
+    <loc>https://doctorramdoun.com/en/medical-insights/spinal-cord-stimulation-via-catheter/</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -1,17 +1,18 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { getHomepageAnchorPath } from '../src/lib/siteRouting';
 
 export const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const navLinks = [
-    { name: t.nav.about, href: '#profile' },
-    { name: t.nav.services, href: '#services' },
-    { name: t.nav.process, href: '#process' },
-    { name: t.nav.stories, href: '#testimonials' },
-    { name: t.nav.faq, href: '#faq' },
-    { name: t.nav.contact, href: '#contact' },
+    { name: language === 'ar' ? 'الرئيسية' : 'Home', href: getHomepageAnchorPath(language) },
+    { name: t.nav.about, href: getHomepageAnchorPath(language, 'about') },
+    { name: t.nav.services, href: getHomepageAnchorPath(language, 'services') },
+    { name: t.nav.blog, href: getHomepageAnchorPath(language, 'blog') },
+    { name: t.nav.faq, href: getHomepageAnchorPath(language, 'faq') },
+    { name: t.nav.contact, href: getHomepageAnchorPath(language, 'contact') },
   ];
 
   return (
@@ -24,7 +25,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-2">
               <img
                 src="/doctorramdoun-logo.svg"
-                alt="Dr. Abdulalim Ramdoun"
+                alt={language === 'ar' ? 'شعار د. عبدالعليم رمضون لإعادة التأهيل والعلاج الطبيعي' : 'Dr. Abdulalim Ramdoun rehabilitation and physiotherapy clinic logo'}
                 className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
               />
             </div>

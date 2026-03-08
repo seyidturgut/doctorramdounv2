@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, Check } from 'lucide-react';
 import { Button } from './ui/Button';
 import { useLanguage } from '../contexts/LanguageContext';
+import { getHomepageAnchorPath } from '../src/lib/siteRouting';
 
 // --- Assets: High Quality Flag Icons (SVG) ---
 
@@ -34,35 +35,15 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: t.nav.about, href: '#profile' },
-    { name: t.nav.services, href: '#services' },
-    { name: t.nav.process, href: '#process' },
-    { name: t.nav.stories, href: '#stories' },
-    { name: t.nav.blog, href: '#blog' },
-    { name: t.nav.faq, href: '#faq' },
-    { name: t.nav.contact, href: '#contact' },
-  ].filter(link => {
-    if (language === 'ar') {
-      return link.href !== '#process' && link.href !== '#stories';
-    }
-    return true;
-  });
+    { key: 'home', name: language === 'ar' ? 'الرئيسية' : 'Home', href: getHomepageAnchorPath(language) },
+    { key: 'about', name: t.nav.about, href: getHomepageAnchorPath(language, 'about') },
+    { key: 'services', name: t.nav.services, href: getHomepageAnchorPath(language, 'services') },
+    { key: 'medical-insights', name: t.nav.blog, href: getHomepageAnchorPath(language, 'blog') },
+    { key: 'faq', name: t.nav.faq, href: getHomepageAnchorPath(language, 'faq') },
+    { key: 'contact', name: t.nav.contact, href: getHomepageAnchorPath(language, 'contact') },
+  ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const handleNavClick = () => {
     setIsOpen(false);
   };
 
@@ -163,24 +144,24 @@ export const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-full px-4 md:px-8">
 
           {/* Logo Section */}
-          <div
+          <a
             className="flex-shrink-0 flex items-center cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            href={getHomepageAnchorPath(language)}
           >
             <img
               src="/doctorramdoun-logo.svg"
-              alt="Dr. Abdulalim Ramdoun"
+              alt={language === 'ar' ? 'شعار د. عبدالعليم رمضون لإعادة التأهيل والعلاج الطبيعي' : 'Dr. Abdulalim Ramdoun rehabilitation and physiotherapy clinic logo'}
               className={`w-auto object-contain transition-all duration-300 ${scrolled && !isOpen ? 'h-7 md:h-9 brightness-0 invert' : 'h-8 md:h-11'}`}
             />
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className={`hidden lg:flex items-center gap-1 backdrop-blur-sm px-2 py-1.5 rounded-full border shadow-sm transition-all duration-300 ${scrolled ? 'bg-white/20 border-white/20' : 'bg-white/50 border-white/20 hover:bg-white/80 hover:shadow-md'}`}>
             {navLinks.map((link) => (
               <a
-                key={link.name}
+                key={link.key}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={handleNavClick}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full group overflow-hidden ${scrolled ? 'text-white hover:text-white' : 'text-gray-700 hover:text-medical-primary'}`}
               >
                 <span className="relative z-10">{link.name}</span>
@@ -242,9 +223,9 @@ export const Navbar: React.FC = () => {
           <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2">
             {navLinks.map((link, idx) => (
               <a
-                key={link.name}
+                key={link.key}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={handleNavClick}
                 className="block px-4 py-4 rounded-2xl text-xl font-bold text-gray-800 hover:bg-gray-50 hover:text-medical-secondary transition-all active:scale-[0.99]"
                 style={{ animationDelay: `${100 + idx * 30}ms` }}
               >

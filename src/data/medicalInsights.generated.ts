@@ -9,107 +9,52 @@ export interface MedicalInsightSummary {
   coverImage: string;
   canonicalPath: string;
   translationKey: string;
+  html: string;
 }
 
 export const medicalInsights: MedicalInsightSummary[] = [
   {
-    "title": "Choosing the Best Prosthetics: Exceptional Quality & Competitive Prices",
-    "slug": "choosing-the-best-prosthetics-exceptional-quality-competitive-prices",
-    "locale": "en",
-    "publishedAt": "2025-08-12T23:11:08.000Z",
-    "excerpt": "When it comes to prosthetics, finding the right balance of exceptional quality and competitive pricing is crucial for individuals seeking functional and comfortable solutions. T...",
-    "coverImage": "/blog-images/choosing-the-best-prosthetics-exceptional-quality-competitive-prices.webp",
-    "canonicalPath": "/en/medical-insights/choosing-the-best-prosthetics-exceptional-quality-competitive-prices/",
-    "translationKey": "prosthetics"
-  },
-  {
-    "title": "Achieving a Hollywood Smile: Guaranteed Results and High Expertise in Dental Health",
-    "slug": "achieving-a-hollywood-smile-guaranteed-results-and-high-expertise-in-dental-health",
-    "locale": "en",
-    "publishedAt": "2025-08-12T23:10:19.000Z",
-    "excerpt": "A Hollywood Smile isn't just a trend; it's a symbol of confidence and aesthetic perfection. For individuals seeking to transform their smile and enhance their dental health, fin...",
-    "coverImage": "/blog-images/achieving-a-hollywood-smile-guaranteed-results-and-high-expertise-in-dental-health.webp",
-    "canonicalPath": "/en/medical-insights/achieving-a-hollywood-smile-guaranteed-results-and-high-expertise-in-dental-health/",
-    "translationKey": "hollywood-smile"
-  },
-  {
-    "title": "Knee & Hip Joint Replacement Surgeries in Turkey: A Comprehensive Guide",
-    "slug": "knee-hip-joint-replacement-surgeries-in-turkey-a-comprehensive-guide",
-    "locale": "en",
-    "publishedAt": "2025-08-12T23:08:53.000Z",
-    "excerpt": "Knee and hip joint replacement surgeries, also known as arthroplasty, are critical procedures for individuals suffering from debilitating joint conditions such as arthritis or s...",
-    "coverImage": "/blog-images/knee-hip-joint-replacement-surgeries-in-turkey-a-comprehensive-guide.webp",
-    "canonicalPath": "/en/medical-insights/knee-hip-joint-replacement-surgeries-in-turkey-a-comprehensive-guide/",
-    "translationKey": "joint-replacement"
-  },
-  {
-    "title": "Understanding Deep Brain Stimulation: A Comprehensive Guide",
-    "slug": "understanding-deep-brain-stimulation-a-comprehensive-guide",
-    "locale": "en",
-    "publishedAt": "2025-08-12T23:06:59.000Z",
-    "excerpt": "Deep Brain Stimulation (DBS) is a revolutionary medical procedure that has transformed the treatment landscape for various neurological conditions. This guide aims to provide a...",
-    "coverImage": "/blog-images/understanding-deep-brain-stimulation-a-comprehensive-guide.webp",
-    "canonicalPath": "/en/medical-insights/understanding-deep-brain-stimulation-a-comprehensive-guide/",
-    "translationKey": "deep-brain-stimulation"
-  },
-  {
-    "title": "The Da Vinci Robot: Revolutionizing Modern Surgery",
-    "slug": "the-da-vinci-robot-revolutionizing-modern-surgery",
-    "locale": "en",
-    "publishedAt": "2025-08-12T15:05:26.000Z",
-    "excerpt": "Introduction The Da Vinci robot, a marvel of modern medical technology, is transforming the landscape of surgical procedures. Designed to facilitate minimally invasive surgery,...",
-    "coverImage": "/blog-images/the-da-vinci-robot-revolutionizing-modern-surgery.webp",
-    "canonicalPath": "/en/medical-insights/the-da-vinci-robot-revolutionizing-modern-surgery/",
-    "translationKey": "da-vinci-robot"
-  },
-  {
-    "title": "روبوت دافنشي: ثورة في الجراحة الحديثة",
-    "slug": "the-da-vinci-robot",
+    "title": "علاج الديسك بدون جراحة: التحفيز العلاجي باستخدام التمارين اليدوية وجهاز الشد القطني والرقبي",
+    "slug": "non-surgical-disc-treatment-manual-therapy-traction",
     "locale": "ar",
-    "publishedAt": "2025-07-20T14:00:00.000Z",
-    "excerpt": "مقدمة يُحدث روبوت دافنشي، أحد روائع التكنولوجيا الطبية الحديثة، نقلة نوعية في مجال العمليات الجراحية. صُمم هذا النظام الآلي لتسهيل الجراحة طفيفة التوغل، ويوفر دقة لا مثيل لها، و...",
-    "coverImage": "/blog-images/the-da-vinci-robot.webp",
-    "canonicalPath": "/ar/medical-insights/the-da-vinci-robot/",
-    "translationKey": "da-vinci-robot"
+    "publishedAt": "2026-03-08T00:00:00.000Z",
+    "excerpt": "علاج الديسك بدون جراحة باستخدام العلاج اليدوي وجهاز الشد القطني والرقبي لتخفيف الألم وتقليل الضغط على الأعصاب وتحفيز الشفاء الطبيعي للعمود الفقري.",
+    "coverImage": "/blog-images/non-surgical-disc-treatment-manual-therapy-traction.jpeg",
+    "canonicalPath": "/ar/medical-insights/non-surgical-disc-treatment-manual-therapy-traction/",
+    "translationKey": "disc-treatment",
+    "html": "<p>يُعاني الكثير من الأشخاص من آلام الظهر والرقبة الناتجة عن الديسك (الانزلاق الغضروفي)، والتي تؤثر بشكل مباشر على الحركة وجودة الحياة. وعلى عكس الاعتقاد الشائع، فإن علاج الديسك بدون عمل جراحي أصبح اليوم خيارًا علاجيًا فعالًا وآمنًا بفضل تطور العلاج الطبيعي التحفيزي الذي يعتمد على التمارين اليدوية المتخصصة وأجهزة الشد القطني والرقبي.</p>\n<p>يهدف هذا النهج العلاجي غير الجراحي إلى تخفيف الضغط على الأعصاب، تقليل الألم، وتحفيز الشفاء الطبيعي للعمود الفقري دون الحاجة إلى تدخل جراحي.</p>\n<h2>ما هو الديسك (الانزلاق الغضروفي)؟</h2>\n<p>الديسك هو حالة تحدث عندما يبرز أو ينزلق القرص الغضروفي بين فقرات العمود الفقري، مما يؤدي إلى:</p>\n<ul>\n<li>الضغط على الأعصاب</li>\n<li>ألم أسفل الظهر أو الرقبة</li>\n<li>تنميل أو خدر في الأطراف</li>\n<li>ضعف عضلي في بعض الحالات</li>\n</ul>\n<p>ويشيع الديسك القطني في أسفل الظهر، بينما يظهر الديسك الرقبي في منطقة الرقبة والكتفين.</p>\n<h2>علاج الديسك بدون جراحة: الخيار الآمن والفعّال</h2>\n<p>يُعد علاج الديسك بدون جراحة من أكثر الحلول طلبًا، خاصةً للمرضى الذين يرغبون بتجنب مخاطر العمليات الجراحية وفترات التعافي الطويلة. ويرتكز هذا العلاج على تحفيز الشفاء الطبيعي من خلال تقنيات علاج طبيعي مدروسة ومبنية على أسس علمية.</p>\n<h2>التمارين اليدوية في علاج الديسك</h2>\n<h3>ما هي التمارين اليدوية؟</h3>\n<p>التمارين اليدوية العلاجية هي تقنيات يقوم بها أخصائي العلاج الطبيعي باستخدام اليدين، وتهدف إلى:</p>\n<ul>\n<li>تحسين حركة الفقرات</li>\n<li>تخفيف الشد العضلي</li>\n<li>تحسين مرونة العمود الفقري</li>\n<li>تقليل الضغط العصبي</li>\n</ul>\n<h3>فوائد التمارين اليدوية لعلاج الديسك</h3>\n<ul>\n<li>تخفيف الألم بشكل تدريجي وآمن</li>\n<li>تحسين وضعية العمود الفقري</li>\n<li>زيادة مدى الحركة</li>\n<li>تقليل التشنج العضلي</li>\n<li>دعم التعافي دون تدخل جراحي</li>\n</ul>\n<p>تُعد العلاج اليدوي للديسك من أهم مكونات برامج العلاج الطبيعي غير الجراحي.</p>\n<h2>جهاز الشد القطني والرقبي في علاج الديسك</h2>\n<h3>ما هو جهاز الشد؟</h3>\n<p>جهاز الشد القطني والرقبي هو جهاز علاجي متطور يُستخدم لتطبيق شد محسوب ومتحكم به على العمود الفقري، بهدف:</p>\n<ul>\n<li>توسيع المسافات بين الفقرات</li>\n<li>تقليل الضغط على الأقراص الغضروفية</li>\n<li>تخفيف الضغط على الأعصاب</li>\n</ul>\n<h3>فوائد الشد القطني لعلاج ديسك أسفل الظهر</h3>\n<ul>\n<li>تقليل ألم أسفل الظهر</li>\n<li>تخفيف ضغط العصب الوركي</li>\n<li>تحسين تغذية الأقراص الغضروفية</li>\n<li>دعم الشفاء الطبيعي للديسك</li>\n</ul>\n<h3>فوائد الشد الرقبي لعلاج ديسك الرقبة</h3>\n<ul>\n<li>تخفيف آلام الرقبة والكتفين</li>\n<li>تقليل التنميل في الذراعين</li>\n<li>تحسين حركة الرقبة</li>\n<li>تقليل الصداع الناتج عن ضغط الأعصاب</li>\n</ul>\n<p>يُعتبر جهاز الشد القطني والرقبي من أكثر الوسائل فاعلية في علاج الديسك بدون جراحة عند استخدامه ضمن برنامج علاجي متكامل.</p>\n<h2>التحفيز العلاجي ودوره في علاج الديسك</h2>\n<p>يعتمد التحفيز العلاجي في علاج الديسك على الجمع بين:</p>\n<ul>\n<li>التمارين اليدوية</li>\n<li>جهاز الشد القطني أو الرقبي</li>\n<li>تمارين تقوية العضلات الداعمة</li>\n<li>تصحيح الوضعيات الخاطئة</li>\n</ul>\n<p>يساعد هذا التكامل على:</p>\n<ul>\n<li>تحفيز التعافي الطبيعي</li>\n<li>منع تكرار الإصابة</li>\n<li>تحسين الاستقرار الحركي للعمود الفقري</li>\n</ul>\n<h2>لمن يُناسب علاج الديسك بدون جراحة؟</h2>\n<p>يُناسب هذا النوع من العلاج:</p>\n<ul>\n<li>مرضى الديسك القطني أو الرقبي في المراحل المبكرة والمتوسطة</li>\n<li>الأشخاص الذين يعانون من آلام مزمنة دون مضاعفات عصبية شديدة</li>\n<li>المرضى الراغبين بتجنب الجراحة</li>\n<li>من لم تتحسن حالتهم بالأدوية فقط</li>\n</ul>\n<p>يتم تحديد الخطة العلاجية بعد تقييم طبي شامل.</p>\n<h2>نتائج العلاج الطبيعي غير الجراحي للديسك</h2>\n<p>تشير الخبرة السريرية إلى أن المرضى الذين يخضعون لعلاج الديسك بالتمارين اليدوية وجهاز الشد يحققون:</p>\n<ul>\n<li>انخفاضًا ملحوظًا في الألم</li>\n<li>تحسنًا في الحركة والوظيفة اليومية</li>\n<li>تقليل الحاجة للأدوية المسكنة</li>\n<li>تجنب التدخل الجراحي في كثير من الحالات</li>\n</ul>\n<p>أصبح علاج الديسك بدون عمل جراحي خيارًا علاجيًا فعالًا وآمنًا بفضل التحفيز العلاجي باستخدام التمارين اليدوية وجهاز الشد القطني والرقبي. وعند تطبيقه ضمن برنامج علاج طبيعي متخصص وتحت إشراف مهني، يمكن للمرضى استعادة الحركة، تخفيف الألم، وتحسين جودة حياتهم دون الحاجة للجراحة.</p>"
   },
   {
-    "title": "فهم تحفيز الدماغ العميق: دليل شامل",
-    "slug": "deep-brain-stimulation",
-    "locale": "ar",
-    "publishedAt": "2025-07-20T13:00:00.000Z",
-    "excerpt": "التحفيز العميق للدماغ (DBS) إجراء طبي ثوري أحدث نقلة نوعية في علاج مختلف الحالات العصبية. يهدف هذا الدليل إلى توفير فهم شامل للتحفيز العميق للدماغ، يغطي تاريخه وآلياته وتطبيقاته...",
-    "coverImage": "/blog-images/deep-brain-stimulation.webp",
-    "canonicalPath": "/ar/medical-insights/deep-brain-stimulation/",
-    "translationKey": "deep-brain-stimulation"
+    "title": "Non-Surgical Disc Treatment: Therapeutic Stimulation Through Manual Therapy and Cervical & Lumbar Traction",
+    "slug": "non-surgical-disc-treatment-manual-therapy-traction",
+    "locale": "en",
+    "publishedAt": "2026-03-08T00:00:00.000Z",
+    "excerpt": "A non-surgical disc treatment approach using manual therapy, cervical traction, and lumbar traction to relieve pain, reduce nerve compression, and support natural spinal healing.",
+    "coverImage": "/blog-images/non-surgical-disc-treatment-manual-therapy-traction.jpeg",
+    "canonicalPath": "/en/medical-insights/non-surgical-disc-treatment-manual-therapy-traction/",
+    "translationKey": "disc-treatment",
+    "html": "<p>Disc herniation, commonly known as a slipped or bulging disc, is a leading cause of neck and lower back pain, significantly affecting mobility and quality of life. Advances in rehabilitation medicine have made non-surgical disc treatment a highly effective and safe option for many patients. This approach focuses on therapeutic stimulation using manual therapy techniques and cervical and lumbar traction devices, aiming to relieve pain, reduce nerve compression, and promote natural spinal healing without surgery.</p>\n<h2>Understanding Disc Herniation</h2>\n<p>A disc herniation occurs when the intervertebral disc protrudes or degenerates, placing pressure on nearby spinal nerves. This condition may lead to:</p>\n<ul>\n<li>Lower back or neck pain</li>\n<li>Radiating pain into the arms or legs</li>\n<li>Numbness or tingling</li>\n<li>Muscle weakness in advanced cases</li>\n</ul>\n<p>The most common types include lumbar disc herniation and cervical disc herniation.</p>\n<h2>Non-Surgical Disc Treatment: A Modern and Effective Approach</h2>\n<p>Non-surgical treatment for disc herniation is often the first and preferred option, especially for patients seeking to avoid the risks, costs, and recovery time associated with surgery. This treatment strategy emphasizes conservative physical therapy methods that stimulate the body’s natural healing processes.</p>\n<h2>Manual Therapy for Disc Herniation</h2>\n<h3>What Is Manual Therapy?</h3>\n<p>Manual therapy involves hands-on techniques performed by licensed physical therapists to improve spinal mobility, reduce muscular tension, and enhance joint function.</p>\n<h3>Benefits of Manual Therapy for Disc Conditions</h3>\n<ul>\n<li>Gradual and safe pain reduction</li>\n<li>Improved spinal alignment and posture</li>\n<li>Increased range of motion</li>\n<li>Reduced muscle spasms</li>\n<li>Support for long-term spinal stability</li>\n</ul>\n<p>Manual therapy for disc herniation is a core component of evidence-based, non-surgical rehabilitation programs.</p>\n<h2>Cervical and Lumbar Traction in Disc Treatment</h2>\n<h3>What Is Spinal Traction?</h3>\n<p>Cervical and lumbar traction devices apply controlled, mechanical decompression to the spine, helping to:</p>\n<ul>\n<li>Increase space between vertebrae</li>\n<li>Reduce pressure on intervertebral discs</li>\n<li>Relieve nerve root compression</li>\n</ul>\n<h3>Benefits of Lumbar Traction for Lower Back Disc Herniation</h3>\n<ul>\n<li>Decreased lower back pain</li>\n<li>Reduced sciatic nerve compression</li>\n<li>Improved disc hydration and nutrition</li>\n<li>Enhanced spinal decompression</li>\n</ul>\n<h3>Benefits of Cervical Traction for Neck Disc Herniation</h3>\n<ul>\n<li>Relief of neck and shoulder pain</li>\n<li>Reduced arm numbness and tingling</li>\n<li>Improved cervical spine mobility</li>\n<li>Reduction of nerve-related headaches</li>\n</ul>\n<p>When properly applied, cervical and lumbar traction is a safe and effective method for treating disc herniation without surgery.</p>\n<h2>Therapeutic Stimulation and Integrated Disc Rehabilitation</h2>\n<p>Therapeutic stimulation for disc treatment combines:</p>\n<ul>\n<li>Manual therapy techniques</li>\n<li>Cervical or lumbar traction</li>\n<li>Targeted strengthening exercises</li>\n<li>Postural correction and movement education</li>\n</ul>\n<p>This integrated approach enhances spinal stability, promotes nerve decompression, and reduces the likelihood of recurrence.</p>\n<h2>Who Is a Candidate for Non-Surgical Disc Treatment?</h2>\n<p>Non-surgical disc rehabilitation is suitable for:</p>\n<ul>\n<li>Patients with mild to moderate cervical or lumbar disc herniation</li>\n<li>Individuals experiencing chronic back or neck pain without severe neurological deficits</li>\n<li>Patients aiming to avoid surgical intervention</li>\n<li>Individuals who did not improve with medication alone</li>\n</ul>\n<p>A thorough clinical evaluation is essential before starting treatment.</p>\n<h2>Clinical Outcomes of Non-Surgical Disc Rehabilitation</h2>\n<p>Clinical experience and research show that patients undergoing manual therapy combined with cervical and lumbar traction often achieve:</p>\n<ul>\n<li>Significant pain reduction</li>\n<li>Improved functional mobility</li>\n<li>Decreased reliance on pain medications</li>\n<li>Avoidance of surgery in many cases</li>\n</ul>\n<p>Non-surgical disc treatment, based on therapeutic stimulation through manual therapy and cervical and lumbar traction, offers an effective, safe, and evidence-based solution for managing disc herniation. When delivered as part of a structured physical therapy program under professional supervision, this approach can restore mobility, relieve pain, and significantly improve quality of life without the need for surgery.</p>"
   },
   {
-    "title": "جراحات استبدال مفصل الركبة والورك في تركيا: دليل شامل",
-    "slug": "knee-hip-joint-replacement-surgeries-in-turkey",
+    "title": "تحفيز النخاع الشوكي عبر القثطار: تقنية متقدمة لاستعادة الوظائف العصبية",
+    "slug": "spinal-cord-stimulation-via-catheter",
     "locale": "ar",
-    "publishedAt": "2025-07-20T12:00:00.000Z",
-    "excerpt": "تُعدّ جراحات استبدال مفصلي الركبة والورك، والمعروفة أيضًا باسم رأب المفصل، إجراءاتٍ بالغة الأهمية للأشخاص الذين يعانون من أمراضٍ مُنهكة للمفاصل، مثل التهاب المفاصل أو تلف المفاص...",
-    "coverImage": "/blog-images/knee-hip-joint-replacement-surgeries-in-turkey.webp",
-    "canonicalPath": "/ar/medical-insights/knee-hip-joint-replacement-surgeries-in-turkey/",
-    "translationKey": "joint-replacement"
+    "publishedAt": "2026-03-07T00:00:00.000Z",
+    "excerpt": "تحفيز النخاع الشوكي عبر القثطار تقنية طفيفة التداخل تهدف إلى تنشيط المسارات العصبية المتبقية ودعم استعادة الوظائف ضمن برامج إعادة التأهيل العصبي.",
+    "coverImage": "/blog-images/spinal-cord-stimulation-via-catheter.jpeg",
+    "canonicalPath": "/ar/medical-insights/spinal-cord-stimulation-via-catheter/",
+    "translationKey": "spinal-cord-stimulation",
+    "html": "<p>يُعد تحفيز النخاع الشوكي (Spinal Cord Stimulation) من أحدث التقنيات الطبية المستخدمة في مجال إعادة التأهيل العصبي، خاصة لدى المرضى الذين يعانون من إصابات النخاع الشوكي الجزئية أو بعض الاضطرابات العصبية المزمنة. تعتمد هذه التقنية على التحفيز الكهربائي الموجّه للألياف العصبية بهدف إعادة تنشيط المسارات العصبية المتبقية وتحسين الوظيفة الحركية أو الحسية حسب الحالة.</p>\n<p>في السنوات الأخيرة، تطور هذا الإجراء ليُنفّذ عبر القثطار ومن خلال الفتحة السفلية للعمود الفقري، بطريقة دقيقة وآمنة، دون الحاجة إلى التخدير العام.</p>\n<h2>ما هو تحفيز النخاع الشوكي بالقثطار؟</h2>\n<p>تحفيز النخاع الشوكي بواسطة القثطار هو إجراء تدخلي طفيف يتم خلاله إدخال قثطار رفيع عبر الفتحة السفلية للعمود الفقري في المنطقة القطنية أو العجزية، تحت تخدير موضعي فقط، دون تخدير عام.</p>\n<p>يُوجَّه القثطار بدقة باستخدام وسائل تصوير طبية متقدمة حتى يصل إلى مستوى الإصابة أو المنطقة العصبية المستهدفة، وذلك وفق تقييم دقيق لكل حالة على حدة.</p>\n<h2>آلية العمل: كيف يتم التحفيز العصبي؟</h2>\n<p>عند وصول القثطار إلى المكان المحدد داخل القناة الشوكية، يتم توصيله بجهاز تحفيز كهربائي خارجي.</p>\n<p>يقوم هذا الجهاز بإرسال نبضات كهربائية مدروسة الشدة والتردد إلى النخاع الشوكي.</p>\n<p>الهدف من التحفيز الكهربائي:</p>\n<ul>\n<li>تنشيط الألياف العصبية المتبقية التي لم تتلف بالكامل</li>\n<li>إعادة تحفيز الاتصال بين الدماغ والنخاع الشوكي</li>\n<li>تعزيز اللدونة العصبية</li>\n<li>تحسين الإشارات العصبية المسؤولة عن الحركة أو الإحساس</li>\n</ul>\n<p>في حال وجود ألياف عصبية سليمة جزئيًا، يمكن لهذا التحفيز أن يؤدي إلى إعادة تفعيل وظيفي تدريجي، خاصة عند دمجه مع برامج إعادة تأهيل عصبي مكثفة.</p>\n<h2>هل يحتاج الإجراء إلى تخدير؟</h2>\n<p>من أهم مميزات هذا النوع من عمليات تحفيز النخاع الشوكي أنه:</p>\n<ul>\n<li>يتم دون تخدير عام</li>\n<li>يقتصر على تخدير موضعي في منطقة الإدخال</li>\n<li>يسمح بتواصل المريض مع الفريق الطبي أثناء الإجراء</li>\n<li>يقلل من المخاطر المرتبطة بالتخدير الكامل</li>\n</ul>\n<p>هذا يجعل الإجراء أكثر أمانًا، خاصة للمرضى ذوي الحالات الطبية المزمنة.</p>\n<h2>لمن تُناسب عمليات تحفيز النخاع الشوكي؟</h2>\n<p>تُستخدم هذه التقنية في حالات محددة، بعد تقييم دقيق، ومنها:</p>\n<ul>\n<li>إصابات النخاع الشوكي الجزئية</li>\n<li>بعض حالات الشلل غير الكامل</li>\n<li>الآلام العصبية المزمنة المقاومة للعلاج</li>\n<li>بعض اضطرابات التحكم الحركي</li>\n<li>حالات مختارة من المرضى بعد الجلطات العصبية</li>\n</ul>\n<p>من المهم التأكيد أن ليست كل الحالات مرشحة لهذا الإجراء، ويجب أن يسبق القرار تقييم عصبي شامل وتصوير دقيق.</p>\n<h2>أهمية التقييم الفردي قبل الإجراء</h2>\n<p>نجاح تحفيز النخاع الشوكي يعتمد بشكل كبير على:</p>\n<ul>\n<li>موقع الإصابة بدقة</li>\n<li>درجة التلف العصبي</li>\n<li>وجود ألياف عصبية قابلة للتحفيز</li>\n<li>مدة الإصابة</li>\n<li>الخطة التأهيلية المرافقة</li>\n</ul>\n<p>لذلك، يتم تصميم بروتوكول التحفيز بشكل شخصي لكل مريض، ولا يوجد نموذج واحد يناسب الجميع.</p>\n<h2>دور تحفيز النخاع الشوكي ضمن خطة التأهيل</h2>\n<p>يُعتبر هذا الإجراء جزءًا من منظومة علاجية متكاملة، وليس علاجًا منفردًا.</p>\n<p>أفضل النتائج تتحقق عند دمجه مع:</p>\n<ul>\n<li>العلاج الفيزيائي العصبي المتخصص</li>\n<li>التمارين الوظيفية المكثفة</li>\n<li>إعادة تدريب المشي عند الإمكان</li>\n<li>الدعم النفسي والمتابعة الطبية المستمرة</li>\n</ul>\n<h2>الخلاصة</h2>\n<p>تمثل عمليات تحفيز النخاع الشوكي بواسطة القثطار نقلة نوعية في عالم إعادة التأهيل العصبي، حيث توفر خيارًا متقدمًا وآمنًا للمرضى الذين لا تزال لديهم إمكانية للاستفادة من تنشيط المسارات العصبية المتبقية.</p>\n<p>مع التطور المستمر في تقنيات التحفيز الكهربائي والتقييم العصبي، تفتح هذه الإجراءات آفاقًا جديدة لتحسين جودة الحياة واستعادة جزء من الوظائف العصبية لدى فئة مختارة من المرضى.</p>"
   },
   {
-    "title": "الحصول على ابتسامة هوليوود: نتائج مضمونة وخبرة عالية في صحة الأسنان",
-    "slug": "hollywood-smile",
-    "locale": "ar",
-    "publishedAt": "2025-07-20T11:00:00.000Z",
-    "excerpt": "ابتسامة هوليوود ليست مجرد موضة، بل رمز للثقة والجمال. لمن يرغب بتغيير ابتسامته وتحسين صحة أسنانه، فإنّ الحصول على الخبرة المناسبة والنتائج المضمونة أمرٌ بالغ الأهمية. يستكشف هذا...",
-    "coverImage": "/blog-images/hollywood-smile.webp",
-    "canonicalPath": "/ar/medical-insights/hollywood-smile/",
-    "translationKey": "hollywood-smile"
-  },
-  {
-    "title": "اختيار أفضل الأطراف الصناعية: جودة استثنائية وأسعار تنافسية",
-    "slug": "choosing-the-best-prosthetics",
-    "locale": "ar",
-    "publishedAt": "2025-07-20T10:00:31.000Z",
-    "excerpt": "عندما يتعلق الأمر بالأطراف الصناعية، يُعدّ تحقيق التوازن الأمثل بين الجودة الاستثنائية والأسعار التنافسية أمرًا بالغ الأهمية للباحثين عن حلول عملية ومريحة. يستكشف هذا الدليل الش...",
-    "coverImage": "/blog-images/choosing-the-best-prosthetics.webp",
-    "canonicalPath": "/ar/medical-insights/choosing-the-best-prosthetics/",
-    "translationKey": "prosthetics"
+    "title": "Spinal Cord Stimulation via Catheter: An Advanced Neuromodulation Approach in Neurological Rehabilitation",
+    "slug": "spinal-cord-stimulation-via-catheter",
+    "locale": "en",
+    "publishedAt": "2026-03-07T00:00:00.000Z",
+    "excerpt": "Catheter-based spinal cord stimulation is a minimally invasive neuromodulation technique used in selected neurological rehabilitation cases to activate residual neural pathways and support functional recovery.",
+    "coverImage": "/blog-images/spinal-cord-stimulation-via-catheter.jpeg",
+    "canonicalPath": "/en/medical-insights/spinal-cord-stimulation-via-catheter/",
+    "translationKey": "spinal-cord-stimulation",
+    "html": "<p>Spinal Cord Stimulation (SCS) is an advanced neuromodulation technique increasingly used in modern neurological rehabilitation. It is particularly beneficial for selected patients with partial spinal cord injuries, incomplete paralysis, and certain chronic neurological or neuropathic conditions.</p>\n<p>This approach is based on targeted electrical stimulation of residual neural pathways within the spinal cord, aiming to restore functional communication between the brain and the body, enhance neuroplasticity, and improve motor or sensory outcomes when possible.</p>\n<p>Recent medical advancements have enabled spinal cord stimulation to be performed via a minimally invasive catheter-based technique, allowing precise neuromodulation without the need for general anesthesia.</p>\n<h2>What Is Spinal Cord Stimulation via Catheter?</h2>\n<p>Spinal cord stimulation via catheter is a minimally invasive medical procedure in which a fine catheter is introduced through the lower spinal access point (lumbar or sacral region) under local anesthesia only.</p>\n<p>Using real-time imaging guidance, the catheter is carefully advanced within the spinal canal to reach the specific neurological level associated with the patient’s injury or symptoms. This individualized targeting is essential to ensure safety, precision, and optimal therapeutic response.</p>\n<h2>How Does Spinal Cord Stimulation Work?</h2>\n<p>Once the catheter is positioned at the desired spinal level, it is connected to an external electrical stimulation system. Controlled electrical impulses with carefully selected parameters including frequency, intensity, and duration are delivered directly to the spinal cord.</p>\n<p>Therapeutic objectives of spinal cord stimulation include:</p>\n<ul>\n<li>Activation of partially preserved neural fibers</li>\n<li>Facilitation of communication between the brain and spinal networks</li>\n<li>Enhancement of neuroplasticity and functional reorganization</li>\n<li>Improvement of motor control, sensation, or pain modulation</li>\n</ul>\n<p>In patients with partially intact neural pathways, this targeted stimulation may lead to gradual functional improvements, especially when integrated into a structured neurological rehabilitation program.</p>\n<h2>Anesthesia and Patient Safety</h2>\n<p>One of the major advantages of catheter-based spinal cord stimulation is its safety profile:</p>\n<ul>\n<li>Performed under local anesthesia only</li>\n<li>No general anesthesia required</li>\n<li>Continuous patient feedback during the procedure</li>\n<li>Reduced procedural risks, particularly in medically complex patients</li>\n</ul>\n<p>This approach makes the procedure safer and more tolerable for patients with chronic conditions or increased anesthesia risk.</p>\n<h2>Who May Benefit from Spinal Cord Stimulation?</h2>\n<p>Spinal cord stimulation via catheter may be considered for carefully selected patients, including those with:</p>\n<ul>\n<li>Partial spinal cord injuries</li>\n<li>Incomplete paralysis</li>\n<li>Chronic neuropathic pain unresponsive to conventional therapies</li>\n<li>Selected movement control disorders</li>\n<li>Certain post-stroke neurological conditions</li>\n</ul>\n<p>It is essential to emphasize that this treatment is not suitable for all patients. Proper candidate selection is a critical step and requires comprehensive neurological assessment and advanced imaging studies.</p>\n<h2>The Importance of Individualized Evaluation</h2>\n<p>Successful outcomes depend on a thorough, patient-specific evaluation, including:</p>\n<ul>\n<li>Precise localization of the spinal cord injury</li>\n<li>Extent and severity of neural damage</li>\n<li>Presence of stimulation-responsive neural fibers</li>\n<li>Time elapsed since injury</li>\n<li>Integration with an appropriate rehabilitation strategy</li>\n</ul>\n<p>There is no standardized protocol applicable to all cases. Each stimulation plan is tailored according to the patient’s neurological profile and rehabilitation goals.</p>\n<h2>Spinal Cord Stimulation as Part of an Integrated Rehabilitation Program</h2>\n<p>Spinal cord stimulation should be considered a complementary component of a comprehensive rehabilitation plan rather than a standalone treatment.</p>\n<p>Optimal results are achieved when combined with:</p>\n<ul>\n<li>Specialized neurological physiotherapy</li>\n<li>Intensive functional and task-oriented training</li>\n<li>Gait rehabilitation when clinically appropriate</li>\n<li>Psychological support and continuous medical follow-up</li>\n</ul>\n<p>This multidisciplinary approach maximizes the potential for neurological recovery and functional improvement.</p>\n<h2>Conclusion</h2>\n<p>Catheter-based spinal cord stimulation represents a significant advancement in neurological rehabilitation and neuromodulation. For appropriately selected patients, it offers a safe, minimally invasive option to stimulate residual neural pathways and support functional recovery.</p>\n<p>With continuous progress in spinal stimulation technology and individualized neurological assessment, this technique opens new possibilities for improving quality of life and restoring meaningful neurological function in patients living with complex neurological conditions.</p>"
   }
 ];

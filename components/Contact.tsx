@@ -28,6 +28,27 @@ export const Contact: React.FC = () => {
               {t.contact.desc}
             </p>
 
+            {language === 'ar' && (
+              <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+                <div className="space-y-4 text-start">
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="w-6 h-6 text-medical-secondary mt-1 shrink-0" />
+                    <div>
+                      <p className="font-bold text-lg">د. عبدالعليم رمضون</p>
+                      <p className="text-gray-300">أخصائي العلاج الطبيعي وإعادة التأهيل في إسطنبول، تركيا</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <Phone className="w-6 h-6 text-medical-secondary mt-1 shrink-0" />
+                    <div>
+                      <p className="font-bold text-lg">واتساب وهاتف</p>
+                      <p className="text-gray-300" dir="ltr">+90 553 936 22 22</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="space-y-10">
               <div className="flex items-start space-x-5">
                 <Mail className="w-8 h-8 text-medical-secondary mt-1 shrink-0" />
